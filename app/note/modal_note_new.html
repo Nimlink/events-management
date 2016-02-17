@@ -1,0 +1,78 @@
+<div class="modal-body modal-md">
+    <div class="row row-centered">
+        <h2 class="m-t-none m-b"><i class="fa fa-user"></i> Donner un avis</h2>
+    </div>
+    <div class="row">
+        <p class="ibox-content">
+
+        <div class="row">
+            <div class="col-lg-8">
+                <p>
+                    <input type="text" placeholder="Nom" class="input-sm form-control">
+                </p>
+
+                <p>
+                    <input type="text" placeholder="Prénom" class="input-sm form-control">
+                </p>
+
+                <p>
+                    <input type="text" placeholder="Code postal" class="input-sm form-control">
+                </p>
+
+                <p class="input-group">
+                    <input type="text" placeholder="Entrée" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
+
+                <p class="input-group">
+                    <input type="text" placeholder="Sortie" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
+            </div>
+            <div class="col-lg-4 row-centered">
+                <knob knob-data="main.knobTwo" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 knob-options=""></knob>
+            </div>
+        </div>
+        </p>
+
+        <div class="hr-line-dashed"></div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>Avez vous été satisafait de votre locataire ?</h3>
+            </div>
+            <div class="col-lg-4">
+                <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>Vous a t il saccagé votre bien ?</h3>
+            </div>
+            <div class="col-lg-4">
+                <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>A t il payé son loyer ?</h3>
+            </div>
+            <div class="col-lg-4">
+                <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row row-centered">
+        <div class="ibox-content">
+            <button type="button" class="btn btn-sm btn-danger">{{'save' | translate}}</button>
+        </div>
+    </div>
+</div>

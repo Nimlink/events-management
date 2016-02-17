@@ -71,6 +71,10 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
     var component_knob = ['utils/libraries/angular-knob/angular-knob.js',
         'utils/libraries/angular-knob/jquery.knob.js'];
 
+    var component_stars = ['utils/libraries/angular-input-stars/angular-input-stars.css',
+        'utils/libraries/angular-input-stars/angular-input-stars.js'];
+
+
     $stateProvider
 
         .state('index', {
@@ -85,6 +89,8 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([{files: ['login/loginController.js']},
+                        {files: component_knob},
+                        {files: component_stars},
                         {
                             files: [
                                 'utils/services/formatterService.js',
@@ -95,14 +101,15 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                 }
             }
         })
-        .state('index.users', {
-            url: "/admin/users",
-            templateUrl: "admin/user/users.html",
-            data: {pageTitle: 'Admin utilisateurs'},
+        .state('index.search', {
+            url: "/search",
+            templateUrl: "search/search.html",
+            data: {pageTitle: 'Rechercher'},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['admin/user/usersController.js']},
-                        {files: component_select},
+                    return $ocLazyLoad.load([{files: ['search/searchController.js']},
+                        {files: component_knob},
+                        {files: component_stars},
                         {
                             files: [
                                 'utils/services/formatterService.js',
@@ -113,70 +120,15 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                 }
             }
         })
-        .state('index.projects', {
-            url: "/admin/projects",
-            templateUrl: "admin/project/projects.html",
-            data: {pageTitle: 'Admin projet'},
+        .state('index.tenant', {
+            url: "/tenant/:id",
+            templateUrl: "tenant/tenant.html",
+            data: {pageTitle: 'Locataire'},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['admin/project/projectsController.js']},
-                        {files: component_select},
-                        {
-                            files: [
-                                'utils/services/formatterService.js',
-                                'utils/filters/formatFilter.js',
-                                'utils/services/dbQueriesService.js'
-                            ]
-                        }])
-                }
-            }
-        })
-        .state('index.accounts', {
-            url: "/admin/accounts",
-            templateUrl: "admin/account/accounts.html",
-            data: {pageTitle: 'Admin compte'},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['admin/account/accountsController.js']},
-                        {files: component_select},
-                        {files: component_colorpicker},
-                        {
-                            files: [
-                                'utils/services/formatterService.js',
-                                'utils/filters/formatFilter.js',
-                                'utils/services/dbQueriesService.js'
-                            ]
-                        }])
-                }
-            }
-        })
-        .state('index.contractors', {
-            url: "/admin/contractors",
-            templateUrl: "admin/contractor/contractors.html",
-            data: {pageTitle: 'Admin prestataire'},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['admin/contractor/contractorsController.js']},
-                        {files: component_dropzone},
-                        {
-                            files: [
-                                'utils/services/formatterService.js',
-                                'utils/filters/formatFilter.js',
-                                'utils/services/dbQueriesService.js'
-                            ]
-                        }])
-                }
-            }
-        })
-        .state('index.cig', {
-            url: "/project/cig",
-            templateUrl: "projects/cig/home.html",
-            data: {pageTitle: 'Projet CIG'},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['projects/cig/homeController.js']},
-                        {files: component_select},
-                        {files: component_dropzone},
+                    return $ocLazyLoad.load([{files: ['tenant/tenantController.js']},
+                        {files: component_knob},
+                        {files: component_stars},
                         {
                             files: [
                                 'utils/services/formatterService.js',
@@ -188,36 +140,16 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                 }
             }
         })
-        .state('index.cig_contract', {
-            url: "/project/cig/contracts/:id",
-            templateUrl: "projects/cig/contract.html",
-            data: {pageTitle: 'Prestation'},
+        .state('index.owner', {
+            url: "/owner",
+            templateUrl: "owner/owner.html",
+            data: {pageTitle: 'Propriétaire'},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['projects/cig/contractController.js']},
+                    return $ocLazyLoad.load([{files: ['owner/ownerController.js']},
                         {files: component_select},
                         {files: component_dropzone},
                         {files: component_knob},
-                        {
-                            files: [
-                                'utils/services/formatterService.js',
-                                'utils/filters/formatFilter.js',
-                                'utils/services/dbQueriesService.js',
-                                'projects/cig/controlsButtonController.js'
-                            ]
-                        }])
-                }
-            }
-        })
-            .state('index.cig_progress', {
-            url: "/project/cig/contracts",
-            templateUrl: "projects/cig/contractsProgress.html",
-            data: {pageTitle: 'Avancement'},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['projects/cig/contractsProgressController.js']},
-                        {files: component_select},
-                        {files: component_uigrid},
                         {
                             files: [
                                 'utils/services/formatterService.js',

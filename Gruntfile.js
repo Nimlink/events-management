@@ -97,7 +97,7 @@ module.exports = function (grunt) {
         },
         nodemon: {
             dev: {
-                script: 'be/server.js'
+                script: 'server.js'
             }
         },
         // If you want to turn on uglify you will need write your angular code with string-injection based syntax
@@ -187,7 +187,7 @@ module.exports = function (grunt) {
                         dot: true,
                         dest: '<%= fup.be %>',
                         src: [
-                            'be/server.js'
+                            'server.js'
                         ]
                     },
                     {

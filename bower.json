@@ -41,7 +41,8 @@
     "highstock-release": "~2.1.7",
     "highcharts-release": "~4.1.7",
     "sparkline": "~2.1.2",
-    "ion.rangeSlider": "~2.0.13"
+    "ion.rangeSlider": "~2.0.13",
+    "five-star-rating": "~1.0.0"
   },
   "devDependencies": {}
 }
