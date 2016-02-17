@@ -1,0 +1,20 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown" ng-controller="LoginCtrl as login">
+    <div>
+        <div class="row row-centered">
+            <div>
+                <h2 class="logo-name">{{'app_name' | translate}}</h2>
+            </div>
+        </div>
+        <form class="m-t" role="form" action="#">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="IGG" required="" ng-model="igg">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required="" ng-model="password">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+            <a ui-sref="forgot_password"><small>Forgot password?</small></a>
+        </form>
+    </div>
+</div>

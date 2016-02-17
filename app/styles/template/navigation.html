@@ -1,0 +1,52 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav" id="side-menu">
+            <li class="nav-header">
+
+                <div class="dropdown profile-element" dropdown>
+                    <a class="dropdown-toggle" dropdown-toggle href>
+                            <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">NUTS</strong>
+                             </span>
+                    </a>
+                </div>
+                <div class="logo-element">
+                    NUTS
+                </div>
+
+            </li>
+
+            <li ui-sref-active="active">
+                <a ui-sref="index.home"><i class="fa fa-dashboard"></i> <span class="nav-label">Home</span> </a>
+            </li>
+
+            <li ng-class="{active: $state.includes('app')}">
+                <a href=""><i class="fa fa-cubes"></i> <span class="nav-label">{{'projects' | translate}}</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('app')}">
+                    <li ui-sref-active="active"><a ui-sref="index.cig"><i class="fa fa-cube"></i>CIG</a></li>
+                    <li ui-sref-active="active"><a ui-sref="index.projects"><i class="fa fa-cube"></i>COP</a></li>
+                </ul>
+            </li>
+
+            <li ng-class="{active: $state.includes('app')}">
+                <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Reports</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('app')}">
+                    <li ui-sref-active="active"><a ui-sref="index.users"><i class="fa fa-cube"></i>Avancement</a></li>
+                    <li ui-sref-active="active"><a ui-sref="index.projects"><i class="fa fa-cube"></i>Statut</a></li>
+                </ul>
+            </li>
+
+            <li ng-class="{active: $state.includes('app')}">
+                <a href=""><i class="fa fa-cog"></i> <span class="nav-label">Admin</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('app')}">
+                    <li ui-sref-active="active"><a ui-sref="index.users"><i class="fa fa-users"></i>{{'users' | translate}}</a></li>
+                    <li ui-sref-active="active"><a ui-sref="index.projects"><i class="fa fa-cubes"></i>{{'projects' | translate}}</a></li>
+                    <li ui-sref-active="active"><a ui-sref="index.accounts"><i class="fa fa-money"></i>{{'accounts' | translate}}</a></li>
+                    <li ui-sref-active="active"><a ui-sref="index.contractors"><i class="fa fa-child"></i>{{'contractors' | translate}}</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</nav>

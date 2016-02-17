@@ -1,0 +1,99 @@
+<div class="modal-body">
+    <div class="row row-centered">
+        <h3 class="m-t-none m-b"><i class="fa fa-cube"></i> {{'manage_tags' | translate}}</h3>
+    </div>
+    <div class="row">
+        <div class="ibox-content">
+            <div class="row">
+                <h3>{{'create_tag' | translate}}</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-9">
+                    <input type="text" placeholder="{{'account_name' | translate}}" class="input-sm form-control">
+                </div>
+                <div class="col-lg-1">
+                    <button colorpicker style="height:30px;" class="btn btn-white btn-bitbucket" type="button"
+                            ng-model="newTag.text_color">
+                        <i class="fa fa-eyedropper"></i>
+                    </button>
+                </div>
+                <div class="col-lg-1">
+                    <button colorpicker style="height:30px;" class="btn btn-white btn-bitbucket" type="button"
+                            ng-model="newTag.text_color">
+                        <i class="fa fa-eyedropper"></i>
+                    </button>
+                </div>
+                <div class="col-lg-1">
+                    <button type="button" class="btn btn-sm btn-success" ng-click="createAccount()"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="row row-centered">
+                <h3>Rendu : <span class="badge badge-warning">35T</span></h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="ibox-content">
+                <h3>{{'tags' | translate}}</h3>
+
+                <div class="table-responsive" style="overflow-y:scroll;height:200px">
+                    <table class="table table-striped" >
+                        <tbody>
+                        <tr>
+                            <td><input type="text" placeholder="{{'tag_name' | translate}}" value="35T" class="input-sm form-control"></td>
+                            <td style="width:50px;">
+                                <button colorpicker style="height:30px;" class="btn btn-white btn-bitbucket" type="button"
+                                        ng-model="newTag.text_color">
+                                    <i class="fa fa-eyedropper"></i>
+                                </button></td>
+                            <td style="width:50px;">
+                                <button colorpicker style="height:30px;" class="btn btn-white btn-bitbucket" type="button"
+                                        ng-model="newTag.text_color">
+                                    <i class="fa fa-eyedropper"></i>
+                                </button></td>
+                            <td style="width:70px;"><p><span class="badge badge-warning">35T</span></p></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="{{'tag_name' | translate}}" value="35TSI" class="input-sm form-control"></td>
+                            <td style="width:50px;">
+                                <button colorpicker style="height:30px;" class="btn btn-white btn-bitbucket" type="button"
+                                        ng-model="newTag.text_color">
+                                    <i class="fa fa-eyedropper"></i>
+                                </button></td>
+                            <td style="width:50px;">
+                                <button colorpicker style="height:30px;" class="btn btn-white btn-bitbucket" type="button"
+                                        ng-model="newTag.text_color">
+                                    <i class="fa fa-eyedropper"></i>
+                                </button></td>
+                            <td style="width:70px;"><p><span class="badge badge-success">35TSI</span></p></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="{{'tag_name' | translate}}" value="Projet" class="input-sm form-control"></td>
+                            <td style="width:50px;">
+                                <button colorpicker style="height:30px;" class="btn btn-white btn-bitbucket" type="button"
+                                        ng-model="newTag.text_color">
+                                    <i class="fa fa-eyedropper"></i>
+                                </button></td>
+                            <td style="width:50px;">
+                                <button colorpicker style="height:30px;" class="btn btn-white btn-bitbucket" type="button"
+                                        ng-model="newTag.text_color">
+                                    <i class="fa fa-eyedropper"></i>
+                                </button></td>
+                            <td style="width:70px;"><p><span class="badge badge-danger">Projet</span></p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row row-centered">
+            <div class="ibox-content">
+                <button type="button" class="btn btn-sm btn-danger">{{'save' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

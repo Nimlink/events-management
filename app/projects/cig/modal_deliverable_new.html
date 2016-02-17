@@ -1,0 +1,68 @@
+<div class="modal-body">
+    <div class="row row-centered">
+        <h3 class="m-t-none m-b"><i class="fa fa-files-o"></i> {{'create_deliverable' | translate}}</h3>
+    </div>
+    <div class="row">
+        <div class="ibox-content">
+            <p>
+                <ui-select id="groupSelected"
+                           ng-model=""
+                           theme="select2"
+                           reset-search-input="'false'"
+                           ng-disabled="disabled"
+                           style="width: 100%;">
+                    <ui-select-match placeholder="{{'volet' | translate}}">
+                        {{$select.selected.name}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="list in factorListService.getLists() | propsFilter: {name: $select.search}">
+                        <div ng-bind-html="list.name | highlight: $select.search | unsafe"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </p>
+            <p>
+                <ui-select id="groupSelected"
+                           ng-model=""
+                           theme="select2"
+                           reset-search-input="'false'"
+                           ng-disabled="disabled"
+                           style="width: 100%;">
+                    <ui-select-match placeholder="{{'action' | translate}}">
+                        {{$select.selected.name}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="list in factorListService.getLists() | propsFilter: {name: $select.search}">
+                        <div ng-bind-html="list.name | highlight: $select.search | unsafe"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </p>
+            <input type="text" placeholder="{{'deliverable_name' | translate}}" class="input-sm form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="ibox-content">
+            <h3>{{'existing_deliverables' | translate}}</h3>
+
+            <div class="table-responsive" style="overflow-y:scroll;height:200px">
+                <table class="table table-striped" >
+                    <tbody>
+                    <tr>
+                        <td>Livrable 1</td>
+                    </tr>
+                    <tr>
+                        <td>Livrable 2</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row row-centered">
+        <div class="ibox-content">
+            <button type="button" class="btn btn-sm btn-danger">{{'save' | translate}}</button>
+        </div>
+    </div>
+</div>

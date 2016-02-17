@@ -1,0 +1,41 @@
+<div>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-6">
+            <h2><i class="fa fa-tasks"></i> {{'progress' | translate}}</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="../../index.html">{{'home' | translate}}</a>
+                </li>
+                <li>
+                    {{'projects' | translate}}
+                </li>
+                <li >
+                    CIG
+                </li>
+                <li class="active">
+                    {{'progress' | translate}}
+                </li>
+            </ol>
+        </div>
+        <div ng-include="'projects/cig/controlsButton.html'"></div>
+    </div>
+    <div ng-controller="ContractsProgressAdminCtrl as progress" >
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <h2>Filters</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="animated fadeInUp grid" ui-grid="gridOption" ui-grid-exporter
+                             ui-grid-auto-resize ui-grid-pinning ui-grid-move-columns/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

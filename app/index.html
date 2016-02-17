@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="fup">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title page-title></title>
+
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.1.0/metisMenu.min.css" rel="stylesheet" >
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="styles/bootstrap.css" rel="stylesheet">
+		<link href="styles/style.css" rel="stylesheet">
+		<link href="styles/animate.css" rel="stylesheet">
+		<link href="styles/myStyle.css" rel="stylesheet">
+	</head>
+	
+	<body ng-controller="MainCtrl as main">
+		<!-- Main view  -->
+		<div ui-view></div>
+		
+		<!-- jQuery and Bootstrap -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<!-- Angular scripts-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.7/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.7.2/angular-translate.min.js"></script>
+  		<script src="utils/libraries/ocLazyLoad/dist/ocLazyLoad.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.1.0/metisMenu.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.6/jquery.slimscroll.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/async/1.4.2/async.min.js"></script>
+
+		<!-- Angular App Script -->
+		<script src="fup.js"></script>
+		<script src="app.js"></script>
+		<script src="config.js"></script>
+		<script src="translations.js"></script>
+		<script src="directives.js"></script>
+		<script src="filters.js"></script>
+		<script src="main.js"></script>
+		<script src="utils/services/dbQueriesService.js"></script>
+		<script src="utils/services/model/userService.js"></script>
+		<script src="utils/services/model/stockService.js"></script>
+	</body>
+</html>
