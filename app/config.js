@@ -74,6 +74,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
     var component_stars = ['utils/libraries/angular-input-stars/angular-input-stars.css',
         'utils/libraries/angular-input-stars/angular-input-stars.js'];
 
+    var component_peity = ['https://cdnjs.cloudflare.com/ajax/libs/peity/3.2.0/jquery.peity.min.js']
 
     $stateProvider
 
@@ -82,7 +83,12 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
             url: "",
             templateUrl: "styles/template/content.html"
         })
-        .state('index.login', {
+        .state('index_nobar', {
+            abstract: true,
+            url: "",
+            templateUrl: "styles/template/content_nobar.html"
+        })
+        .state('index_nobar.login', {
             url: "/login",
             templateUrl: "login/login.html",
             data: {pageTitle: 'Login'},
@@ -150,6 +156,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                         {files: component_select},
                         {files: component_dropzone},
                         {files: component_knob},
+                        {files: component_peity},
                         {
                             files: [
                                 'utils/services/formatterService.js',

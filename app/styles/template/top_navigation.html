@@ -1,23 +1,37 @@
 <div ng-controller="ControlsButtonCtrl as controller" class="row border-bottom white-bg">
     <nav class="navbar navbar-static-top" role="navigation" >
 
-            <a href="#" class="navbar-brand">fyl.oc</a>
+        <a href="#" class="navbar-brand">fyl.oc</a>
 
-            <ul class="nav navbar-top-links navbar-right">
-                <li>
-                    <button style="margin-left: 20px" ng-click="createNote()" class="btn btn-warning btn-circle btn-lg" type="button"><i class="fa fa-pencil"></i>
-                    </button>
-                </li>
-                <li>
-                    <button style="margin-left: 20px" class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-list-ul"></i>
-                    </button>
-                </li>
-                <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
-                    </a>
-                </li>
-            </ul>
+        <ul class="nav navbar-top-links navbar-right">
+
+            <li>
+                <input type="text" placeholder="Prénom" class="input-sm form-control">
+            </li>
+
+            <li>
+                <input type="text" placeholder="Nom" class="input-sm form-control">
+            </li>
+
+            <li>
+                <button style="margin-left: 20px" class="btn btn-danger btn-circle btn-lg" type="button"><i class="fa fa-search"></i>
+                </button>
+            </li>
+
+            <li>
+                <button style="margin-left: 20px" ng-click="createNote()" class="btn btn-warning btn-circle btn-lg" type="button"><i class="fa fa-pencil"></i>
+                </button>
+            </li>
+            <li>
+                <button style="margin-left: 20px" class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-home"></i>
+                </button>
+            </li>
+            <li>
+                <a href="login.html">
+                    <i class="fa fa-sign-out"></i> Log out
+                </a>
+            </li>
+        </ul>
 
     </nav>
 </div>
