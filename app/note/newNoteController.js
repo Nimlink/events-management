@@ -3,6 +3,11 @@
  */
 function newNoteCtrl($rootScope, $scope, $modal, $location, townService, $translate, $log, $mdMedia, $mdDialog) {
 
+    $scope.data = {
+        selectedShape: 'Circle'
+    };
+    $scope.shapes = ['Square', 'Circle', 'Triangle', 'Pentagon', 'Hexagon'];
+
     $scope.towns = townService.getTowns();;
     $scope.town = {};
     $scope.town.selected = undefined;

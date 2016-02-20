@@ -13,26 +13,21 @@ function MainCtrl($rootScope, $scope, $modal, $location, townService, $translate
         $scope.towns = townService.getTowns();
     });
 
-    $scope.createNote = function (ev) {
-        $mdDialog.show({
-            controller: newNoteCtrl,
-            templateUrl: 'note/modal_note_new.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true
-        })
-            .then(function(answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
-            }, function() {
-                $scope.status = 'You cancelled the dialog.';
-            });
+    $scope.createNote = function () {
+
+        $modal.open({
+            templateUrl: "note/modal_note_new.html",
+            windowClass: "animated flipInY",
+            scope: $scope,
+            controller: newNoteCtrl
+        });
     };
 
-    $scope.findTenant = function (ev) {
-
-        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-
-        $mdDialog.show({
+    $scope.findTenant = function () {
+        $modal.open({
+            templateUrl: "search/modal_search.html",
+            windowClass: "animated flipInY",
+            scope: $scope,
             controller: function ($scope, $modalInstance) {
                 $scope.ok = function () {
                     $modalInstance.close();
@@ -41,19 +36,8 @@ function MainCtrl($rootScope, $scope, $modal, $location, townService, $translate
                 $scope.cancel = function () {
                     $modalInstance.dismiss('cancel');
                 };
-            },
-            templateUrl: 'search/modal_search.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            fullscreen: useFullScreen
-        })
-            .then(function(answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
-            }, function() {
-                $scope.status = 'You cancelled the dialog.';
-            });
-
+            }
+        });
     };
 
     $scope.go = function ( path ) {

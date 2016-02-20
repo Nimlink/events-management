@@ -4,8 +4,7 @@
         'ui.bootstrap',
         'pascalprecht.translate',
         'oc.lazyLoad',
-        //'ngAria',
-        //'ngMessages',
+        'acute.select',
         'ngMessages',
         'ngMaterial'
     ])
