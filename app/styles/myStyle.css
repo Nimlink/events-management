@@ -3,12 +3,8 @@
     text-align:center;
 }
 .col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
+    float: none;
+    margin: 0 auto;
 }
 
 .table {
@@ -19,5 +15,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }

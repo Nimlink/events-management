@@ -1,11 +1,13 @@
+<div class="row wrapper border-bottom blue-bg page-heading">
+    <div class="col-lg-10">
+        <h1><i class="fa fa-home"/> {{'dashboard' | translate}} <strong>Julien CAPGRAS</strong></h1>
+    </div>
+</div>
 <div class="container">
     <div>
         <div class="row">
             <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <h1><i class="fa fa-home"/> {{'dashboard' | translate}} <strong>Julien CAPGRAS</strong></h1>
-                    </div>
+                <div class="panel">
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-8">
@@ -22,49 +24,41 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-3 row-centered">
+                            <div class="col-lg-4 text-center">
                                 <knob knob-data="main.knobTwo" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 knob-options=""></knob>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row-centered animated fadeInRight">
-            <p>
-                <button class="btn btn-warning btn-lg" ng-click="createNote()" type="button"><i class="fa fa-pencil"></i> Ajouter un avis</button>
-            </p>
-        </div>
-
-        <div class="row">
-            <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h2><i class="fa fa-pencil"></i> {{'mes_avis' | translate}}</h2>
-                    </div>
-                    <div class="panel-body">
-
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th >Prénom - Nom</th>
-                                <th style="text-align: center" >{{'capacite_tiny' | translate}}</th>
-                                <th style="text-align: center" >{{'attitude_tiny' | translate}}</th>
-                                <th style="text-align: center" >{{'degradation_tiny' | translate}}</th>
-                                <th style="text-align: center" >{{'moyenne' | translate}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr style="font-size: large">
-                                <td style="vertical-align:middle"><a href="/#/tenant/1234.html">Sébastien THOMAS</a></td>
-                                <td align="center"  style="vertical-align:middle"><button class="btn btn-primary btn-circle" type="button">5</i></button></td>
-                                <td align="center"  style="vertical-align:middle"><button class="btn btn-danger btn-circle " type="button">1</i></td>
-                                <td align="center"  style="vertical-align:middle"><button class="btn btn-warning btn-circle " type="button">3</i></td>
-                                <td align="center"  style="vertical-align:middle"><button class="btn btn-warning btn-circle btn-lg" type="button">3</i></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="hr-line-dashed"></div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h2><strong>{{'mes_avis' | translate}}</strong></h2>
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <button class="btn btn-warning btn-lg" ng-click="createNote()" type="button"><i class="fa fa-pencil"></i> Ajouter un avis</button>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 10px">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th >Prénom - Nom</th>
+                                    <th style="text-align: center" >{{'capacite_tiny' | translate}}</th>
+                                    <th style="text-align: center" >{{'attitude_tiny' | translate}}</th>
+                                    <th style="text-align: center" >{{'degradation_tiny' | translate}}</th>
+                                    <th style="text-align: center" >{{'moyenne' | translate}}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr style="font-size: large">
+                                    <td style="vertical-align:middle"><a href="/#/tenant/1234.html">Sébastien THOMAS</a></td>
+                                    <td align="center"  style="vertical-align:middle"><button class="btn btn-primary btn-circle" type="button">5</i></button></td>
+                                    <td align="center"  style="vertical-align:middle"><button class="btn btn-danger btn-circle " type="button">1</i></td>
+                                    <td align="center"  style="vertical-align:middle"><button class="btn btn-warning btn-circle " type="button">3</i></td>
+                                    <td align="center"  style="vertical-align:middle"><button class="btn btn-warning btn-circle btn-lg" type="button">3</i></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

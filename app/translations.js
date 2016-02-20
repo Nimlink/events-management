@@ -8,7 +8,8 @@ function config($translateProvider) {
 
 
 			app_name : 'immotrankil',
-			appreciation : 'Appréciation générale du locataire',
+            fiche : 'Fiche du locataire',
+			appreciation : 'Appréciation générale',
 
             capacite_tiny: 'Capacité',
             capacite_short: 'Capacité du locataire à payer les loyers en temps et en heure',
@@ -39,8 +40,9 @@ function config($translateProvider) {
 
             code_postal: 'Code postal',
             entree: 'Entrée',
-            sortir: 'Sortir',
+            sortie: 'Sortie',
             sauver: 'Sauvegarder',
+            cancel: 'Annuler',
             sortir: 'Sortir',
 
             dashboard: 'Tableau de bord du propriétaire',

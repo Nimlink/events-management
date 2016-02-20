@@ -117,6 +117,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                         {files: component_stars},
                         {
                             files: [
+                                'note/newNoteController.js',
                                 'utils/services/dbQueriesService.js',
                                 'main.js'
                             ]
@@ -137,6 +138,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                         {files: component_stars},
                         {
                             files: [
+                                'note/newNoteController.js',
                                 'utils/services/dbQueriesService.js',
                                 'main.js'
                             ]

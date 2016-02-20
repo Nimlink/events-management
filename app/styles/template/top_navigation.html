@@ -1,24 +1,36 @@
-<div ng-controller="MainCtrl as controller" class="row border-bottom white-bg">
-    <nav class="navbar navbar-static-top" role="navigation" >
+<div ng-controller="MainCtrl as controller" >
 
-        <a href="#" class="navbar-brand">{{'app_name' | translate}}</a>
-
+    <nav class="navbar navbar-static-top" role="navigation" style="padding-bottom: 5px;padding-top: 5px">
+        <div class="navbar-header">
+            <h2>{{'app_name' | translate}}</h2>
+        </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <button style="margin-left: 20px" ng-click="findTenant()"  class="btn btn-white btn-circle btn-lg" type="button"><i class="fa fa-search"></i>
+                <span class="m-r-sm text-muted welcome-message">L'immo tranquille ...</span>
+            </li>
+            <li class="dropdown">
+                <button ng-click="findTenant()"  class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-search"></i>
                 </button>
             </li>
-            <li>
-                <button style="margin-left: 20px" ng-click="createNote($event)" class="btn btn-warning btn-circle btn-lg" type="button"><i class="fa fa-pencil"></i>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="dropdown">
+                <button ng-click="createNote($event)" class="btn btn-warning btn-circle btn-lg" type="button"><i class="fa fa-pencil"></i>
                 </button>
             </li>
-            <li>
-                <button style="margin-left: 20px" ng-click="go('/owner')" class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-home"></i>
-                </button>
-            </li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
             <li>
                 <a href="login.html">
-                    <i class="fa fa-sign-out"></i> {{'sortir' | translate}}
+                    <i class="fa fa-sign-out"></i> Log out
                 </a>
             </li>
         </ul>

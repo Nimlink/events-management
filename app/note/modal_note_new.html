@@ -1,4 +1,4 @@
-<div class="modal-body modal-md" ng-cloak="" >
+<div class="modal-body modal-md" ng-controller="newNoteCtrl as ctrl">
     <div class="row row-centered">
         <h2 class="m-t-none m-b"><i class="fa fa-user"></i> {{'rediger_avis' | translate}}</h2>
     </div>
@@ -9,11 +9,17 @@
             <div class="col-lg-8">
 
                 <p>
-                    <input type="text" placeholder="{{'prenom' | translate}}" class="input-sm form-control">
+                    <md-input-container class="md-block" flex-gt-sm="">
+                        <label>{{'prenom' | translate}}</label>
+                        <input ng-model="note.prenom">
+                    </md-input-container>
                 </p>
 
                 <p>
-                    <input type="text" placeholder="{{'nom' | translate}}" class="input-sm form-control">
+                    <md-input-container class="md-block" flex-gt-sm="">
+                        <label>{{'nom' | translate}}</label>
+                        <input ng-model="note.nom">
+                    </md-input-container>
                 </p>
 
                 <p>
@@ -23,7 +29,7 @@
                                      md-search-text-change="searchTextChange(searchText)"
                                      md-selected-item-change="selectedItemChange(item)"
                                      md-items="item in querySearch(searchText)"
-                                     md-item-text="item.postal_code"
+                                     md-item-text="item.town"
                                      md-min-length="0"
                                      placeholder="{{'code_postal' | translate}}">
                         <md-item-template>
@@ -35,20 +41,19 @@
                     </md-autocomplete>
                 </p>
 
-                <p class="input-group">
-                    <input type="text" placeholder="{{'entree' | translate}}" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                  </span>
-                </p>
+                <div class="row row-centered">
+                    <div class="col-sm-6">
+                        <md-datepicker ng-model="note.entree" md-placeholder="{{'entree' | translate}}">
+                        </md-datepicker>
+                    </div>
 
-                <p class="input-group">
-                    <input type="text" placeholder="{{'sortie' | translate}}" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                  </span>
-                </p>
+                    <div class="col-sm-6">
+                        <md-datepicker ng-model="note.sortie" md-placeholder="{{'sortie' | translate}}">
+                        </md-datepicker>
+                    </div>
+                </div>
             </div>
+
             <div class="col-lg-4 row-centered">
                 <knob knob-data="main.knobTwo" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 knob-options=""></knob>
             </div>
@@ -62,7 +67,7 @@
                 <h4>{{'capacite_short' | translate}}</h4>
             </div>
             <div class="col-lg-4">
-                <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
+                <input-stars max="5" ng-model="note.capacite"></input-stars>
             </div>
         </div>
 
@@ -71,7 +76,7 @@
                 <h4>{{'attitude_long' | translate}}</h4>
             </div>
             <div class="col-lg-4">
-                <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
+                <input-stars max="5" ng-model="note.attitude"></input-stars>
             </div>
         </div>
 
@@ -80,7 +85,7 @@
                 <h4>{{'degradation_long' | translate}}</h4>
             </div>
             <div class="col-lg-4">
-                <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
+                <input-stars max="5" ng-model="note.degradation"></input-stars>
             </div>
         </div>
 
@@ -89,6 +94,7 @@
     <div class="row row-centered">
         <div class="ibox-content">
             <button type="button" ng-click="ok()"  class="btn btn-sm btn-danger">{{'sauver' | translate}}</button>
+            <button type="button" ng-click="cancel()"  class="btn btn-sm btn-default">{{'cancel' | translate}}</button>
         </div>
     </div>
 </div>
