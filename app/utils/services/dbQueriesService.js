@@ -5,9 +5,12 @@ var app = angular.module('fup');
  */
 app.service('dbQueriesService', function ($http) {
 
-    // stocks
     this.getTowns = function () {
         return $http.get('/api/towns');
+    };
+
+    this.postSearchTenant = function (data) {
+        return $http.post('/api/tenants', data);
     };
 
 });

@@ -1,25 +1,26 @@
 <div class="modal-body modal-md">
     <div class="row row-centered">
-        <h2 class="m-t-none m-b"><i class="fa fa-search"></i> {{'chercher_locataire' | translate}}</h2>
+        <h2 class="m-t-none m-b"><i class="fa fa-search"></i> {{'plusieurs_personnes_trouvees' | translate}}</h2>
     </div>
     <div class="row">
         <p class="ibox-content">
 
         <div class="row">
-            <div class="col-lg-6">
-                <md-input-container class="md-block" flex-gt-sm="">
-                    <label>{{'prenom' | translate}}</label>
-                    <input ng-model="note.prenom">
-                </md-input-container>
-                <p>
-                    <input type="text" placeholder="{{'prenom' | translate}}" class="input-sm form-control">
-                </p>
-            </div>
-            <div class="col-lg-6">
-                <p>
-                    <input type="text" placeholder="{{'nom' | translate}}" class="input-sm form-control">
-                </p>
-            </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th >{{'prenom_nom' | translate}}</th>
+                <th style="text-align: center" >{{'link' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="person in people" style="font-size: large">
+                <td style="vertical-align:middle">{{person.firstname}} - {{person.lastname}}</td>
+                <td align="center"  style="vertical-align:middle"><button ng-click="goTo(person.id)" class="btn btn-success btn-circle" type="button"><i class="fa fa-user"></i></button></td>
+            </tr>
+            </tbody>
+        </table>
         </div>
         </p>
 
@@ -27,7 +28,7 @@
 
     <div class="row row-centered">
         <div class="ibox-content">
-            <button type="button" ng-click="ok()" class="btn btn-sm btn-danger">{{'rechercher' | translate}}</button>
+            <button type="button" ng-click="cancel()" class="btn btn-sm btn-danger">{{'cancel' | translate}}</button>
         </div>
     </div>
 </div>

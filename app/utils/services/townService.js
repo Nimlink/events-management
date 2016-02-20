@@ -1,8 +1,5 @@
 var app = angular.module('fup');
 
-/*
- * Service for the factor
- */
 app.service('townService', function (dbQueriesService, $q) {
 
     var towns = [];

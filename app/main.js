@@ -1,11 +1,10 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl($rootScope, $scope, $modal, $location, townService, $translate, $log, $mdMedia, $mdDialog) {
+function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, townService, $translate, $log, $mdMedia, $mdDialog) {
 
+    $scope.search = {};
     $scope.towns = [];
-    $scope.town = {};
-    $scope.town.selected = undefined;
 
     async.parallel([
         townService.init,
@@ -14,7 +13,6 @@ function MainCtrl($rootScope, $scope, $modal, $location, townService, $translate
     });
 
     $scope.createNote = function () {
-
         $modal.open({
             templateUrl: "note/modal_note_new.html",
             windowClass: "animated flipInY",
@@ -23,21 +21,63 @@ function MainCtrl($rootScope, $scope, $modal, $location, townService, $translate
         });
     };
 
-    $scope.findTenant = function () {
-        $modal.open({
-            templateUrl: "search/modal_search.html",
-            windowClass: "animated flipInY",
-            scope: $scope,
-            controller: function ($scope, $modalInstance) {
-                $scope.ok = function () {
-                    $modalInstance.close();
-                    $scope.go('/tenant/1234');
-                };
-                $scope.cancel = function () {
-                    $modalInstance.dismiss('cancel');
-                };
+    $scope.searchTenant = function () {
+
+        tenantService.searchTenant(
+            {
+                firstname: $scope.search.firstname,
+                lastname: $scope.search.lastname
             }
-        });
+        ).then(
+            function(greeting) {
+                // TODO: if multiple people
+                if (greeting.data.length > 0) {
+                    if (greeting.data.length > 1) {
+                        $scope.people = greeting.data;
+                        $modal.open({
+                            templateUrl: "search/modal_search.html",
+                            windowClass: "animated flipInY",
+                            scope: $scope,
+                            controller: function ($scope, $modalInstance) {
+                                $scope.cancel = function () {
+                                    $modalInstance.dismiss();
+                                };
+                                $scope.goTo = function (id) {
+                                    $state.go('index.tenant', {id : id});
+                                    $modalInstance.close();
+                                };
+                            }
+                        });
+                    } else {
+                        $state.go('index.tenant', {id : greeting.data[0].id});
+                    }
+                }
+            }, function(reason) {
+                if (reason == 'Too many people found') {
+                    $modal.open({
+                        templateUrl: "search/modal_search_toomany.html",
+                        windowClass: "animated flipInY",
+                        scope: $scope,
+                        controller: function ($scope, $modalInstance) {
+                            $scope.ok = function () {
+                                $modalInstance.close();
+                            };
+                        }
+                    });
+                } else {
+                    $modal.open({
+                        templateUrl: "search/modal_search_nobody.html",
+                        windowClass: "animated flipInY",
+                        scope: $scope,
+                        controller: function ($scope, $modalInstance) {
+                            $scope.ok = function () {
+                                $modalInstance.close();
+                            };
+                        }
+                    });
+                }
+            }
+        );
     };
 
     $scope.go = function ( path ) {

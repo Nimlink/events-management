@@ -51,6 +51,12 @@ function config($translateProvider) {
 
             prenom: 'Prénom',
             nom: 'Nom',
+
+            nobody: 'Aucune personne trouvée',
+            ok: 'Ok',
+            plusieurs_personnes_trouvees: 'Plusieurs personnes ont été trouvées',
+            link : 'Lien',
+            toomany: 'Trop de personnes ont été trouvées, Veuillez affiner votre recherche'
 		});
 
 	$translateProvider.preferredLanguage('fr');

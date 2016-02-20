@@ -1,11 +1,3 @@
-insert into t_towns (postal_code,town) values ('01190','Ozan');
-insert into t_towns (postal_code,town) values ('01290','Cormoranche-sur-Saône');
-insert into t_towns (postal_code,town) values ('01130','Plagne');
-insert into t_towns (postal_code,town) values ('01250','Tossiat');
-insert into t_towns (postal_code,town) values ('01250','Pouillat');
-insert into t_towns (postal_code,town) values ('01230','Torcieu');
-insert into t_towns (postal_code,town) values ('01620','Replonges');
-insert into t_towns (postal_code,town) values ('01110','Corcelles');
 insert into t_towns (postal_code,town) values ('01630','Péron');
 insert into t_towns (postal_code,town) values ('01990','Relevant');
 insert into t_towns (postal_code,town) values ('01660','Chaveyriat');
