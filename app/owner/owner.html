@@ -4,26 +4,20 @@
             <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="panel panel-success">
                     <div class="panel-heading">
-                        <h1>Tableau de bord du propriétaire Julien CAPGRAS</h1>
+                        <h1><i class="fa fa-home"/> {{'dashboard' | translate}} <strong>Julien CAPGRAS</strong></h1>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-9">
+                            <div class="col-lg-8">
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <h2><strong>14</strong> avis rédigés</h2>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
+                                        <h2><strong>14</strong> {{'avis_rediges' | translate}}</h2>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <h2><strong>28</strong> locataires cherchés</h2>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
+                                        <h2><strong>28</strong> {{'locataires' | translate}}</h2>
                                     </div>
                                 </div>
 
@@ -37,38 +31,37 @@
             </div>
         </div>
 
-        <div class="row-centered">
+        <div class="row-centered animated fadeInRight">
             <p>
-                <button class="btn btn-warning btn-lg" type="button"><i class="fa fa-pencil"></i> Ajouter un avis</button>
+                <button class="btn btn-warning btn-lg" ng-click="createNote()" type="button"><i class="fa fa-pencil"></i> Ajouter un avis</button>
             </p>
         </div>
-        <div class="row-centered">
-            <h1><strong>Mes avis</strong></h1>
-        </div>
+
         <div class="row">
             <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="ibox">
-                    <div class="ibox-content">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h2><i class="fa fa-pencil"></i> {{'mes_avis' | translate}}</h2>
+                    </div>
+                    <div class="panel-body">
 
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th >Prénom</th>
-                                <th >Nom</th>
-                                <th style="text-align: center" >Capacité</th>
-                                <th style="text-align: center" >Attitude</th>
-                                <th style="text-align: center" >Dégradation</th>
-                                <th style="text-align: center" >Moyenne</th>
+                                <th >Prénom - Nom</th>
+                                <th style="text-align: center" >{{'capacite_tiny' | translate}}</th>
+                                <th style="text-align: center" >{{'attitude_tiny' | translate}}</th>
+                                <th style="text-align: center" >{{'degradation_tiny' | translate}}</th>
+                                <th style="text-align: center" >{{'moyenne' | translate}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Sébastien</td>
-                                <td>THOMAS</td>
-                                <td align="center" style="-ms-text-size-adjust: ">5</td>
-                                <td align="center" style="-ms-text-size-adjust: ">5</td>
-                                <td align="center" style="-ms-text-size-adjust: ">5</td>
-                                <td align="center"><span class="pie">226/360</span></td>
+                            <tr style="font-size: large">
+                                <td style="vertical-align:middle"><a href="/#/tenant/1234.html">Sébastien THOMAS</a></td>
+                                <td align="center"  style="vertical-align:middle"><button class="btn btn-primary btn-circle" type="button">5</i></button></td>
+                                <td align="center"  style="vertical-align:middle"><button class="btn btn-danger btn-circle " type="button">1</i></td>
+                                <td align="center"  style="vertical-align:middle"><button class="btn btn-warning btn-circle " type="button">3</i></td>
+                                <td align="center"  style="vertical-align:middle"><button class="btn btn-warning btn-circle btn-lg" type="button">3</i></td>
                             </tr>
                             </tbody>
                         </table>

@@ -81,7 +81,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
         .state('index', {
             abstract: true,
             url: "",
-            templateUrl: "styles/template/content.html"
+            templateUrl: "styles/template/content.html",
         })
         .state('index_nobar', {
             abstract: true,
@@ -99,28 +99,8 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                         {files: component_stars},
                         {
                             files: [
-                                'utils/services/formatterService.js',
-                                'utils/filters/formatFilter.js',
-                                'utils/services/dbQueriesService.js'
-                            ]
-                        }])
-                }
-            }
-        })
-        .state('index.search', {
-            url: "/search",
-            templateUrl: "search/search.html",
-            data: {pageTitle: 'Rechercher'},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['search/searchController.js']},
-                        {files: component_knob},
-                        {files: component_stars},
-                        {
-                            files: [
-                                'utils/services/formatterService.js',
-                                'utils/filters/formatFilter.js',
-                                'utils/services/dbQueriesService.js'
+                                'utils/services/dbQueriesService.js',
+                                'main.js'
                             ]
                         }])
                 }
@@ -137,10 +117,8 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                         {files: component_stars},
                         {
                             files: [
-                                'utils/services/formatterService.js',
-                                'utils/filters/formatFilter.js',
                                 'utils/services/dbQueriesService.js',
-                                'projects/cig/controlsButtonController.js'
+                                'main.js'
                             ]
                         }])
                 }
@@ -156,13 +134,11 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                         {files: component_select},
                         {files: component_dropzone},
                         {files: component_knob},
-                        {files: component_peity},
+                        {files: component_stars},
                         {
                             files: [
-                                'utils/services/formatterService.js',
-                                'utils/filters/formatFilter.js',
                                 'utils/services/dbQueriesService.js',
-                                'projects/cig/controlsButtonController.js'
+                                'main.js'
                             ]
                         }])
                 }

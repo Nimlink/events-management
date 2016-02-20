@@ -565,8 +565,8 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 }
 
 .top-navigation .navbar-brand {
-    background: #1ab394;
-    color: #fff;
+    /*background: #1ab394;*/
+    color: #0000;
     padding: 15px 25px
 }
 
@@ -3107,7 +3107,7 @@ body {
     background-color: #2f4050;
     font-size: 13px;
     color: #676a6c;
-    overflow-x: hidden
+    overflow-x: hidden;
 }
 
 html, body {

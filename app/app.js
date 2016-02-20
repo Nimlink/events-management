@@ -3,6 +3,10 @@
         'ui.router',
         'ui.bootstrap',
         'pascalprecht.translate',
-        'oc.lazyLoad'
+        'oc.lazyLoad',
+        //'ngAria',
+        //'ngMessages',
+        'ngMessages',
+        'ngMaterial'
     ])
 })();

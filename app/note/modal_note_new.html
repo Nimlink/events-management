@@ -1,34 +1,49 @@
-<div class="modal-body modal-md">
+<div class="modal-body modal-md" ng-cloak="" >
     <div class="row row-centered">
-        <h2 class="m-t-none m-b"><i class="fa fa-user"></i> Rédiger un avis</h2>
+        <h2 class="m-t-none m-b"><i class="fa fa-user"></i> {{'rediger_avis' | translate}}</h2>
     </div>
     <div class="row">
         <p class="ibox-content">
 
-        <div class="row">
+        <div class="row" >
             <div class="col-lg-8">
 
                 <p>
-                    <input type="text" placeholder="Prénom" class="input-sm form-control">
+                    <input type="text" placeholder="{{'prenom' | translate}}" class="input-sm form-control">
                 </p>
 
                 <p>
-                    <input type="text" placeholder="Nom" class="input-sm form-control">
+                    <input type="text" placeholder="{{'nom' | translate}}" class="input-sm form-control">
                 </p>
 
                 <p>
-                    <input type="text" placeholder="Code postal" class="input-sm form-control">
+                    <md-autocomplete ng-disabled="false"
+                                     md-selected-item="town.selected"
+                                     md-search-text="searchText"
+                                     md-search-text-change="searchTextChange(searchText)"
+                                     md-selected-item-change="selectedItemChange(item)"
+                                     md-items="item in querySearch(searchText)"
+                                     md-item-text="item.postal_code"
+                                     md-min-length="0"
+                                     placeholder="{{'code_postal' | translate}}">
+                        <md-item-template>
+                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.postal_code}} - {{item.town}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No states matching were found.
+                        </md-not-found>
+                    </md-autocomplete>
                 </p>
 
                 <p class="input-group">
-                    <input type="text" placeholder="Entrée" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <input type="text" placeholder="{{'entree' | translate}}" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
                 </p>
 
                 <p class="input-group">
-                    <input type="text" placeholder="Sortie" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <input type="text" placeholder="{{'sortie' | translate}}" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
@@ -44,7 +59,7 @@
 
         <div class="row">
             <div class="col-lg-8">
-                <h4>Capacité du locataire à payer les loyers en temps et en heure</h4>
+                <h4>{{'capacite_short' | translate}}</h4>
             </div>
             <div class="col-lg-4">
                 <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -53,7 +68,7 @@
 
         <div class="row">
             <div class="col-lg-8">
-                <h4>Attitude du locataire durant la location : sollicitations intempestives, etc.</h4>
+                <h4>{{'attitude_long' | translate}}</h4>
             </div>
             <div class="col-lg-4">
                 <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -62,7 +77,7 @@
 
         <div class="row">
             <div class="col-lg-8">
-                <h4>Etat des lieux de sortie du bien loué : dégradations, propreté, etc.</h4>
+                <h4>{{'degradation_long' | translate}}</h4>
             </div>
             <div class="col-lg-4">
                 <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -73,7 +88,7 @@
 
     <div class="row row-centered">
         <div class="ibox-content">
-            <button type="button" class="btn btn-sm btn-danger">{{'save' | translate}}</button>
+            <button type="button" ng-click="ok()"  class="btn btn-sm btn-danger">{{'sauver' | translate}}</button>
         </div>
     </div>
 </div>

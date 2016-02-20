@@ -2,16 +2,16 @@
     <div>
         <div class="row">
             <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="panel panel-warning">
+                <div class="panel panel-danger">
                     <div class="panel-heading">
-                        <h1>Appréciation générale du locataire Sébastien THOMAS</h1>
+                        <h1><i class="fa fa-user"></i> {{'appreciation' | translate}} <strong>Sébastien THOMAS</strong></h1>
                     </div>
                     <div class="panel-body">
                         <div class="row ">
                             <div class="col-lg-9">
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <h3>Capacité du locataire à payer les loyers en temps et en heure</h3>
+                                        <h3>{{'capacite_short' | translate}}</h3>
                                     </div>
                                     <div class="col-lg-4">
                                         <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -20,7 +20,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <h3>Attitude du locataire durant la location</h3>
+                                        <h3>{{'attitude_short' | translate}}</h3>
                                     </div>
                                     <div class="col-lg-4">
                                         <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -29,7 +29,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <h3>Etat des lieux de sortie du bien loué</h3>
+                                        <h3>{{'degradation_short' | translate}}</h3>
                                     </div>
                                     <div class="col-lg-4">
                                         <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -45,19 +45,22 @@
             </div>
         </div>
         <div class="row-centered">
-            <h1><strong>Liste des avis</strong></h1>
+
         </div>
         <div class="row">
             <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="ibox">
-                    <div class="ibox-content">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h2><i class="fa fa-pencil"></i> {{'list_avis' | translate}}</h2>
+                    </div>
+                    <div class="panel-body">
                         <div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <h2><small>Un propriétaire à <strong>Toulouse</strong> (64121) indique avoir eu Sébastien THOMAS comme locataire du <strong>01/01/2015</strong> au <strong>01/03/2015</strong>.</small></h2>
+                                                <h2><small>{{'phrase_avis_1' | translate}}<strong>Toulouse</strong> (64121) {{'phrase_avis_2' | translate}}Sébastien THOMAS{{'phrase_avis_3' | translate}}<strong>01/01/2015</strong>{{'phrase_avis_4' | translate}}<strong>01/03/2015</strong>.</small></h2>
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +70,7 @@
                                 <div class="col-lg-9">
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            Capacité du locataire à payer les loyers en temps et en heure
+                                            {{'capacite_long' | translate}}
                                         </div>
                                         <div class="col-lg-4">
                                             <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -76,7 +79,7 @@
 
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            Attitude du locataire durant la location : sollicitations intempestives, etc
+                                            {{'attitude_long' | translate}}
                                         </div>
                                         <div class="col-lg-4">
                                             <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -85,7 +88,7 @@
 
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            Etat des lieux de sortie du bien loué : dégradations, propreté, etc.
+                                            {{'degradation_long' | translate}}
                                         </div>
                                         <div class="col-lg-4">
                                             <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -105,7 +108,7 @@
                                     <div class="m-b-md">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <h2><small>Un propriétaire à <strong>Toulouse</strong> (64121) indique avoir eu Sébastien THOMAS comme locataire du <strong>01/01/2015</strong> au <strong>01/03/2015</strong>.</small></h2>
+                                                <h2><small>{{'phrase_avis_1' | translate}}<strong>Toulouse</strong> (64121) {{'phrase_avis_2' | translate}}Sébastien THOMAS{{'phrase_avis_3' | translate}}<strong>01/01/2015</strong>{{'phrase_avis_4' | translate}}<strong>01/03/2015</strong>.</small></h2>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +118,7 @@
                                 <div class="col-lg-9">
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            Capacité du locataire à payer les loyers en temps et en heure
+                                            {{'capacite_long' | translate}}
                                         </div>
                                         <div class="col-lg-4">
                                             <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -124,7 +127,7 @@
 
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            Attitude du locataire durant la location : sollicitations intempestives, etc
+                                            {{'attitude_long' | translate}}
                                         </div>
                                         <div class="col-lg-4">
                                             <input-stars max="5" ng-model="YourCtrl.property"></input-stars>
@@ -133,7 +136,7 @@
 
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            Etat des lieux de sortie du bien loué : dégradations, propreté, etc.
+                                            {{'degradation_long' | translate}}
                                         </div>
                                         <div class="col-lg-4">
                                             <input-stars max="5" ng-model="YourCtrl.property"></input-stars>

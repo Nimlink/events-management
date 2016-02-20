@@ -31,7 +31,6 @@
     "angular-spinkit": "~0.3.3",
     "angular-ui-codemirror": "~0.3.0",
     "angular-summernote": "~0.4.0",
-    "angular-ui-select": "~0.12.0",
     "angular-chosen": "*",
     "angular-chosen-localytics": "~1.0.7",
     "ocLazyLoad": "~1.0.2",
