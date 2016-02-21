@@ -7,6 +7,8 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,
     $scope.town = {};
     $scope.town.selected = undefined;
 
+    $scope.errors = [];
+
     $scope.note = {
         id_owner : 5,
         firstname: '',
@@ -64,10 +66,15 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,
     }
 
     $scope.ok = function () {
+        $scope.errors = [];
 
-        $scope.note.id_town = $scope.town.selected;
+        if ($scope.town.selected == null) {
+            $scope.errors.push({item:'Ville'});
+        } else {
+            $scope.note.id_town = $scope.town.selected.id;
+        }
 
-        noteService.insertNote($scope.note).then(
+        /*noteService.insertNote($scope.note).then(
             function(greeting) {
                 if (greeting.data.length > 0) {
 
@@ -76,7 +83,7 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,
 
             });
 
-        $modalInstance.close();
+        $modalInstance.close();*/
     };
 
     $scope.cancel = function () {

@@ -4,26 +4,27 @@
     </div>
     <div class="row">
         <p class="ibox-content">
-
         <div class="row" >
             <div class="col-lg-8">
 
-                <p>
+                <form name="userForm" >
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>{{'prenom' | translate}}</label>
-                        <input ng-model="note.firstname">
+                        <input required="" name="firstname" ng-model="note.firstname">
+                        <div ng-messages="userForm.firstname.$error">
+                            <div ng-message="required">Requis.</div>
+                        </div>
                     </md-input-container>
-                </p>
 
-                <p>
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>{{'nom' | translate}}</label>
-                        <input ng-model="note.lastname">
+                        <input required="" name="lastname" ng-model="note.lastname">
+                        <div ng-messages="userForm.lastname.$error">
+                            <div ng-message="required">Requis.</div>
+                        </div>
                     </md-input-container>
-                </p>
 
-                <p>
-                    <md-autocomplete ng-disabled="false"
+                    <md-autocomplete required="" name="town"  ng-disabled="false"
                                      md-selected-item="town.selected"
                                      md-search-text="searchText"
                                      md-search-text-change="searchTextChange(searchText)"
@@ -38,34 +39,43 @@
                         <md-not-found>
                             No states matching were found.
                         </md-not-found>
+                        <div ng-messages="userForm.town.$error">
+                            <div ng-message="required">Requis.</div>
+                        </div>
                     </md-autocomplete>
-                </p>
 
-                <div class="row row-centered">
-                    <div class="col-sm-6">
-                        <md-datepicker ng-model="note.date_start" md-placeholder="{{'entree' | translate}}">
-                        </md-datepicker>
-                    </div>
+                    <div class="row row-centered">
+                        <div class="col-sm-6">
+                            <md-datepicker required="" name="date_start"  ng-model="note.date_start" md-placeholder="{{'entree' | translate}}">
+                                <div ng-messages="userForm.date_start.$error">
+                                    <div ng-message="required">Requis.</div>
+                                </div>
+                            </md-datepicker>
+                        </div>
 
-                    <div class="col-sm-6">
-                        <md-datepicker ng-model="note.date_end" md-placeholder="{{'sortie' | translate}}">
-                        </md-datepicker>
+                        <div class="col-sm-6">
+                            <md-datepicker required="" name="date_end" ng-model="note.date_end" md-placeholder="{{'sortie' | translate}}">
+                                <div ng-messages="userForm.date_end.$error">
+                                    <div ng-message="required">Requis.</div>
+                                </div>
+                            </md-datepicker>
+                        </div>
                     </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-4 row-centered">
+            <div ng-if="moyenne < 34">
+                <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+            </div>
+            <div ng-if="moyenne >= 34">
+                <div ng-if="moyenne < 66">
+                    <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
                 </div>
             </div>
-
-            <div class="col-lg-4 row-centered">
-                <div ng-if="moyenne < 34">
-                    <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
-                </div>
-                <div ng-if="moyenne >= 34">
-                    <div ng-if="moyenne < 66">
-                        <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
-                    </div>
-                </div>
-                <div ng-if="moyenne >= 66">
-                    <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
-                </div>
+            <div ng-if="moyenne >= 66">
+                <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
             </div>
         </div>
         </p>
@@ -99,6 +109,15 @@
             </div>
         </div>
 
+    </div>
+
+    <div class="row" ng-show="errors.length > 0" class="animated bounceInDown bounceInUp">
+        <div class="ibox-content">
+            Paramètres manquants
+            <div ng-repeat="error in errors">
+                {{error.item}}
+            </div>
+        </div>
     </div>
 
     <div class="row row-centered">
