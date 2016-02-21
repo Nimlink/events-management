@@ -47,7 +47,7 @@ function config($translateProvider) {
 
             dashboard: 'Tableau de bord du propriétaire',
             avis_rediges: 'avis rédigés',
-            locataires: 'locataires cherchés',
+            locataires: 'locataires consultés',
 
             prenom: 'Prénom',
             nom: 'Nom',

@@ -7059,23 +7059,24 @@ body.skin-3 {
 .testimonials {
     padding-top: 80px;
     padding-bottom: 90px;
-    background-color: #ed5565;
+    background-color: #f89136;
     background-image: url('../res/images/avatar_all.png');
 }
 
 .navy-section {
     margin-top: 60px;
-    background: #ed5565;
+    /*background: #f89136;*/
+    background-image: url('../res/images/avatar_all.png');
     color: #fff;
     padding: 20px 0;
-    opacity: 0.4;
+    opacity: 0.8;
 }
 
 .navy-line {
     width: 60px;
     height: 1px;
     margin: 60px auto 0;
-    border-bottom: 2px solid #ed5565;
+    border-bottom: 2px solid #f89136;
 }
 
 span.navy {
@@ -7083,7 +7084,7 @@ span.navy {
 }
 
 span.warning {
-    color: #f8ac59;
+    color: #f89136;
 }
 
 span.danger {
@@ -7091,6 +7092,21 @@ span.danger {
 }
 
 .features-icon {
-    color: #ed5565;
+    color: #f89136;
     font-size: 40px;
+}
+
+.text-immo {
+    color: #f89136
+}
+
+.immo-bg {
+    background-color: #f89136;
+    color: #ffffff
+}
+
+.btn-immo {
+    background-color: #f89136;
+    border-color: #f89136;
+    color: #FFFFFF
 }
