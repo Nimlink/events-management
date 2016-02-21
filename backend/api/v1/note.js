@@ -32,7 +32,7 @@ router.post('/', function (req, res) {
             dataOk = dataOk && false;
         }
 
-        if ((!(data.date_end == undefined || data.date_end == null || data.date_end == '')) && (!(data.date_start == undefined || data.date_start == null || data.date_start == '')) {
+        if ((!(data.date_end == undefined || data.date_end == null || data.date_end == '')) && (!(data.date_start == undefined || data.date_start == null || data.date_start == ''))) {
             if (data.date_end < data.date_start) {
                 dataOk = dataOk && false;
             }
@@ -59,21 +59,43 @@ router.post('/', function (req, res) {
                 res.status(404).json('Failed');
             } else {
 
+                // no tenant in db, we need to create him
                 if (results[1].length < 1) {
-
+                    async.series([
+                        async.apply(users.insertTenant, data.firstname, data.lastname)
+                    ], function (err, results) {
+                        if (err) {
+                            res.setHeader('Content-Type', 'application/json');
+                            res.status(404).json('Failed');
+                        } else {
+                            data.id_tenant = result[0];
+                            async.series([
+                                async.apply(notes.insertNote, data)
+                            ], function (err) {
+                                if (err) {
+                                    res.setHeader('Content-Type', 'application/json');
+                                    res.status(404).json('Failed ' + err);
+                                } else {
+                                    res.setHeader('Content-Type', 'application/json');
+                                    res.status(200).json('ack');
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    data.id_tenant = results[1].id;
+                    async.series([
+                        async.apply(notes.insertNote, data)
+                    ], function (err) {
+                        if (err) {
+                            res.setHeader('Content-Type', 'application/json');
+                            res.status(404).json('Failed');
+                        } else {
+                            res.setHeader('Content-Type', 'application/json');
+                            res.status(200).json('ack');
+                        }
+                    });
                 }
-
-                async.series([
-                    async.apply(notes.insertNote, req.body.data)
-                ], function (err) {
-                    if (err) {
-                        res.setHeader('Content-Type', 'application/json');
-                        res.status(404).json('Failed');
-                    } else {
-                        res.setHeader('Content-Type', 'application/json');
-                        res.status(200).json('ack');
-                    }
-                });
             }
         });
     }

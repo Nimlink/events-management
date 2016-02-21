@@ -66,11 +66,44 @@ function insertTenant(firstname, lastname, callback) {
                 lastname.toLowerCase(),
                 today], function (err, result) {
                 if (err) {
-                    console.error("failed to insert user " + err.message);
+                    client.end();
+                    callback(new Error('Failed' + err.message));
+                } else {
+                    var users = [];
+                    var query = client.query("SELECT id FROM t_users as users WHERE firstname=$1 AND lastname=$2",
+                        [firstname,lastname]);
+                    query.on('row', function (row) {
+                        users.push(row);
+                    });
+                    query.on('end', function () {
+                        if (users.length == 0) {
+                            client.end();
+                            callback(new Error('Failed - User not inserted'));
+                        } else {
+                            var id_user = users[0].id;
+                            var types = [];
+                            var query = client.query("SELECT id FROM t_usertypes WHERE code=$1",
+                                ['LOC']);
+                            query.on('row', function (row) {
+                                types.push(row);
+                            });
+                            query.on('end', function () {
+                                var id_type = types[0].id;
+                                var query = client.query('insert into t_users_usertypes (id_user, id_usertype) values ($1,$2);',
+                                    [id_user,id_type], function (err, result) {
+                                        if (err) {
+                                            client.end();
+                                            callback(new Error('Failed' + err.message));
+                                        } else {
+                                            client.end();
+                                            callback(null, id_user);
+                                        }
+                                    });
+                            });
+                        }
+                    });
                 }
-                client.end();
-                callback();
             });
     });
 };
-module.exports.insertNote = insertNote;
+module.exports.insertTenant = insertTenant;
