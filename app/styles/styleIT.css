@@ -3698,10 +3698,10 @@ table.table-mail tr td {
 }
 
 .gray-bg {
-    /*background-color: #f3f3f4*/
-    background-image: url("../res/images/pyrenees_nuages.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #f3f3f4
+    /*background-image: url("../res/images/pyrenees_nuages.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
 }
 
 .white-bg {
@@ -7059,13 +7059,13 @@ body.skin-3 {
 .testimonials {
     padding-top: 80px;
     padding-bottom: 90px;
-    background-color: #1ab394;
+    background-color: #ed5565;
     background-image: url('../res/images/avatar_all.png');
 }
 
 .navy-section {
     margin-top: 60px;
-    background: #1ab394;
+    background: #ed5565;
     color: #fff;
     padding: 20px 0;
     opacity: 0.4;
@@ -7075,7 +7075,7 @@ body.skin-3 {
     width: 60px;
     height: 1px;
     margin: 60px auto 0;
-    border-bottom: 2px solid #1ab394;
+    border-bottom: 2px solid #ed5565;
 }
 
 span.navy {
@@ -7088,4 +7088,9 @@ span.warning {
 
 span.danger {
     color: #ed5565;
+}
+
+.features-icon {
+    color: #ed5565;
+    font-size: 40px;
 }
