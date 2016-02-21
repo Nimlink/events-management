@@ -1,0 +1,81 @@
+<div ng-controller="signupCtrl as ctrl">
+    <div class="row wrapper border-bottom blue-bg page-heading">
+        <div class="col-lg-10">
+            <h1><i class="fa fa-home"/> Inscription</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <div class="row">
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <h2><strong>{{owner.notes.length}}</strong> {{'avis_rediges' | translate}}</h2>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <h2><strong>{{owner.nb_request}}</strong> {{'locataires' | translate}}</h2>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4 text-center">
+                                    <div ng-if="moyenne.general < 34">
+                                        <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                                    </div>
+                                    <div ng-if="moyenne.general >= 34">
+                                        <div ng-if="moyenne.general < 66">
+                                            <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                                        </div>
+                                    </div>
+                                    <div ng-if="moyenne.general >= 66">
+                                        <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h2><strong>{{'mes_avis' | translate}}</strong></h2>
+                                </div>
+                                <div class="col-lg-4 text-center">
+                                    <button class="btn btn-warning btn-lg" ng-click="createNote()" type="button"><i class="fa fa-pencil"></i> Ajouter un avis</button>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top: 10px">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th >{{'prenom_nom' | translate}}</th>
+                                        <th style="text-align: center" >{{'town' | translate}}</th>
+                                        <th style="text-align: center" >{{'capacite_tiny' | translate}}</th>
+                                        <th style="text-align: center" >{{'attitude_tiny' | translate}}</th>
+                                        <th style="text-align: center" >{{'degradation_tiny' | translate}}</th>
+                                        <th style="text-align: center" >{{'moyenne' | translate}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr style="font-size: large" ng-repeat="note in notes">
+                                        <td style="vertical-align:middle"><a ui-sref="index.tenant({id:{{note.id}}})">{{note.firstname}} {{note.lastname}}</a></td>
+                                        <td align="center"  style="vertical-align:middle;">{{note.town}}</td>
+                                        <td align="center"  style="vertical-align:middle"><button class="{{note.buttonCapacity}}" type="button">{{note.capacity}}</i></button></td>
+                                        <td align="center"  style="vertical-align:middle"><button class="{{note.buttonAttitude}}" type="button">{{note.attitude}}</i></td>
+                                        <td align="center"  style="vertical-align:middle"><button class="{{note.buttonDegradation}}" type="button">{{note.degradation}}</i></td>
+                                        <td align="center"  style="vertical-align:middle"><button class="{{note.buttonMoyenne}} btn-lg" type="button">{{note.moyenne}}</i></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
