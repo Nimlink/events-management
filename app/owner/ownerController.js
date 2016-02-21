@@ -36,12 +36,12 @@ function ownerCtrl($rootScope, $stateParams, $scope, ownerService, $modal, $stat
                 nbNote += 1;
 
                 if (item.capacity < 2 ) {
-                    $scope.notes[i].buttonCapacity = 'btn btn-danger btn-circle';
+                    $scope.notes[i].buttonCapacity = 'btn-danger';
                 } else {
                     if (item.capacity >= 2 && item.capacity < 4) {
-                        $scope.notes[i].buttonCapacity = 'btn btn-warning btn-circle';
+                        $scope.notes[i].buttonCapacity = 'btn-warning';
                     } else {
-                        $scope.notes[i].buttonCapacity = 'btn btn-primary btn-circle';
+                        $scope.notes[i].buttonCapacity = 'btn-primary';
                     }
                 }
             }
@@ -52,12 +52,12 @@ function ownerCtrl($rootScope, $stateParams, $scope, ownerService, $modal, $stat
                 nbNote += 1;
 
                 if (item.attitude < 2 ) {
-                    $scope.notes[i].buttonAttitude = 'btn btn-danger btn-circle';
+                    $scope.notes[i].buttonAttitude = 'btn-danger';
                 } else {
                     if (item.attitude >= 2 && item.attitude < 4) {
-                        $scope.notes[i].buttonAttitude = 'btn btn-warning btn-circle';
+                        $scope.notes[i].buttonAttitude = 'btn-warning';
                     } else {
-                        $scope.notes[i].buttonAttitude = 'btn btn-primary btn-circle';
+                        $scope.notes[i].buttonAttitude = 'btn-primary';
                     }
                 }
             }
@@ -68,24 +68,24 @@ function ownerCtrl($rootScope, $stateParams, $scope, ownerService, $modal, $stat
                 nbNote += 1;
 
                 if (item.degradation < 2 ) {
-                    $scope.notes[i].buttonDegradation = 'btn btn-danger btn-circle';
+                    $scope.notes[i].buttonDegradation = 'btn-danger';
                 } else {
                     if (item.degradation >= 2 && item.degradation < 4) {
-                        $scope.notes[i].buttonDegradation = 'btn btn-warning btn-circle';
+                        $scope.notes[i].buttonDegradation = 'btn-warning';
                     } else {
-                        $scope.notes[i].buttonDegradation = 'btn btn-primary btn-circle';
+                        $scope.notes[i].buttonDegradation = 'btn-primary';
                     }
                 }
             }
             $scope.notes[i].moyenne = Math.floor($scope.notes[i].moyenne/nbNote/5*100);
 
             if (item.moyenne < 34 ) {
-                $scope.notes[i].buttonMoyenne = 'btn btn-danger btn-circle';
+                $scope.notes[i].buttonMoyenne = 'btn-danger';
             } else {
                 if (item.moyenne >= 34 && item.moyenne < 66) {
-                    $scope.notes[i].buttonMoyenne = 'btn btn-warning btn-circle';
+                    $scope.notes[i].buttonMoyenne = 'btn-warning';
                 } else {
-                    $scope.notes[i].buttonMoyenne = 'btn btn-primary btn-circle';
+                    $scope.notes[i].buttonMoyenne = 'btn-primary';
                 }
             }
         }

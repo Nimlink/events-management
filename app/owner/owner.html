@@ -64,10 +64,10 @@
                                 <tr style="font-size: large" ng-repeat="note in notes">
                                     <td style="vertical-align:middle"><a ui-sref="index.tenant({id:{{note.id}}})">{{note.firstname}} {{note.lastname}}</a></td>
                                     <td align="center"  style="vertical-align:middle;">{{note.town}}</td>
-                                    <td align="center"  style="vertical-align:middle"><button class="{{note.buttonCapacity}}" type="button">{{note.capacity}}</i></button></td>
-                                    <td align="center"  style="vertical-align:middle"><button class="{{note.buttonAttitude}}" type="button">{{note.attitude}}</i></td>
-                                    <td align="center"  style="vertical-align:middle"><button class="{{note.buttonDegradation}}" type="button">{{note.degradation}}</i></td>
-                                    <td align="center"  style="vertical-align:middle"><button class="{{note.buttonMoyenne}} btn-lg" type="button">{{note.moyenne}}</i></td>
+                                    <td align="center"  style="vertical-align:middle"><a class="btn btn-rounded {{note.buttonCapacity}}">{{note.capacity}}</a></td>
+                                    <td align="center"  style="vertical-align:middle"><a class="btn btn-rounded {{note.buttonAttitude}}" >{{note.attitude}}</a></td>
+                                    <td align="center"  style="vertical-align:middle"><a class="btn btn-rounded {{note.buttonDegradation}}" >{{note.degradation}}</a></td>
+                                    <td align="center"  style="vertical-align:middle"><a class="btn btn-rounded btn-lg {{note.buttonMoyenne}}" >{{note.moyenne}}</a></td>
                                 </tr>
                                 </tbody>
                             </table>
