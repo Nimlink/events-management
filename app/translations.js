@@ -59,7 +59,8 @@ function config($translateProvider) {
             toomany: 'Trop de personnes ont été trouvées, Veuillez affiner votre recherche',
             town: 'Ville',
             missing_parameters: 'Veuillez svp renseigner les champs suivants',
-            usure: 'Etes vous sûr de mettre 0 à ce locataire ?'
+            usure: 'Etes vous sûr de mettre 0 à ce locataire ?',
+            dateNotOk: "La date de sortie ne peut pas être inférieure à la date d'entrée"
 		});
 
 	$translateProvider.preferredLanguage('fr');

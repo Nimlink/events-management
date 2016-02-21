@@ -54,3 +54,23 @@ function getOwnerById(id, callback) {
     });
 };
 module.exports.getOwnerById = getOwnerById;
+
+function insertTenant(firstname, lastname, callback) {
+    var client = new pg.Client(connectionString);
+    var today = new Date(Date.now());
+    client.connect(function (err) {
+        var query = client.query('insert into t_users (firstname, firstname_lower, lastname, lastname_lower, inscription_date) values ($1,$2,$3,$4,$5);',
+            [   firstname,
+                firstname.toLowerCase(),
+                lastname,
+                lastname.toLowerCase(),
+                today], function (err, result) {
+                if (err) {
+                    console.error("failed to insert user " + err.message);
+                }
+                client.end();
+                callback();
+            });
+    });
+};
+module.exports.insertNote = insertNote;

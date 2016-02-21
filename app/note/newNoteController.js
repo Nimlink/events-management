@@ -103,16 +103,24 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,
             $scope.warnings.push({item:$translate.instant('degradation_tiny')});
         }
 
-        /*noteService.insertNote($scope.note).then(
-         function(greeting) {
-         if (greeting.data.length > 0) {
+        if ($scope.note.date_end != null && $scope.note.date_start != null) {
+            if ($scope.note.date_end < $scope.note.date_start) {
+                $scope.errors.push({item: $translate.instant('dateNotOk')});
+            }
+        }
 
-         }
-         }, function(reason) {
+        if ($scope.errors.length == 0) {
+            noteService.insertNote($scope.note).then(
+                function(greeting) {
+                    if (greeting.data.length > 0) {
+                        $state.go('index.owner');
+                    }
+                }, function(reason) {
 
-         });
+                });
+            $modalInstance.close();
+        }
 
-         $modalInstance.close();*/
     };
 
     $scope.cancel = function () {
