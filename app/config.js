@@ -140,6 +140,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                         {
                             files: [
                                 'note/newNoteController.js',
+                                'utils/services/ownerService.js',
                                 'utils/services/dbQueriesService.js',
                                 'main.js'
                             ]

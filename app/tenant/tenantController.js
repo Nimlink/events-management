@@ -78,17 +78,8 @@ function tenantCtrl($rootScope, $stateParams, $scope, tenantService, $modal, $st
             } else {
                 $scope.moyenne.degradation = Math.floor($scope.moyenne.degradation / nbDegradation);
             }
-
-            $scope.knob = {
-                value: $scope.moyenne.general,
-                options: {
-                    readonly: true
-                }
-            }
-
         }
     });
-
 };
 
 angular

@@ -56,7 +56,8 @@ function config($translateProvider) {
             ok: 'Ok',
             plusieurs_personnes_trouvees: 'Plusieurs personnes ont été trouvées',
             link : 'Lien',
-            toomany: 'Trop de personnes ont été trouvées, Veuillez affiner votre recherche'
+            toomany: 'Trop de personnes ont été trouvées, Veuillez affiner votre recherche',
+            town: 'Ville'
 		});
 
 	$translateProvider.preferredLanguage('fr');
