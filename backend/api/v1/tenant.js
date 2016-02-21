@@ -5,7 +5,7 @@ module.exports = function (authService) {
     var users = require('../../model/user.js');
     var notes = require('../../model/note.js');
 
-    router.post('/', authService.ensureAuthorized(), function (req, res) {
+    router.post('/', function (req, res) {
         if (req.body.firstname == undefined || req.body.lastname == undefined) {
             res.setHeader('Content-Type', 'application/json');
             res.status(404).json('No data in post');
