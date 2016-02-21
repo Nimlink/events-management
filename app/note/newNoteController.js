@@ -74,7 +74,7 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,
                 }
             }, function(reason) {
 
-            }
+            });
 
         $modalInstance.close();
     };
