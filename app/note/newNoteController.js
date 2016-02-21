@@ -1,21 +1,22 @@
 /**
  * MainCtrl - controller
  */
-function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,  $log, noteService) {
+function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,  $log, noteService, $translate) {
 
     $scope.towns = townService.getTowns();
     $scope.town = {};
     $scope.town.selected = undefined;
 
     $scope.errors = [];
+    $scope.warnings = [];
 
     $scope.note = {
         id_owner : 5,
-        firstname: '',
-        lastname: '',
-        id_town: '',
-        date_start:'',
-        date_end: '',
+        firstname: undefined,
+        lastname: undefined,
+        id_town: undefined,
+        date_start: undefined,
+        date_end: undefined,
         capacity: 0,
         attitude: 0,
         degradation: 0
@@ -69,21 +70,49 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,
         $scope.errors = [];
 
         if ($scope.town.selected == null) {
-            $scope.errors.push({item:'Ville'});
+            $scope.errors.push({item:$translate.instant('town')});
         } else {
             $scope.note.id_town = $scope.town.selected.id;
         }
 
+        if ($scope.note.firstname == null) {
+            $scope.errors.push({item:$translate.instant('prenom')});
+        }
+
+        if ($scope.note.lastname == null) {
+            $scope.errors.push({item:$translate.instant('nom')});
+        }
+
+        if ($scope.note.date_start == null) {
+            $scope.errors.push({item:$translate.instant('entree')});
+        }
+
+        if ($scope.note.date_end == null) {
+            $scope.errors.push({item:$translate.instant('sortie')});
+        }
+
+        if ($scope.note.capacity == 0) {
+            $scope.warnings.push({item:$translate.instant('capacite_tiny')});
+        }
+
+        if ($scope.note.attitude == 0) {
+            $scope.warnings.push({item:$translate.instant('attitude_tiny')});
+        }
+
+        if ($scope.note.degradation == 0) {
+            $scope.warnings.push({item:$translate.instant('degradation_tiny')});
+        }
+
         /*noteService.insertNote($scope.note).then(
-            function(greeting) {
-                if (greeting.data.length > 0) {
+         function(greeting) {
+         if (greeting.data.length > 0) {
 
-                }
-            }, function(reason) {
+         }
+         }, function(reason) {
 
-            });
+         });
 
-        $modalInstance.close();*/
+         $modalInstance.close();*/
     };
 
     $scope.cancel = function () {

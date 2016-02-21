@@ -57,7 +57,9 @@ function config($translateProvider) {
             plusieurs_personnes_trouvees: 'Plusieurs personnes ont été trouvées',
             link : 'Lien',
             toomany: 'Trop de personnes ont été trouvées, Veuillez affiner votre recherche',
-            town: 'Ville'
+            town: 'Ville',
+            missing_parameters: 'Veuillez svp renseigner les champs suivants',
+            usure: 'Etes vous sûr de mettre 0 à ce locataire ?'
 		});
 
 	$translateProvider.preferredLanguage('fr');
