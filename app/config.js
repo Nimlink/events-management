@@ -148,6 +148,26 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                 }
             }
         })
+        .state('index.signup', {
+            url: "/signup",
+            templateUrl: "signup/signup.html",
+            data: {pageTitle: 'Inscription'},
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([{files: ['signup/signupController.js']},
+                        {files: component_select},
+                        {files: component_dropzone},
+                        {files: component_knob},
+                        {files: component_stars},
+                        {
+                            files: [
+                                'utils/services/dbQueriesService.js',
+                                'main.js'
+                            ]
+                        }])
+                }
+            }
+        })
 }
 angular
     .module('fup')
