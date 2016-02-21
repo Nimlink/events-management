@@ -1,5 +1,5 @@
 {
-  "LPP_POSTGRESQL_URL": "postgresql://fxscreener_dba:dba_fxscreener@localhost:5432/lpp",
-  "PROXY": "http://emeamai-px01.main.glb.corp.local:8080",
+  "LPP_POSTGRESQL_URL": "postgresql://fxscreener_dba@localhost:5432/immotrankil",
+  "PROXY": null,
   "PARALLEL": "5"
 }
