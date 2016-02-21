@@ -21,4 +21,8 @@ app.service('dbQueriesService', function ($http) {
         return $http.get('/api/owners/5');
     };
 
+    this.postNote = function (data) {
+        return $http.post('/api/notes', data);
+    };
+
 });

@@ -35,3 +35,26 @@ function getNotesForOwner(id_owner, callback) {
     });
 };
 module.exports.getNotesForOwner = getNotesForOwner;
+
+function insertNote(data, callback) {
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        var notes = [];
+        var query = client.query('insert into t_notes (id_owner, id_tenant, id_town, date_start, date_end, capacity, attitude, degradation) values ($1,$2,$3,$4,$5,$6,$7,$8);',
+            [data.id_owner,
+                data.id_tenant,
+                data.id_town,
+                data.date_start,
+                data.date_end,
+                data.capacity,
+                data.attitude,
+                data.degradation], function (err, result) {
+                if (err) {
+                    console.error("failed to insert note " + err.message);
+                }
+                client.end();
+                callback();
+            });
+    });
+};
+module.exports.insertNote = insertNote;

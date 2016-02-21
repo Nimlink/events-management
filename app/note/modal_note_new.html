@@ -1,4 +1,4 @@
-<div class="modal-body modal-md" ng-controller="newNoteCtrl as ctrl">
+<div class="modal-body modal-md">
     <div class="row row-centered">
         <h2 class="m-t-none m-b"><i class="fa fa-user"></i> {{'rediger_avis' | translate}}</h2>
     </div>
@@ -11,14 +11,14 @@
                 <p>
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>{{'prenom' | translate}}</label>
-                        <input ng-model="note.prenom">
+                        <input ng-model="note.firstname">
                     </md-input-container>
                 </p>
 
                 <p>
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>{{'nom' | translate}}</label>
-                        <input ng-model="note.nom">
+                        <input ng-model="note.lastname">
                     </md-input-container>
                 </p>
 
@@ -43,19 +43,29 @@
 
                 <div class="row row-centered">
                     <div class="col-sm-6">
-                        <md-datepicker ng-model="note.entree" md-placeholder="{{'entree' | translate}}">
+                        <md-datepicker ng-model="note.date_start" md-placeholder="{{'entree' | translate}}">
                         </md-datepicker>
                     </div>
 
                     <div class="col-sm-6">
-                        <md-datepicker ng-model="note.sortie" md-placeholder="{{'sortie' | translate}}">
+                        <md-datepicker ng-model="note.date_end" md-placeholder="{{'sortie' | translate}}">
                         </md-datepicker>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-4 row-centered">
-                <knob knob-data="main.knobTwo" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 knob-options=""></knob>
+                <div ng-if="moyenne < 34">
+                    <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                </div>
+                <div ng-if="moyenne >= 34">
+                    <div ng-if="moyenne < 66">
+                        <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                    </div>
+                </div>
+                <div ng-if="moyenne >= 66">
+                    <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                </div>
             </div>
         </div>
         </p>
@@ -67,7 +77,7 @@
                 <h4>{{'capacite_short' | translate}}</h4>
             </div>
             <div class="col-lg-4">
-                <input-stars max="5" ng-model="note.capacite"></input-stars>
+                <input-stars max="5" ng-model="note.capacity"></input-stars>
             </div>
         </div>
 
