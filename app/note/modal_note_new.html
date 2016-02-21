@@ -27,8 +27,6 @@
                     <md-autocomplete required="" name="town"  ng-disabled="false"
                                      md-selected-item="town.selected"
                                      md-search-text="searchText"
-                                     md-search-text-change="searchTextChange(searchText)"
-                                     md-selected-item-change="selectedItemChange(item)"
                                      md-items="item in querySearch(searchText)"
                                      md-item-text="item.town"
                                      md-min-length="0"
@@ -63,19 +61,19 @@
                     </div>
                 </form>
             </div>
-        </div>
 
-        <div class="col-lg-4 row-centered">
-            <div ng-if="moyenne < 34">
-                <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
-            </div>
-            <div ng-if="moyenne >= 34">
-                <div ng-if="moyenne < 66">
-                    <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+            <div class="col-lg-4 row-centered">
+                <div ng-if="moyenne < 34">
+                    <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
                 </div>
-            </div>
-            <div ng-if="moyenne >= 66">
-                <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                <div ng-if="moyenne >= 34">
+                    <div ng-if="moyenne < 66">
+                        <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                    </div>
+                </div>
+                <div ng-if="moyenne >= 66">
+                    <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                </div>
             </div>
         </div>
         </p>

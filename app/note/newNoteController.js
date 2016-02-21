@@ -1,7 +1,7 @@
 /**
  * MainCtrl - controller
  */
-function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,  $log, noteService, $translate) {
+function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $log, noteService, $translate) {
 
     $scope.towns = townService.getTowns();
     $scope.town = {};
@@ -45,18 +45,9 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,
         }
     };
 
-
     $scope.querySearch = function (query) {
         var results = query ? $scope.towns.filter( createFilterFor(query) ) : $scope.towns;
         return results;
-    }
-
-    $scope.searchTextChange = function (text) {
-        $log.info('Text changed to ' + text);
-    }
-
-    $scope.selectedItemChange = function (item) {
-        $log.info('Item changed to ' + JSON.stringify(item));
     }
 
     function createFilterFor(query) {
@@ -112,11 +103,9 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $location, townService,
         if ($scope.errors.length == 0) {
             noteService.insertNote($scope.note).then(
                 function(greeting) {
-                    if (greeting.data.length > 0) {
-                        $state.go('index.owner');
-                    }
+                    $state.go('index.owner',null,{reload: true});
                 }, function(reason) {
-
+                    $state.go('index.owner',null,{reload: true});
                 });
             $modalInstance.close();
         }

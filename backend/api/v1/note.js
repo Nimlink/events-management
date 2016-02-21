@@ -5,11 +5,11 @@ var notes = require('../../model/note.js');
 var users = require('../../model/user.js');
 
 router.post('/', function (req, res) {
-    if (req.body.data == undefined) {
+    if (req.body == undefined) {
         res.setHeader('Content-Type', 'application/json');
         res.status(404).json('No data in post');
     } else {
-        var data = req.body.data;
+        var data = req.body;
         var dataOk = true;
 
         if (data.id_town == undefined || data.id_town == null || data.id_town == '') {
@@ -68,7 +68,7 @@ router.post('/', function (req, res) {
                             res.setHeader('Content-Type', 'application/json');
                             res.status(404).json('Failed');
                         } else {
-                            data.id_tenant = result[0];
+                            data.id_tenant = results[0];
                             async.series([
                                 async.apply(notes.insertNote, data)
                             ], function (err) {
@@ -83,7 +83,7 @@ router.post('/', function (req, res) {
                         }
                     });
                 } else {
-                    data.id_tenant = results[1].id;
+                    data.id_tenant = results[1][0].id;
                     async.series([
                         async.apply(notes.insertNote, data)
                     ], function (err) {
