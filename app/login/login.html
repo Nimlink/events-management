@@ -1,8 +1,9 @@
-<div class="middle-box text-center loginscreen  animated fadeInDown" ng-controller="LoginCtrl as login">
+<div class="middle-box text loginscreen animated fadeInDown" ng-controller="LoginCtrl as login">
     <div>
         <div class="row row-centered">
             <div>
-                <h2 class="logo-name">fyl.oc</h2>
+                <h2 class="logo-name">Immotrankil</h2 class="logo-name">
+                <h4>Fini les tracasseries avec les locataires indélicats et qui ne payent pas ou en retard !</h4>
             </div>
         </div>
         <form class="m-t" role="form" action="#">
@@ -18,75 +19,26 @@
         </form>
     </div>
 </div>
-<div id="inSlider" class="carousel slide carousel-fade" data-ride="carousel" ng-non-bindable>
-    <ol class="carousel-indicators">
-        <li data-target="inSlider" data-slide-to="0" class="active"></li>
-        <li data-target="inSlider" data-slide-to="1"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>We craft<br/>
-                        brands, web apps,<br/>
-                        and user interfaces<br/>
-                        we are IN+ studio</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                    <p>
-                        <a class="btn btn-lg btn-primary" href="#" role="button">READ MORE</a>
-                        <a class="caption-link" href="#" role="button">Inspinia Theme</a>
-                    </p>
-                </div>
-                <div class="carousel-image wow zoomIn">
-                    <img src="img/landing/laptop.png" alt="laptop"/>
-                </div>
-            </div>
-            <!-- Set background for slide in css -->
-            <div class="header-back one"></div>
-
-        </div>
-        <div class="item">
-            <div class="container">
-                <div class="carousel-caption blank">
-                    <h1>We create meaningful <br/> interfaces that inspire.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                </div>
-            </div>
-            <!-- Set background for slide in css -->
-            <div class="header-back two"></div>
-        </div>
-    </div>
-    <a class="left carousel-control" data-target="#inSlider" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" data-target="#inSlider" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
 <section id="features" class="container services">
     <div class="row">
-        <div class="col-sm-3">
-            <h2>Full responsive</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+        <div class="col-sm-4">
+            <h2>Le problème</h2>
+            <p>Pour peu que vous ayez de l’expérience dans la gestion locative, vous avez du vous apercevoir que les multiples étapes mises en place pour filtrer les locataires : fiches d’imposition, bulletins de paie, caution, quittances précédentes, etc. ne sont pas la solution pour trouver LE locataire, celui qui restera longtemps, ne vous sollicitera jamais, paiera toujours en temps et en heure et rendra le bien en meilleur état qu’à son arrivée !</p>
         </div>
-        <div class="col-sm-3">
-            <h2>LESS/SASS Files</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+        <div class="col-sm-4">
+            <h2>La solution</h2>
+            <p>Ces étapes en plus d’induire une lourdeur de traitement non négligeable ne garantissent nullement la qualité du locataire. Vous pouvez très bien avoir un locataire ayant des revenus conséquents mais qui vous sollicitera intempestivement, sera hypocrite, trop exigeant, …
+                Au final, rien ne compte plus que le ressenti des propriétaires par lequel votre futur locataire est passé. C’est là qu’intervient ImmoTrankil en attribuant une note à chaque profil de locataire. Cette note est basée sur les évaluations rédigées par les propriétaires précédents.
+                Ces évaluations sont ensuite consolidées de manière à fournir une « fiche locataire » comprenant les notes moyennes de ces trois critères ainsi que l’historique des avis. Rien de plus simple par la suite pour se faire son idée sur son futur locataire !</p>
         </div>
-        <div class="col-sm-3">
-            <h2>6 Charts Library</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-        </div>
-        <div class="col-sm-3">
-            <h2>Advanced Forms</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+        <div class="col-sm-4">
+            <h2>La mise en pratique</h2>
+            <p>Le concept est très simple, en prenant 5 minutes pour noter vos précédents locataires, vous participez à la mise en place d’une base de données permettant de consolider les avis des propriétaires sur les locataires de l’agglomération paloise.
+                La rédaction de ces avis ne prend qu’une poignée de secondes, il s’agit simplement d’attribuer une note de 0 à 5 sur les trois critères suivants :
+                <li>Capacité du locataire à payer les loyers en temps et en heure.</li>
+                <li>Attitude du locataire durant la location : sollicitations intempestives, etc.</li>
+                <li>Etat des lieux de sortie du bien loué : dégradations, propreté, etc.</li>
+            </p>
         </div>
     </div>
 </section>
@@ -95,151 +47,57 @@
     <div class="row">
         <div class="col-lg-12 text-center">
             <div class="navy-line"></div>
-            <h1>Over 40+ unique view<br/> <span class="navy"> with many custom components</span> </h1>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+            <h1>Faites dès maintenant le choix<br/> <span class="danger" style="font-weight: bold;"> d'avoir les meilleurs locataires !</span> </h1>
+            <p>Récupérez le contrôle de votre investissement. </p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3 text-center wow fadeInLeft">
             <div>
-                <i class="fa fa-mobile features-icon"></i>
-                <h2>Full responsive</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <i class="fa fa-pencil"></i>
+                <h2>Une évaluation très simple</h2>
+                <p>Trois critères précis qui donnent une vision d’ensemble de la location :</p>
+                <p><i class="fa fa-check"></i> Capacité</p>
+                <p><i class="fa fa-check"></i> Attitude</p>
+                <p><i class="fa fa-check"></i> Dégradation</p>
             </div>
             <div class="m-t-lg">
-                <i class="fa fa-bar-chart features-icon"></i>
-                <h2>6 Charts Library</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <i class="fa fa-eur"></i>
+                <h2>Aucun engagement financier</h2>
+                <p>Le site est centré sur l'agglomération paloise et repose sur un modèle absolument gratuit.</p>
             </div>
         </div>
         <div class="col-md-6 text-center  wow zoomIn">
-            <img src="img/landing/perspective.png" alt="dashboard" class="img-responsive">
+            <img src="../res/images/avis_locataire_1_resize2.png" alt="dashboard">
         </div>
         <div class="col-md-3 text-center wow fadeInRight">
             <div>
-                <i class="fa fa-envelope features-icon"></i>
-                <h2>Mail pages</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <i class="fa fa-desktop style='width: 10px'"></i>
+                <h2>Agréable à utiliser</h2>
+                <p>Une interface épurée, visuelle et agréable à lire. Seulement trois écrans sont nécessaires pour l'ensemble du processus :
+                <li>Page propriétaire</li>
+                <li>Page locataire</li>
+                <li>Saisie d'un nouvel avis</li></p>
             </div>
             <div class="m-t-lg">
-                <i class="fa fa-google features-icon"></i>
-                <h2>AngularJS version</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <i class="fa fa-eye-slash"></i>
+                <h2>Respect de la vie privée</h2>
+                <p>Excepté le prénom et nom des locataires, AUCUNE autre donnée confidentielle n'est demandée. Les évaluations ne reposent que sur trois critères portant sur la location.</p>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="navy-line"></div>
-            <h1>Discover great feautres</h1>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
-        </div>
-    </div>
-    <div class="row features-block">
-        <div class="col-lg-6 features-text wow fadeInLeft">
-            <small>INSPINIA</small>
-            <h2>Perfectly designed </h2>
-            <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-            <a href="" class="btn btn-primary">Learn more</a>
-        </div>
-        <div class="col-lg-6 text-right wow fadeInRight">
-            <img src="img/landing/dashboard.png" alt="dashboard" class="img-responsive pull-right">
         </div>
     </div>
 </section>
 
 <section id="team" class="gray-section team">
     <div class="container">
-        <div class="row m-b-lg">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>Our Team</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4 wow fadeInLeft">
-                <div class="team-member">
-                    <img src="img/landing/avatar3.jpg" class="img-responsive img-circle img-small" alt="">
-                    <h4><span class="navy">Amelia</span> Smith</h4>
-                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus. </p>
-                    <ul class="list-inline social-icon">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="team-member wow zoomIn">
-                    <img src="img/landing/avatar1.jpg" class="img-responsive img-circle" alt="">
-                    <h4><span class="navy">John</span> Novak</h4>
-                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
-                    <ul class="list-inline social-icon">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-4 wow fadeInRight">
-                <div class="team-member">
-                    <img src="img/landing/avatar2.jpg" class="img-responsive img-circle img-small" alt="">
-                    <h4><span class="navy">Peter</span> Johnson</h4>
-                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
-                    <ul class="list-inline social-icon">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                <h1>Qui sommes nous ?</h1>
+                <p>L’équipe à l’origine du site est constituée de deux propriétaires bailleurs. C’est d’ailleurs suite à un ressenti personnel que ce site est né.
+                    Nous faisons un pari sur l’avenir en partant du principe qu’une masse critique d’avis inciterait fortement les locataires à améliorer leur comportement. Contrairement au “nivellement par le bas”, concept cher au pouvoir en place, il s’agit de tirer par le haut l’écosystème locatif. C’est là l’occasion pour vous d’intervenir en tant qu’acteur propriétaire et de défendre vos intérêts.</p>
             </div>
         </div>
     </div>
-</section>
-
-<section class="features">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>Even more great feautres</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
-            </div>
-        </div>
-        <div class="row features-block">
-            <div class="col-lg-3 features-text wow fadeInLeft">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-                <a href="" class="btn btn-primary">Learn more</a>
-            </div>
-            <div class="col-lg-6 text-right m-t-n-lg wow zoomIn">
-                <img src="img/landing/iphone.jpg" class="img-responsive" alt="dashboard">
-            </div>
-            <div class="col-lg-3 features-text text-right wow fadeInRight">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-                <a href="" class="btn btn-primary">Learn more</a>
-            </div>
-        </div>
-    </div>
-
 </section>
 
 <section class="timeline gray-section">
@@ -247,8 +105,8 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Our workflow</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                <h1>Le processus</h1>
+                <p>Trois phrases pour décrire les trois phases d'un processus extrêmement simple mais qui peut transformer un investissement pénible en un investissement judicieux !</p>
             </div>
         </div>
         <div class="row features-block">
@@ -261,11 +119,9 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Meeting</h2>
-                            <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
-                            </p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Today <br/> <small>Dec 24</small> </span>
+                            <h2>Saisie des avis</h2>
+                            <p>Rédaction des avis sur les locataires précédents.</p>
+                            <span class="vertical-date"> Aujourd'hui <br/></span>
                         </div>
                     </div>
 
@@ -275,10 +131,9 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Decision</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Tomorrow <br/> <small>Dec 26</small> </span>
+                            <h2>Choix du prochain locataire</h2>
+                            <p>Consultation des avis rédigés par les autres propriétaires.</p>
+                            <span class="vertical-date"> Prochaine location <br/></span>
                         </div>
                     </div>
 
@@ -288,10 +143,9 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Implementation</h2>
-                            <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Monday <br/> <small>Jan 02</small> </span>
+                            <h2>Investissement tranquille</h2>
+                            <p>Le choix d'un meilleur locataire se traduit par un investissement serein et une rentabilité accrue.</p>
+                            <span class="vertical-date"> Très long-terme <br/></span>
                         </div>
                     </div>
 
@@ -310,239 +164,14 @@
             <div class="col-lg-12 text-center wow zoomIn">
                 <i class="fa fa-comment big-icon"></i>
                 <h1>
-                    What our users say
+                    Ce que les utilisateurs en pensent
                 </h1>
                 <div class="testimonials-text">
-                    <i>"Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."</i>
+                    <i>"Ce site est la solution qui me permet de trouver des locataires fiables à partir d'un ressenti réel !"</i>
                 </div>
                 <small>
-                    <strong>12.02.2014 - Andy Smith</strong>
+                    <strong>23 février 2016 - Michelle Dupond</strong>
                 </small>
-            </div>
-        </div>
-    </div>
-
-</section>
-<section class="comments gray-section" style="margin-top: 0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>What our partners say</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada. </p>
-            </div>
-        </div>
-        <div class="row features-block">
-            <div class="col-lg-4">
-                <div class="bubble">
-                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-                </div>
-                <div class="comments-avatar">
-                    <a href="" class="pull-left">
-                        <img alt="image" src="img/landing/avatar3.jpg">
-                    </a>
-                    <div class="media-body">
-                        <div class="commens-name">
-                            Andrew Williams
-                        </div>
-                        <small class="text-muted">Company X from California</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="bubble">
-                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-                </div>
-                <div class="comments-avatar">
-                    <a href="" class="pull-left">
-                        <img alt="image" src="img/landing/avatar1.jpg">
-                    </a>
-                    <div class="media-body">
-                        <div class="commens-name">
-                            Andrew Williams
-                        </div>
-                        <small class="text-muted">Company X from California</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="bubble">
-                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-                </div>
-                <div class="comments-avatar">
-                    <a href="" class="pull-left">
-                        <img alt="image" src="img/landing/avatar2.jpg">
-                    </a>
-                    <div class="media-body">
-                        <div class="commens-name">
-                            Andrew Williams
-                        </div>
-                        <small class="text-muted">Company X from California</small>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-    </div>
-
-</section>
-
-<section class="features">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>More and more extra great feautres</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-5 col-lg-offset-1 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-bar-chart big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-            </div>
-            <div class="col-lg-5 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-bolt big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-5 col-lg-offset-1 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-clock-o big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-            </div>
-            <div class="col-lg-5 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-users big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-            </div>
-        </div>
-    </div>
-
-</section>
-<section id="pricing" class="pricing">
-    <div class="container">
-        <div class="row m-b-lg">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>App Pricing</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 wow zoomIn">
-                <ul class="pricing-plan list-unstyled">
-                    <li class="pricing-title">
-                        Basic
-                    </li>
-                    <li class="pricing-desc">
-                        Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-                    </li>
-                    <li class="pricing-price">
-                        <span>$16</span> / month
-                    </li>
-                    <li>
-                        Dashboards
-                    </li>
-                    <li>
-                        Projects view
-                    </li>
-                    <li>
-                        Contacts
-                    </li>
-                    <li>
-                        Calendar
-                    </li>
-                    <li>
-                        AngularJs
-                    </li>
-                    <li>
-                        <a class="btn btn-primary btn-xs" href="#">Signup</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-4 wow zoomIn">
-                <ul class="pricing-plan list-unstyled selected">
-                    <li class="pricing-title">
-                        Standard
-                    </li>
-                    <li class="pricing-desc">
-                        Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-                    </li>
-                    <li class="pricing-price">
-                        <span>$22</span> / month
-                    </li>
-                    <li>
-                        Dashboards
-                    </li>
-                    <li>
-                        Projects view
-                    </li>
-                    <li>
-                        Contacts
-                    </li>
-                    <li>
-                        Calendar
-                    </li>
-                    <li>
-                        AngularJs
-                    </li>
-                    <li>
-                        <strong>Support platform</strong>
-                    </li>
-                    <li class="plan-action">
-                        <a class="btn btn-primary btn-xs" href="#">Signup</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-4 wow zoomIn">
-                <ul class="pricing-plan list-unstyled">
-                    <li class="pricing-title">
-                        Premium
-                    </li>
-                    <li class="pricing-desc">
-                        Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-                    </li>
-                    <li class="pricing-price">
-                        <span>$160</span> / month
-                    </li>
-                    <li>
-                        Dashboards
-                    </li>
-                    <li>
-                        Projects view
-                    </li>
-                    <li>
-                        Contacts
-                    </li>
-                    <li>
-                        Calendar
-                    </li>
-                    <li>
-                        AngularJs
-                    </li>
-                    <li>
-                        <a class="btn btn-primary btn-xs" href="#">Signup</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="row m-t-lg">
-            <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg">
-                <p>*Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. <span class="navy">Various versions</span>  have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
             </div>
         </div>
     </div>
@@ -554,44 +183,17 @@
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Contact Us</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
-            </div>
-        </div>
-        <div class="row m-b-lg">
-            <div class="col-lg-3 col-lg-offset-3">
-                <address>
-                    <strong><span class="navy">Company name, Inc.</span></strong><br/>
-                    795 Folsom Ave, Suite 600<br/>
-                    San Francisco, CA 94107<br/>
-                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                </address>
-            </div>
-            <div class="col-lg-4">
-                <p class="text-color">
-                    Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis, totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis, totam corporis ea,
-                </p>
+                <h1>Nous contacter</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="mailto:test@email.com" class="btn btn-primary">Send us mail</a>
-                <p class="m-t-sm">
-                    Or follow us on social platform
-                </p>
-                <ul class="list-inline social-icon">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                </ul>
+                <a href="mailto:test@email.com" class="btn btn-primary">Envoyez-nous un courriel</a>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
-                <p><strong>&copy; 2015 Company Name</strong><br/> consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                <p><strong>&copy; 2016 ImmoTrankil</strong><br/> L'immobilier tranquille par la recherche du meilleur locataire...</p>
             </div>
         </div>
     </div>
