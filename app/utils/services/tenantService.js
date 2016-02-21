@@ -19,21 +19,13 @@ app.service('tenantService', function (dbQueriesService, $q) {
     };
 
     this.getTenant = function (id, callback) {
-        var user = {};
-        var deferred = $q.defer();
-
         dbQueriesService.getTenant(id).then(
             function (res) {
-                user = res;
-                deferred.resolve(user);
-                callback(null);
+                callback(null, res.data);
             },
             function (res) {
-                deferred.reject(res.data);
                 callback(new Error('Failed'));
             });
-
-        return deferred.promise;
     };
 
 });

@@ -13,4 +13,12 @@ app.service('dbQueriesService', function ($http) {
         return $http.post('/api/tenants', data);
     };
 
+    this.getTenant = function (id) {
+        return $http.get('/api/tenants/' + id);
+    };
+
+    this.getNoteForTenant = function (id) {
+        return $http.get('/api/tenants/' + id);
+    };
+
 });

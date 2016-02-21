@@ -74,8 +74,6 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
     var component_stars = ['utils/libraries/angular-input-stars/angular-input-stars.css',
         'utils/libraries/angular-input-stars/angular-input-stars.js'];
 
-    var component_acute = ['utils/libraries/acute-select/acute.select.htm'];
-
     var component_peity = ['https://cdnjs.cloudflare.com/ajax/libs/peity/3.2.0/jquery.peity.min.js']
 
     $stateProvider
@@ -120,6 +118,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                         {
                             files: [
                                 'note/newNoteController.js',
+                                'utils/services/tenantService.js',
                                 'utils/services/dbQueriesService.js',
                                 'main.js'
                             ]
