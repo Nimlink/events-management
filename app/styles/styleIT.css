@@ -7065,10 +7065,11 @@ body.skin-3 {
 
 .navy-section {
     margin-top: 60px;
-    background: #f89136;
+    /*background: #f89136;*/
+    background-image: url('../res/images/avatar_all.png');
     color: #fff;
     padding: 20px 0;
-    opacity: 0.4;
+    opacity: 0.8;
 }
 
 .navy-line {
