@@ -8,7 +8,7 @@ function pageTitle($rootScope, $timeout) {
                 // Default title - load on Dashboard 1
                 var title = 'Le Petit Porteur';
                 // Create your own title pattern
-                if (toState.data && toState.data.pageTitle) title = 'Le Petit Porteur | ' + toState.data.pageTitle;
+                if (toState.data && toState.data.pageTitle) title = 'ImmoTrankil';
                 $timeout(function() {
                     element.text(title);
                 });

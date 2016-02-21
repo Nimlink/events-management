@@ -22,10 +22,12 @@ CREATE TABLE t_users (
    lastname VARCHAR(255) NOT NULL,
    lastname_lower VARCHAR(255) NOT NULL,
    inscription_date TIMESTAMP,
-   nb_request INTEGER NOT NULL DEFAULT 0
+   nb_request INTEGER NOT NULL DEFAULT 0,
+   isActivated BOOLEAN NOT NULL DEFAULT false
 );
 ALTER TABLE t_users ADD CONSTRAINT pk_users PRIMARY KEY (id);
-CREATE INDEX uidx_users ON t_users(firstname_lower, lastname_lower);
+CREATE INDEX idx_users ON t_users(firstname_lower, lastname_lower);
+CREATE UNIQUE INDEX uidx_users_mail ON t_users(mail);
 
 DROP TABLE IF EXISTS t_users_usertypes CASCADE;
 CREATE TABLE t_users_usertypes (
@@ -71,7 +73,7 @@ INSERT INTO t_usertypes (code,type) VALUES ('ADM','Administrateur');
 INSERT INTO t_usertypes (code,type) VALUES ('LOC','Locataire');
 
 insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('sebastienthomass@gmail.com', 'password', 'Sébastien','sebastien','THOMAS', 'thomas', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('juliencapgras@gmail.com', 'password', 'Julien','julien','CAPGRAS', 'capgras', '01/01/2016', 0);
+insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request, isActivated) values ('juliencapgras@gmail.com', 'password', 'Julien','julien','CAPGRAS', 'capgras', '01/01/2016', 0, true);
 insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test@gmail.com', 'password', 'Test','test','TEST', 'test', '01/01/2016', 0);
 insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test1@gmail.com', 'password', 'Test1','test1','TEST1', 'test1', '01/01/2016', 0);
 insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test2@gmail.com', 'password', 'Test2','test2','TEST2', 'test2', '01/01/2016', 0);

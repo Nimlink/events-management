@@ -148,7 +148,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                 }
             }
         })
-        .state('index.signup', {
+        .state('index_nobar.signup', {
             url: "/signup",
             templateUrl: "signup/signup.html",
             data: {pageTitle: 'Inscription'},

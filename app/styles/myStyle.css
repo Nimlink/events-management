@@ -26,3 +26,8 @@
 .md-autocomplete md-autocomplete-wrap.md-menu-showing {
     z-index: 1300;
 }
+
+.orange-bg {
+    background-color: #f89136;
+    color: #ffffff
+}

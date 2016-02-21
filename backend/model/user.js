@@ -55,6 +55,44 @@ function getOwnerById(id, callback) {
 };
 module.exports.getOwnerById = getOwnerById;
 
+function getOwnerByMailForAuthentification(mail, callback) {
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        var users = [];
+        var query = client.query("SELECT users.id, users.mail, users.password, users.isActivated  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE users.mail=$1 AND usertype.code='PRO'",
+            [mail]);
+        query.on('row', function (row) {
+            users.push(row);
+        });
+        query.on('end', function () {
+            client.end();
+            callback(null, users[0]);
+        });
+    });
+};
+module.exports.getOwnerByMailForAuthentification = getOwnerByMailForAuthentification;
+
+function getOwnerByMail(mail, callback) {
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        var users = [];
+        var query = client.query("SELECT users.mail, users.firstname, users.lastname FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE users.mail=$1 AND usertype.code='PRO'",
+            [mail]);
+        query.on('row', function (row) {
+            users.push(row);
+        });
+        query.on('end', function () {
+            client.end();
+            if (users.length == 0) {
+                callback(new Error('No user with this mail'));
+            } else {
+                callback(null, users[0]);
+            }
+        });
+    });
+};
+module.exports.getOwnerByMail = getOwnerByMail;
+
 function insertTenant(firstname, lastname, callback) {
     var client = new pg.Client(connectionString);
     var today = new Date(Date.now());
