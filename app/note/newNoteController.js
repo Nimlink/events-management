@@ -25,6 +25,16 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $
 
     $scope.$watch('note.capacity', modifiedNote);
 
+    $(document).ready(function() {
+        //$("#InlineMenu").MonthPicker({
+        //    SelectedMonth: '04/' + new Date().getFullYear(),
+        //    OnAfterChooseMonth: function(selectedDate) {
+        //        $scope.note.date_start = selectedDate;
+        //    }
+        //});
+        $('.Default').MonthPicker();
+    });
+
     function modifiedNote() {
         var moyenne = 0;
         var nb = 0;

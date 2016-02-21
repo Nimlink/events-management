@@ -55,6 +55,10 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
         'utils/libraries/angular-ui-grid/ui-grid.woff',
         'utils/services/ui/uiGridService.js'];
 
+    var month_picker = ['utils/libraries/monthPicker/MonthPicker.min.js',
+        'utils/libraries/monthPicker/MonthPicker.min.css',
+        'utils/libraries/monthPicker/jquery.maskedinput.min.js'];
+
     var component_jstree = ['https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css',
         'utils/libraries/jstree/jsTree.directive.js'];
