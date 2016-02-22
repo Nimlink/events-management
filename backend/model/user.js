@@ -8,7 +8,7 @@ function getTenant(firstname, lastname, callback) {
         firstname += '%';
         lastname += '%';
         var users = [];
-        var query = client.query("SELECT users.id, users.firstname, users.lastname  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE firstname_lower LIKE $1 AND lastname_lower LIKE $2 AND usertype.code='LOC'",
+        var query = client.query("SELECT users.id, users.hash, users.firstname, users.lastname  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE firstname_lower LIKE $1 AND lastname_lower LIKE $2 AND usertype.code='LOC'",
             [firstname, lastname]);
         query.on('row', function (row) {
             users.push(row);
@@ -20,6 +20,23 @@ function getTenant(firstname, lastname, callback) {
     });
 };
 module.exports.getTenant = getTenant;
+
+function getTenantStrict(firstname, lastname, callback) {
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        var users = [];
+        var query = client.query("SELECT users.id, users.hash, users.firstname, users.lastname  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE firstname_lower = $1 AND lastname_lower = $2 AND usertype.code='LOC'",
+            [firstname, lastname]);
+        query.on('row', function (row) {
+            users.push(row);
+        });
+        query.on('end', function () {
+            client.end();
+            callback(null, users);
+        });
+    });
+};
+module.exports.getTenantStrict = getTenantStrict;
 
 function getTenantById(id, callback) {
     var client = new pg.Client(connectionString);
@@ -37,6 +54,23 @@ function getTenantById(id, callback) {
     });
 };
 module.exports.getTenantById = getTenantById;
+
+function getTenantByHash(hash, callback) {
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        var users = [];
+        var query = client.query("SELECT users.id, users.firstname, users.lastname  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE users.hash=$1 AND usertype.code='LOC'",
+            [hash]);
+        query.on('row', function (row) {
+            users.push(row);
+        });
+        query.on('end', function () {
+            client.end();
+            callback(null, users);
+        });
+    });
+};
+module.exports.getTenantByHash = getTenantByHash;
 
 function getOwnerById(id, callback) {
     var client = new pg.Client(connectionString);
@@ -96,9 +130,11 @@ module.exports.getOwnerByMail = getOwnerByMail;
 function insertTenant(firstname, lastname, callback) {
     var client = new pg.Client(connectionString);
     var today = new Date(Date.now());
+    var hash = require('crypto').createHmac('sha256','ImmoTrankilSecret').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
     client.connect(function (err) {
-        var query = client.query('insert into t_users (firstname, firstname_lower, lastname, lastname_lower, inscription_date) values ($1,$2,$3,$4,$5);',
-            [   firstname,
+        var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date) values ($1,$2,$3,$4,$5);',
+            [   hash,
+                firstname,
                 firstname.toLowerCase(),
                 lastname,
                 lastname.toLowerCase(),

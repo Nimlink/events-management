@@ -31,36 +31,33 @@ module.exports = function (authService) {
             parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
     }
 
-    router.get('/:id', function (req, res, next) {
-        if (req.params.id == undefined) {
+    router.get('/:hash', function (req, res, next) {
+        if (req.params.hash == undefined) {
             res.setHeader('Content-Type', 'application/json');
             res.status(404).json('No data');
         } else {
-            if (isInt(req.params.id)) {
-                async.series([
-                    async.apply(users.getTenantById, req.params.id),
-                    async.apply(notes.getNotesForTenant, req.params.id)
-                ], function (err, results) {
-                    if (results[0].length < 1) {
-                        res.setHeader('Content-Type', 'application/json');
-                        res.status(404).json('No people found');
-                    } else {
+            async.series([
+                async.apply(users.getTenantByHash, req.params.hash)
+            ], function (err, user) {
+                if (user[0].length < 1) {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.status(404).json('No people found');
+                } else {
+                    async.series([
+                        async.apply(notes.getNotesForTenant, user[0][0].id)
+                    ], function (err, results) {
                         var tenant = {
-                            firstname: results[0][0].firstname,
-                            lastname: results[0][0].lastname,
-                            notes: results[1]
+                            firstname: user[0][0].firstname,
+                            lastname: user[0][0].lastname,
+                            notes: results[0]
                         };
                         res.setHeader('Content-Type', 'application/json');
                         res.status(200).json(tenant);
-                    }
-                });
-            } else {
-                res.setHeader('Content-Type', 'application/json');
-                res.status(404).json('No data');
-            }
-
+                    });
+                }
+            });
         }
     });
 
     return router;
-}
+};
