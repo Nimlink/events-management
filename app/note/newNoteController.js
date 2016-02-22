@@ -23,17 +23,15 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $
     };
     $scope.moyenne = 0;
 
-    $scope.$watch('note.capacity', modifiedNote);
+    $.fn.datepicker.noConflict
 
-    $(document).ready(function() {
-        //$("#InlineMenu").MonthPicker({
-        //    SelectedMonth: '04/' + new Date().getFullYear(),
-        //    OnAfterChooseMonth: function(selectedDate) {
-        //        $scope.note.date_start = selectedDate;
-        //    }
-        //});
-        $('.Default').MonthPicker();
+    $('#RangeMenu').datepicker({
+        format: "dd/mm/yyyy",
+        startView: 1,
+        minViewMode: 1
     });
+
+    $scope.$watch('note.capacity', modifiedNote);
 
     function modifiedNote() {
         var moyenne = 0;
