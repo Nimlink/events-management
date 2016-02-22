@@ -15,6 +15,7 @@ CREATE UNIQUE INDEX uidx_usertypes ON t_usertypes(code);
 DROP TABLE IF EXISTS t_users CASCADE;
 CREATE TABLE t_users (
    id INTEGER NOT NULL DEFAULT nextval('seq'),
+   hash VARCHAR(255) NOT NULL,
    mail VARCHAR(255),
    password VARCHAR(255),
    firstname VARCHAR(255) NOT NULL,
@@ -28,6 +29,7 @@ CREATE TABLE t_users (
 ALTER TABLE t_users ADD CONSTRAINT pk_users PRIMARY KEY (id);
 CREATE INDEX idx_users ON t_users(firstname_lower, lastname_lower);
 CREATE UNIQUE INDEX uidx_users_mail ON t_users(mail);
+CREATE UNIQUE INDEX uidx_users_hash ON t_users(hash);
 
 DROP TABLE IF EXISTS t_users_usertypes CASCADE;
 CREATE TABLE t_users_usertypes (
@@ -72,19 +74,19 @@ INSERT INTO t_usertypes (code,type) VALUES ('PRO','Propriétaire');
 INSERT INTO t_usertypes (code,type) VALUES ('ADM','Administrateur');
 INSERT INTO t_usertypes (code,type) VALUES ('LOC','Locataire');
 
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('sebastienthomass@gmail.com', 'password', 'Sébastien','sebastien','THOMAS', 'thomas', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request, isActivated) values ('juliencapgras@gmail.com', 'password', 'Julien','julien','CAPGRAS', 'capgras', '01/01/2016', 0, true);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test@gmail.com', 'password', 'Test','test','TEST', 'test', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test1@gmail.com', 'password', 'Test1','test1','TEST1', 'test1', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test2@gmail.com', 'password', 'Test2','test2','TEST2', 'test2', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test3@gmail.com', 'password', 'Test3','test3','TEST3', 'test3', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test4@gmail.com', 'password', 'Test4','test4','TEST4', 'test4', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test5@gmail.com', 'password', 'Test5','test5','TEST5', 'test5', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test6@gmail.com', 'password', 'Test6','test6','TEST6', 'test6', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test7@gmail.com', 'password', 'Test7','test7','TEST7', 'test7', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test8@gmail.com', 'password', 'Test8','test8','TEST8', 'test8', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test9@gmail.com', 'password', 'Test9','test9','TEST9', 'test9', '01/01/2016', 0);
-insert into t_users (mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('testProp@gmail.com', 'password', 'TestProp','prop','TESTPROP', 'testprop', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('sebastienthomass','sebastienthomass@gmail.com', 'password', 'Sébastien','sebastien','THOMAS', 'thomas', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request, isActivated) values ('juliencapgras','juliencapgras@gmail.com', 'password', 'Julien','julien','CAPGRAS', 'capgras', '01/01/2016', 0, true);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test','test@gmail.com', 'password', 'Test','test','TEST', 'test', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test1','test1@gmail.com', 'password', 'Test1','test1','TEST1', 'test1', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test2','test2@gmail.com', 'password', 'Test2','test2','TEST2', 'test2', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test3','test3@gmail.com', 'password', 'Test3','test3','TEST3', 'test3', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test4','test4@gmail.com', 'password', 'Test4','test4','TEST4', 'test4', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test5','test5@gmail.com', 'password', 'Test5','test5','TEST5', 'test5', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test6','test6@gmail.com', 'password', 'Test6','test6','TEST6', 'test6', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test7','test7@gmail.com', 'password', 'Test7','test7','TEST7', 'test7', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test8','test8@gmail.com', 'password', 'Test8','test8','TEST8', 'test8', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('test9','test9@gmail.com', 'password', 'Test9','test9','TEST9', 'test9', '01/01/2016', 0);
+insert into t_users (hash, mail, password, firstname, firstname_lower, lastname, lastname_lower, inscription_date, nb_request) values ('testProp','testProp@gmail.com', 'password', 'TestProp','prop','TESTPROP', 'testprop', '01/01/2016', 0);
 
 insert into t_users_usertypes values (4,3);
 insert into t_users_usertypes values (5,1);

@@ -4,10 +4,10 @@
 function tenantCtrl($rootScope, $stateParams, $scope, tenantService, $modal, $state) {
 
     $scope.tenant = {};
-    $scope.tenant.id = $stateParams.id;
+    $scope.tenant.hash = $stateParams.id;
 
     async.parallel([
-        async.apply(tenantService.getTenant, $scope.tenant.id)
+        async.apply(tenantService.getTenant, $scope.tenant.hash)
     ], function (err, result) {
         if (err != undefined) {
             $modal.open({

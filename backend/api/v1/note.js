@@ -53,7 +53,7 @@ module.exports = function (authService) {
 
             async.series([
                 async.apply(users.getOwnerById, data.id_owner),
-                async.apply(users.getTenant, data.firstname, data.lastname)
+                async.apply(users.getTenantStrict, data.firstname, data.lastname)
             ], function (err, results) {
                 if (results[0].length < 1) {
                     res.setHeader('Content-Type', 'application/json');
