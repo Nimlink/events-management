@@ -23,13 +23,13 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $
     };
     $scope.moyenne = 0;
 
-    $.fn.datepicker.noConflict
-
-    $('#RangeMenu').datepicker({
-        format: "dd/mm/yyyy",
-        startView: 1,
-        minViewMode: 1
-    });
+    //$.fn.datepicker.noConflict
+    //
+    //$('#RangeMenu').datepicker({
+    //    format: "dd/mm/yyyy",
+    //    startView: 1,
+    //    minViewMode: 1
+    //});
 
     $scope.$watch('note.capacity', modifiedNote);
 
