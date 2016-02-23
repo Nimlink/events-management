@@ -104,6 +104,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                         {
                             files: [
                                 'utils/services/dbQueriesService.js',
+                                'login/loginController.js',
                                 'main.js'
                             ]
                         }])

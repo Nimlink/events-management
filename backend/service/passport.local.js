@@ -3,10 +3,10 @@ var userService = require('./userService');
 
 module.exports = function (passport, authService) {
     passport.use(new LocalStrategy({
+            usernameField: 'mail',
+            passwordField: 'password',
             session: false
-        },
-        function (mail, password, callback) {
-            console.log("LocalStrategy username", mail);
+        }, function (mail, password, callback) {
             userService.isValidByMail(mail, function (err, user) {
                 if (user && !userService.isValidPassword(user, password)){
                     user = null;

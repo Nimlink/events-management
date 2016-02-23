@@ -3,21 +3,33 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var app = express();
-var appConfig = require('./backend/config');
-var authService = require('./backend/service/auth')(appConfig);
+var authService = require('./backend/service/auth')({
+    "secret": 'ImmoTrankilSecret',
+    "token":{
+        "expiresIn" : "1d" // expires in 24 hours
+    }});
 var flash = require('connect-flash');
 
+var app = express();
 app.use(flash());
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '10mb'}));
 app.use(favicon(path.join(__dirname, 'backend', 'public', 'favicon.ico')));
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Authorization, Accept, x-access-token');
-    res.setHeader('Access-Control-Allow-Credentials', false);
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public'))); // NOTE: Set static prior Session activation
+
+app.all('*', function (req, res, next) {
+    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Credentials', false);
+    res.header('Access-Control-Max-Age', '86400');
+    next();
+});
+
+app.use(function (req, res, next) { // enable CORS  Cross-Origin Resource Sharing
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Authorization, Accept, x-access-token");
     next();
 });
 
@@ -30,11 +42,11 @@ require('./backend/service/passport')(passport);
 require('./backend/service/passport.local')(passport, authService);
 
 // routes for API
+var auth = require('./backend/api/v1/auth')(passport, authService);
 var towns = require('./backend/api/v1/towns')(authService);
 var tenants = require('./backend/api/v1/tenant')(authService);
 var owners = require('./backend/api/v1/owner')(authService);
 var notes = require('./backend/api/v1/note')(authService);
-var auth = require('./backend/api/v1/auth')(passport, authService);
 
 // register routes
 app.use('/api/auth', auth);

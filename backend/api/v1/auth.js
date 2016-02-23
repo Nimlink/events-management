@@ -6,34 +6,16 @@ var UserModel = require('../../model/user');
 
 module.exports = function (passport, authService) {
 
-    router.get('/profile', authService.ensureAuthorized(), function (req, res) {
-
-        var mail = req.decoded.user.mail;
-        async.series([
-            async.apply(users.getOwnerByMail, mail)
-        ], function (err, user) {
-            if (err) {
-                return util.handleError(err, res);
-            }
-            return res.json(user);
-        });
-    });
-
-    router.get('/negotiate', passport.authenticate('negotiate', {failureFlash: true, session: false}),
-        function (req, res, next) {
-            // SHOULD be called only if negotiate authenticate successful
-            res.json(req.user);
-        }
-    );
-
     router.post('/login',
-        passport.authenticate('local', {successReturnToOrRedirect: '/', failureRedirect: '/ws/auth/loginpage'}),
+        passport.authenticate('local',
         function (req, res, next) {
-        });
+            console.log(req.body);
+        }));
 
     router.post('/signin', passport.authenticate('local', {failureFlash: true}),
         function (req, res, next) {
             req.session.user = req.user;
+            console.log(req.user);
             return res.json(req.user);
         });
 

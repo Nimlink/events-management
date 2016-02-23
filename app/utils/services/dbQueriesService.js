@@ -25,4 +25,11 @@ app.service('dbQueriesService', function ($http) {
         return $http.post('/api/notes', data);
     };
 
+    this.auth_login = function (data) {
+        return $http.post('/api/auth/signin', data);
+    };
+
+    this.auth_logout = function (data) {
+        return $http.post('/api/auth/logout', data);
+    };
 });

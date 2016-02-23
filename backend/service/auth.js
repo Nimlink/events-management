@@ -45,6 +45,7 @@ module.exports = function (appConfig) {
 
 
     auth.ensureAuthorized = function (options) {
+        console.log('test');
 
         var isSupportedRole = function (tokenUser, options) {
             var result = true;

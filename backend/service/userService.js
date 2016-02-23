@@ -8,9 +8,7 @@ exports.ERRORS_CODE = {
 };
 
 exports.isValidByMail = function (mail, callback) {
-    async.series([
-        async.apply(users.getOwnerByMailForAuthentification, mail)
-    ], function (err, user) {
+    users.getOwnerByMailForAuthentification(mail, function (err, user) {
         if (err) {
             callback(err, null);
         }
@@ -33,7 +31,8 @@ var createHash = function (password) {
 
 exports.isValidPassword = function (foundUser, reqPassword) {
     if (foundUser.password) {
-        return bCrypt.compareSync(reqPassword, foundUser.password);
+        //return bCrypt.compareSync(reqPassword, foundUser.password);
+        return reqPassword === foundUser.password;
     }
     console.log("password has to not be null. User: ", foundUser);
     return false;

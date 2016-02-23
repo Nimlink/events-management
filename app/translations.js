@@ -60,7 +60,9 @@ function config($translateProvider) {
             town: 'Ville',
             missing_parameters: 'Veuillez svp renseigner les champs suivants',
             usure: 'Etes vous sûr de mettre 0 à ce locataire ?',
-            dateNotOk: "La date de sortie ne peut pas être inférieure à la date d'entrée"
+            dateNotOk: "La date de sortie ne peut pas être inférieure à la date d'entrée",
+            mail: 'Mail',
+            password: 'Password'
 		});
 
 	$translateProvider.preferredLanguage('fr');
