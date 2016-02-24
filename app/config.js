@@ -102,7 +102,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
         .state('index_nobar.login', {
             url: "/login",
             templateUrl: "login/login.html",
-            data: {pageTitle: 'Login'},
+            data: {pageTitle: 'Login', requireLogin: false},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([{files: ['login/loginController.js']},
@@ -121,7 +121,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
         .state('index.tenant', {
             url: "/tenant/:id",
             templateUrl: "tenant/tenant.html",
-            data: {pageTitle: 'Locataire'},
+            data: {pageTitle: 'Locataire', requireLogin: true},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([{files: ['tenant/tenantController.js']},
@@ -141,7 +141,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
         .state('index.owner', {
             url: "/owner",
             templateUrl: "owner/owner.html",
-            data: {pageTitle: 'Propriétaire'},
+            data: {pageTitle: 'Propriétaire', requireLogin: true},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([{files: ['owner/ownerController.js']},
@@ -163,7 +163,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
         .state('index_nobar.signup', {
             url: "/signup",
             templateUrl: "signup/signup.html",
-            data: {pageTitle: 'Inscription'},
+            data: {pageTitle: 'Inscription', requireLogin: false},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([{files: ['signup/signupController.js']},

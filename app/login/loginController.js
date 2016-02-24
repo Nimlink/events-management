@@ -13,7 +13,6 @@ function LoginCtrl($scope, authService, $state, userSession, AUTH_EVENTS) {
     };
 
     $scope.login = function() {
-        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, user);
         resetFailure();
         authService.login($scope.credentials).then(function (user) {
             $state.go("index.owner");

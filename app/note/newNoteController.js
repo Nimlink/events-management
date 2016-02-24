@@ -23,6 +23,14 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $
     };
     $scope.moyenne = 0;
 
+    $scope.datepickerOptions = {
+        format: 'yyyy-mm-dd',
+        language: 'fr',
+        autoclose: true,
+        weekStart: 0,
+        minViewMode: 1
+    }
+
     //$.fn.datepicker.noConflict
     //
     //$('#RangeMenu').datepicker({

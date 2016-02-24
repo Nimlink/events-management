@@ -1,7 +1,7 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, townService, $translate, $log, $mdMedia, $mdDialog) {
+function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, townService,authService, $translate, $log, $mdMedia, $mdDialog) {
 
     $scope.search = {};
     $scope.towns = [];
@@ -82,6 +82,11 @@ function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, 
 
     $scope.go = function ( path ) {
         $location.path( path );
+    };
+
+    $scope.logout = function () {
+        authService.logout();
+        $state.go('index_nobar.login');
     };
 
 };

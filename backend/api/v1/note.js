@@ -5,7 +5,7 @@ module.exports = function (authService) {
     var notes = require('../../model/note.js');
     var users = require('../../model/user.js');
 
-    router.post('/', function (req, res) {
+    router.post('/', authService.ensureAuthorized(), function (req, res) {
         if (req.body == undefined) {
             res.setHeader('Content-Type', 'application/json');
             res.status(404).json('No data in post');
@@ -52,7 +52,7 @@ module.exports = function (authService) {
             }
 
             async.series([
-                async.apply(users.getOwnerById, data.id_owner),
+                async.apply(users.getOwnerById, req.decoded.user.id),
                 async.apply(users.getTenantStrict, data.firstname, data.lastname)
             ], function (err, results) {
                 if (results[0].length < 1) {

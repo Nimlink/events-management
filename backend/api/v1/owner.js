@@ -10,15 +10,16 @@ module.exports = function (authService) {
             parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
     }
 
-    router.get('/:id', function (req, res, next) {
-        if (req.params.id == undefined) {
+    router.get('/', authService.ensureAuthorized(), function (req, res, next) {
+        if (req.decoded.user == undefined) {
             res.setHeader('Content-Type', 'application/json');
             res.status(404).json('No data');
         } else {
-            if (isInt(req.params.id)) {
+            var id = req.decoded.user.id;
+            if (isInt(id)) {
                 async.series([
-                    async.apply(users.getOwnerById, req.params.id),
-                    async.apply(notes.getNotesForOwner, req.params.id)
+                    async.apply(users.getOwnerById, id),
+                    async.apply(notes.getNotesForOwner, id)
                 ], function (err, results) {
                     if (results[0].length < 1) {
                         res.setHeader('Content-Type', 'application/json');

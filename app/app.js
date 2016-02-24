@@ -5,6 +5,7 @@
         'pascalprecht.translate',
         'oc.lazyLoad',
         'ngMessages',
-        'ngMaterial',
+        'ng-bootstrap-datepicker',
+        'ngMaterial'
     ])
 })();

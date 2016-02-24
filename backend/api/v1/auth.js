@@ -19,10 +19,6 @@ module.exports = function (passport, authService) {
             return res.json(req.user);
         });
 
-    router.get('/loginpage', function (req, res) {
-        res.redirect('../../login.html');
-    });
-
     router.get('/logout', function (req, res) {
         if (req.session) {
             //req.session.reset();

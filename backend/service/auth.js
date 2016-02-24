@@ -45,26 +45,12 @@ module.exports = function (appConfig) {
 
 
     auth.ensureAuthorized = function (options) {
-        console.log('test');
-
-        var isSupportedRole = function (tokenUser, options) {
-            var result = true;
-            if (options && options.role) {
-                var roleValues = {
-                    PRO: 1,
-                    ADM: 2,
-                    LOC: 3
-                };
-
-                result = roleValues[tokenUser.roleCode] >= roleValues[options.role];
-            }
-            return result;
-        };
 
         return function (req, res, next) {
             // check header or url parameters or post parameters for token
             var token = req.headers['x-access-token'] || req.body.token || req.query.token;
             var TOKEN_EXPIRED_ERROR = "TokenExpiredError";
+
 
             if (token) {
                 // verifies secret and checks expiration date
@@ -78,12 +64,6 @@ module.exports = function (appConfig) {
 
                         util.handleError(err, res);
                     } else {
-                        if (!isSupportedRole(decoded.user, options)) {
-                            err = new Error("Requested at least user's role: " + options.role);
-                            err.status = 403;
-                            return util.handleError(err, res);
-                        }
-
                         req.decoded = decoded;  // if everything is good, save to request for use in other routes
                         next();
                     }

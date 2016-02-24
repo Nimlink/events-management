@@ -17,13 +17,6 @@
 
             authService.logout = function () {
                 userSession.destroy();
-
-                // Not really needed to notify backend?
-                /*return $http.get(restApi.auth_logout)
-                    .then(function (res) {
-                        return res;
-                    }
-                );*/
             };
 
             authService.getCurrentUser = function () {
