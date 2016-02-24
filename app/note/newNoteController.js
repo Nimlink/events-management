@@ -1,5 +1,5 @@
 /**
- * MainCtrl - controller
+ * newNoteCtrl - controller
  */
 function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $log, noteService, $translate) {
 
@@ -22,14 +22,6 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $
         degradation: 0
     };
     $scope.moyenne = 0;
-
-    //$.fn.datepicker.noConflict
-    //
-    //$('#RangeMenu').datepicker({
-    //    format: "dd/mm/yyyy",
-    //    startView: 1,
-    //    minViewMode: 1
-    //});
 
     $scope.$watch('note.capacity', modifiedNote);
 

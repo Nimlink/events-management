@@ -7110,3 +7110,14 @@ span.danger {
     border-color: #f89136;
     color: #FFFFFF
 }
+
+.datetimepicker span {
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    margin: 1%;
+    width: 23%;
+}

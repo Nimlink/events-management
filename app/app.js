@@ -6,5 +6,6 @@
         'oc.lazyLoad',
         'ngMessages',
         'ngMaterial',
+        'ui.bootstrap.datetimepicker'
     ])
 })();
