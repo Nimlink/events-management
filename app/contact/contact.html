@@ -1,0 +1,60 @@
+<div ng-controller="contactCtrl as ctrl">
+    <div class="row wrapper border-bottom orange-bg page-heading">
+        <div class="col-lg-10">
+            <h1><i class="fa fa-home"/> Contact</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <div class="row">
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <form name="userForm">
+                                                        <md-input-container class="md-block" flex-gt-sm="">
+                                                            <label>Titre</label>
+                                                            <input required="" name="title" ng-model="message.title">
+                                                            <div ng-messages="userForm.title.$error">
+                                                                <div ng-message="required">Requis.</div>
+                                                            </div>
+                                                        </md-input-container>
+                                                        <md-input-container class="md-block" flex-gt-sm="">
+                                                            <label>Message</label>
+                                                            <textarea required="" name="text" ng-model="message.text" md-maxlength="5000" rows="20" md-select-on-focus></textarea>
+                                                            <div ng-messages="userForm.text.$error">
+                                                                <div ng-message="required">Requis.</div>
+                                                            </div>
+                                                        </md-input-container>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <button type="button" ng-click="ok()"  class="btn btn-sm btn-immo">Envoyer le message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1">
+                                </div>
+                                <div class="col-lg-5">
+                                    <h2><i class="fa fa-envelope-o text-immo"></i> Nous écrire</h2>
+                                    <p>Vous avez une suggestion particulière ? Quelque chose vous gêne ? Vous aimeriez une évolution précise ?</p>
+                                    <p>N'hésitez pas à nous faire part de toutes vos remarques particulières. Cela nous permettra de faire évoluer le service et de le rendre au plus proche des besoins des propriétaires.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

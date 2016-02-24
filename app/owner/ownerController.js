@@ -5,6 +5,19 @@ function ownerCtrl($rootScope, $stateParams, $scope, ownerService, $modal, $stat
 
     $scope.owner = {};
 
+    //$.fn.datepicker.noConflict
+    //
+    //$('#InlineMenu').datepicker({
+    //    minViewMode: 1
+    //});
+
+    //$('#RangeMenu').datepicker({
+    //    format: "dd/mm/yyyy",
+    //    startView: 1,
+    //    minViewMode: 1
+    //});
+
+
     async.parallel([
         ownerService.getOwner
     ], function (err, result) {

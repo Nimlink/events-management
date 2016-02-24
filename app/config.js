@@ -180,6 +180,22 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
                 }
             }
         })
+        .state('index_nobar.contact', {
+            url: "/contact",
+            templateUrl: "contact/contact.html",
+            data: {pageTitle: 'Contact'},
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([{files: ['contact/contactController.js']},
+                        {
+                            files: [
+                                'utils/services/dbQueriesService.js',
+                                'main.js'
+                            ]
+                        }])
+                }
+            }
+        })
 }
 angular
     .module('fup')
