@@ -1,4 +1,4 @@
-function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadProvider) {
+function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadProvider, $injector) {
 
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -8,6 +8,13 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
     $ocLazyLoadProvider.config({
         debug: false
     });
+
+    //$httpProvider.interceptors.push([
+    //    '$injector',
+    //    function ($injector) {
+    //        return $injector.get('authInterceptor');
+    //    }
+    //]);
 
     // Libraries
 
