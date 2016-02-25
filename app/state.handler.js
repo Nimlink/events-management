@@ -1,6 +1,6 @@
 (function () {
-    angular.module('PressureDB')
-        .factory('stateHandler', ['$rootScope', '$state', 'authService', 'AUTH_EVENTS', '$window', 'STORAGE_KEYS', function ($rootScope, $state, authService, AUTH_EVENTS, $window, STORAGE_KEYS) {
+    angular.module('fup')
+        .factory('stateHandler', ['$rootScope', '$state', 'authService', function ($rootScope, $state, authService) {
 
             var stateHandler = {};
 
@@ -9,25 +9,25 @@
             };
 
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                // remove all previous notification if any
-                PNotify.removeAll();
+                if (typeof toState.data !== 'undefined') {
 
-                var hasData = typeof toState.data !== 'undefined';
-                var requireAuthorization = hasData && (typeof toState.data.authorizedRoles !== 'undefined');
+                    var requireLogin = (toState.data.requireLogin !== false);
 
-                // By default all pages require Login, except if set to False
-                var requireLogin = requireAuthorization || (!hasData) || (toState.data.requireLogin !== false);
-
-                if (requireLogin && !authService.isAuthenticated()) {
-                   /* event.defaultPrevented = true;
-                    //geotoolkit.log("Not logged In, try to auto connect");
-                    authService.authenticateIfLastSession().then(function () {
-                        $state.go(toState.name, toParams);
-                    });*/
-                    $state.go(toState.name, toParams);
+                    if (requireLogin) {
+                        event.preventDefault();
+                        if (authService.isAuthenticated()){
+                            $state.go(toState.name, toParams, {notify: false}).then(function() {
+                                $rootScope.$broadcast('$stateChangeSuccess', toState, toParams, fromState, fromParams);
+                            });
+                        } else {
+                            $state.go('index_nobar.login', {notify:false});
+                        }
+                    } else {
+                        $state.go(toState.name, toParams, {notify:false});
+                    }
                 }
                 else {
-                    $state.go(toState.name, toParams);
+                    $state.go('index_nobar.login', {notify:false});
                 }
             });
 

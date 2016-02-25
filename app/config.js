@@ -1,4 +1,4 @@
-function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadProvider, $injector) {
+function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadProvider, $injector ) {
 
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -200,6 +200,6 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
 angular
     .module('fup')
     .config(config)
-    .run(function ($rootScope, $state) {
+    .run(function ($rootScope, $state, stateHandler) {
         $rootScope.$state = $state;
     });
