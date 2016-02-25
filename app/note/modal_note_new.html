@@ -1,88 +1,64 @@
+<div class="modal-header row-centered">
+    <h2 class="m-t-none m-b"><i class="fa fa-user"></i> {{'rediger_avis' | translate}}</h2>
+</div>
 <div class="modal-body modal-md">
-    <div class="row row-centered">
-        <h2 class="m-t-none m-b"><i class="fa fa-user"></i> {{'rediger_avis' | translate}}</h2>
-    </div>
-    <div class="row">
-        <p class="ibox-content">
+    <div class="form-group">
         <div class="row" >
-            <div class="col-lg-8">
+            <div class="col-lg-12">
+                <input class="form-control m-b" ng-model="note.firstname" placeholder="{{'prenom' | translate}}">
+            </div>
+        </div>
 
-                <form name="userForm" >
-                    <md-input-container class="md-block" flex-gt-sm="">
-                        <label>{{'prenom' | translate}}</label>
-                        <input required="" name="firstname" ng-model="note.firstname">
-                        <div ng-messages="userForm.firstname.$error">
-                            <div ng-message="required">Requis.</div>
-                        </div>
-                    </md-input-container>
+        <div class="row">
+            <div class="col-lg-12">
+                <input class="form-control m-b" ng-model="note.lastname" placeholder="{{'nom' | translate}}">
+            </div>
+        </div>
 
-                    <md-input-container class="md-block" flex-gt-sm="">
-                        <label>{{'nom' | translate}}</label>
-                        <input required="" name="lastname" ng-model="note.lastname">
-                        <div ng-messages="userForm.lastname.$error">
-                            <div ng-message="required">Requis.</div>
-                        </div>
-                    </md-input-container>
+        <div class="row">
+            <ui-select ng-model="town.selected">
+                <ui-select-match placeholder="{{'code_postal' | translate}}">{{$select.selected.town}}</ui-select-match>
+                <ui-select-choices repeat="item in towns track by $index" refresh-delay="0">
+                    <div ng-bind-html="item.town | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <!--<md-autocomplete required="" name="town"  ng-disabled="false"-->
+                         <!--md-selected-item="town.selected"-->
+                         <!--md-search-text="searchText"-->
+                         <!--md-items="item in querySearch(searchText)"-->
+                         <!--md-item-text="item.town"-->
+                         <!--md-min-length="0"-->
+                         <!--placeholder="{{'code_postal' | translate}}">-->
+            <!--<md-item-template>-->
+                <!--<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.postal_code}} - {{item.town}}</span>-->
+            <!--</md-item-template>-->
+            <!--<md-not-found>-->
+                <!--No states matching were found.-->
+            <!--</md-not-found>-->
+            <!--<div ng-messages="userForm.town.$error">-->
+                <!--<div ng-message="required">Requis.</div>-->
+            <!--</div>-->
+        <!--</md-autocomplete>-->
 
-                    <md-autocomplete required="" name="town"  ng-disabled="false"
-                                     md-selected-item="town.selected"
-                                     md-search-text="searchText"
-                                     md-items="item in querySearch(searchText)"
-                                     md-item-text="item.town"
-                                     md-min-length="0"
-                                     placeholder="{{'code_postal' | translate}}">
-                        <md-item-template>
-                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.postal_code}} - {{item.town}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            No states matching were found.
-                        </md-not-found>
-                        <div ng-messages="userForm.town.$error">
-                            <div ng-message="required">Requis.</div>
-                        </div>
-                    </md-autocomplete>
-
-                    <div class="row row-centered">
-                        <div class="col-sm-6">
-                            <md-datepicker required="" name="date_start"  ng-model="note.date_start" md-placeholder="{{'entree' | translate}}">
-                                <div ng-messages="userForm.date_start.$error">
-                                    <div ng-message="required">Requis.</div>
-                                </div>
-                            </md-datepicker>
-                        </div>
-
-                        <!--<div class="col-sm-6">-->
-                        <!--<datepicker name="date_start" ng-model="note.date_start" min-mode="month" datepicker-mode="'month'" placeholder="{{'entree' | translate}}">-->
-                        <!--<div ng-messages="userForm.date_start.$error">-->
-                        <!--<div ng-message="required">Requis.</div>-->
-                        <!--</div>-->
-                        <!--</datepicker>-->
-                        <!--</div>-->
-
-                        <div>
-                            <input id="datepicker" type="text" data-ng-datepicker data-ng-options="datepickerOptions" data-ng-model="date">
-                            <input id="datepickerMirror" type="text" data-ng-model="date">
-                        </div>
-
-                        <!--<div class="col-sm-6">-->
-                            <!--<div class="input-daterange input-group" id="RangeMenu" style="z-index:200">-->
-                                <!--<input type="text" class="input-sm form-control" name="start" data-backdrop="false" style="z-index:200"/>-->
-                                <!--<span class="input-group-addon"> - </span>-->
-                                <!--<input type="text" class="input-sm form-control" name="end" style="z-index:200"/>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="col-sm-6">-->
-                            <!--<md-datepicker required="" name="date_end" ng-model="note.date_end" md-placeholder="{{'sortie' | translate}}">-->
-                                <!--<div ng-messages="userForm.date_end.$error">-->
-                                    <!--<div ng-message="required">Requis.</div>-->
-                                <!--</div>-->
-                            <!--</md-datepicker>-->
-                        <!--</div>-->
-                    </div>
-                </form>
+        <div class="row row-centered">
+            <br/>
+            <br/>
+            <div class="col-sm-6">
+                <h3>{{'entree' | translate}}</h3>
+                <datetimepicker data-ng-model="note.date_start"
+                                data-datetimepicker-config="{ startView:'month', minView:'month' }" style="width:200px; height:150px" />
             </div>
 
+            <div class="col-sm-6">
+                <h3>{{'sortie' | translate}}</h3>
+                <datetimepicker data-ng-model="note.date_end"
+                                data-datetimepicker-config="{ startView:'month', minView:'month' }" style="width:200px; height:150px" />
+            </div>
+
+        </div>
+
+        <div class="row" >
             <div class="col-lg-4 row-centered">
                 <div ng-if="moyenne < 34">
                     <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
@@ -97,7 +73,6 @@
                 </div>
             </div>
         </div>
-        </p>
 
         <div class="hr-line-dashed"></div>
 
@@ -128,30 +103,28 @@
             </div>
         </div>
 
-    </div>
 
-    <div class="row" ng-show="errors.length > 0" class="animated ">
-        <div class="ibox-content">
-            <h3 style="text-align: center;"><a class="btn btn-danger btn-rounded"><i class="fa fa-exclamation"></i> {{'missing_parameters' | translate}}</a></h3>
-            <ul ng-repeat="error in errors">
-                <li>{{error.item}}</li>
-            </ul>
+        <div class="row" ng-show="errors.length > 0" class="animated ">
+            <div class="ibox-content">
+                <h3 style="text-align: center;"><a class="btn btn-danger btn-rounded"><i class="fa fa-exclamation"></i> {{'missing_parameters' | translate}}</a></h3>
+                <ul ng-repeat="error in errors">
+                    <li>{{error.item}}</li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <div class="row" ng-show="warnings.length > 0" class="animated ">
-        <div class="ibox-content">
-            <h3 style="text-align: center;"><a class="btn btn-warning btn-rounded"><i class="fa fa-warning"></i> {{'usure' | translate}}</a></h3>
-            <ul ng-repeat="error in warnings">
-                <li>{{error.item}}</li>
-            </ul>
+        <div class="row" ng-show="warnings.length > 0" class="animated ">
+            <div class="ibox-content">
+                <h3 style="text-align: center;"><a class="btn btn-warning btn-rounded"><i class="fa fa-warning"></i> {{'usure' | translate}}</a></h3>
+                <ul ng-repeat="error in warnings">
+                    <li>{{error.item}}</li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <div class="row row-centered">
-        <div class="ibox-content">
-            <button type="button" ng-click="ok()"  class="btn btn-sm btn-danger">{{'sauver' | translate}}</button>
-            <button type="button" ng-click="cancel()"  class="btn btn-sm btn-default">{{'cancel' | translate}}</button>
-        </div>
     </div>
+</div>
+<div class="modal-footer row-centered">
+    <button type="button" ng-click="ok()"  class="btn btn-sm btn-danger">{{'sauver' | translate}}</button>
+    <button type="button" ng-click="cancel()"  class="btn btn-sm btn-default">{{'cancel' | translate}}</button>
 </div>

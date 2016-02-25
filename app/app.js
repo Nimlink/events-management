@@ -6,6 +6,9 @@
         'oc.lazyLoad',
         'ngMessages',
         'ng-bootstrap-datepicker',
-        'ngMaterial'
+        'ngMaterial',
+        'angular-input-stars',
+        'ui.knob',
+        'ui.select'
     ])
 })();

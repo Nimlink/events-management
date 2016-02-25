@@ -103,98 +103,26 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
             url: "/login",
             templateUrl: "login/login.html",
             data: {pageTitle: 'Login', requireLogin: false},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['login/loginController.js']},
-                        {files: component_knob},
-                        {files: component_stars},
-                        {
-                            files: [
-                                'utils/services/dbQueriesService.js',
-                                'login/loginController.js',
-                                'main.js'
-                            ]
-                        }])
-                }
-            }
         })
         .state('index.tenant', {
             url: "/tenant/:id",
             templateUrl: "tenant/tenant.html",
             data: {pageTitle: 'Locataire', requireLogin: true},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['tenant/tenantController.js']},
-                        {files: component_knob},
-                        {files: component_stars},
-                        {
-                            files: [
-                                'note/newNoteController.js',
-                                'utils/services/tenantService.js',
-                                'utils/services/dbQueriesService.js',
-                                'main.js'
-                            ]
-                        }])
-                }
-            }
         })
         .state('index.owner', {
             url: "/owner",
             templateUrl: "owner/owner.html",
             data: {pageTitle: 'Propriétaire', requireLogin: true},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['owner/ownerController.js']},
-                        {files: component_select},
-                        {files: component_dropzone},
-                        {files: component_knob},
-                        {files: component_stars},
-                        {
-                            files: [
-                                'note/newNoteController.js',
-                                'utils/services/ownerService.js',
-                                'utils/services/dbQueriesService.js',
-                                'main.js'
-                            ]
-                        }])
-                }
-            }
         })
         .state('index_nobar.signup', {
             url: "/signup",
             templateUrl: "signup/signup.html",
             data: {pageTitle: 'Inscription', requireLogin: false},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['signup/signupController.js']},
-                        {files: component_select},
-                        {files: component_dropzone},
-                        {files: component_knob},
-                        {files: component_stars},
-                        {
-                            files: [
-                                'utils/services/dbQueriesService.js',
-                                'main.js'
-                            ]
-                        }])
-                }
-            }
         })
         .state('index_nobar.contact', {
             url: "/contact",
             templateUrl: "contact/contact.html",
             data: {pageTitle: 'Contact'},
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([{files: ['contact/contactController.js']},
-                        {
-                            files: [
-                                'utils/services/dbQueriesService.js',
-                                'main.js'
-                            ]
-                        }])
-                }
-            }
         })
 }
 angular

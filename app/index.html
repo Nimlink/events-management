@@ -2,23 +2,27 @@
 <html ng-app="fup">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title page-title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title page-title></title>
 
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.1.0/metisMenu.min.css" rel="stylesheet" >
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/angular-bootstrap-datetimepicker/1.0.1/css/datetimepicker.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="styles/angular-material.css">
-	<link href="styles/bootstrap.css" rel="stylesheet">
-	<link href="styles/animate.css" rel="stylesheet">
-	<link href="styles/styleIT2.css" rel="stylesheet">
-	<link href="styles/myStyle.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.1.0/metisMenu.min.css" rel="stylesheet" >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-bootstrap-datetimepicker/1.0.1/css/datetimepicker.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.11.2/select.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css" rel="stylesheet">
+    <link href="utils/libraries/angular-input-stars/angular-input-stars.css" rel="stylesheet">
+    <link href="styles/angular-material.css" rel="stylesheet">
+    <link href="styles/bootstrap.css" rel="stylesheet">
+    <link href="styles/animate.css" rel="stylesheet">
+    <link href="styles/styleIT2.css" rel="stylesheet">
+    <link href="styles/myStyle.css" rel="stylesheet">
 
 </head>
 
-<body ng-controller="MainCtrl as main">
+<div ng-controller="MainCtrl as main">
 <!-- Main view  -->
 <div ui-view></div>
 
@@ -44,6 +48,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment-with-locales.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-bootstrap-datetimepicker/1.0.1/js/datetimepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-bootstrap-datetimepicker/1.0.1/js/datetimepicker.templates.min.js"></script>
+<script src="https://rawgithub.com/cletourneau/angular-bootstrap-datepicker/master/dist/angular-bootstrap-datepicker.js"></script>
+<script src="utils/libraries/angular-knob/jquery.knob.js"></script>
+<script src="utils/libraries/angular-knob/angular-knob.js"></script>
+<script src="utils/libraries/angular-input-stars/angular-input-stars.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.12.1/select.min.js"></script>
 
 <!-- Angular App Script -->
 <script src="fup.js"></script>
@@ -62,9 +71,16 @@
 <script src="utils/services/auth.interceptor.js"></script>
 <script src="utils/services/user.session.js"></script>
 <script src="state.handler.js"></script>
+<script src="tenant/tenantController.js"></script>
+<script src="note/newNoteController.js"></script>
+<script src="utils/services/tenantService.js"></script>
+<script src="owner/ownerController.js"></script>
+<script src="utils/services/ownerService.js"></script>
+<script src="signup/signupController.js"></script>
+<script src="contact/contactController.js"></script>
 <script src="utils/libraries/monthPicker/MonthPicker.min.js"></script>
 <script src="utils/libraries/monthPicker/jquery.maskedinput.min.js"></script>
-<script src="https://rawgithub.com/cletourneau/angular-bootstrap-datepicker/master/dist/angular-bootstrap-datepicker.js"></script>
+<script src="login/loginController.js"></script>
 
 </body>
 </html>

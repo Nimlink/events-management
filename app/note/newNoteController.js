@@ -1,5 +1,5 @@
 /**
- * MainCtrl - controller
+ * newNoteCtrl - controller
  */
 function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $log, noteService, $translate) {
 
@@ -11,7 +11,6 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $
     $scope.warnings = [];
 
     $scope.note = {
-        id_owner : 5,
         firstname: undefined,
         lastname: undefined,
         id_town: undefined,
@@ -22,22 +21,6 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $
         degradation: 0
     };
     $scope.moyenne = 0;
-
-    $scope.datepickerOptions = {
-        format: 'yyyy-mm-dd',
-        language: 'fr',
-        autoclose: true,
-        weekStart: 0,
-        minViewMode: 1
-    }
-
-    //$.fn.datepicker.noConflict
-    //
-    //$('#RangeMenu').datepicker({
-    //    format: "dd/mm/yyyy",
-    //    startView: 1,
-    //    minViewMode: 1
-    //});
 
     $scope.$watch('note.capacity', modifiedNote);
 
