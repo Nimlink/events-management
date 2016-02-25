@@ -9,12 +9,12 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $ocLazyLoadPr
         debug: false
     });
 
-    //$httpProvider.interceptors.push([
-    //    '$injector',
-    //    function ($injector) {
-    //        return $injector.get('authInterceptor');
-    //    }
-    //]);
+    $httpProvider.interceptors.push([
+        '$injector',
+        function ($injector) {
+            return $injector.get('authInterceptor');
+        }
+    ]);
 
     // Libraries
 
