@@ -4,59 +4,41 @@
         <div class="navbar-header">
             <a ui-sref="index.owner"><h2>{{'app_name' | translate}}</h2></a>
         </div>
-        <ul class="nav navbar-top-links navbar-right">
-            <!--<li>-->
-            <!--<span class="m-r-sm text-muted welcome-message">L'immo tranquille ...</span>-->
-            <!--</li>-->
-            <li style="height: 30px; width: 260px; padding-left: 15px">
-                <div class="row" >
-                    <md-input-container style="width: 245px" class="md-block" md-no-float="">
-                        <input ng-model="search.firstname" placeholder="{{'prenom' | translate}}">
-                    </md-input-container>
-                </div>
-            </li>
-            <li style="height: 30px; width: 260px; padding-left: 15px">
-                <div class="row">
-                <md-input-container style="width: 245px" class="md-block" md-no-float="">
-                    <input ng-model="search.lastname" placeholder="{{'nom' | translate}}">
-                </md-input-container>
-                    </div>
-            </li>
-            <li class="divider"></li>
-            <li class="dropdown">
-                <button ng-click="searchTenant()"  class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-search"></i>
-                </button>
-            </li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="dropdown">
-                <button ng-click="createNote($event)" class="btn btn-warning btn-circle btn-lg" type="button"><i class="fa fa-pencil"></i>
-                </button>
-            </li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
-            <li>
-                <a ng-click="logout()">
-                    <i class="fa fa-sign-out"></i> {{'sortir' | translate}}
-                </a>
-            </li>
-        </ul>
+        <div class="form-group">
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                        <input class="form-control" ng-model="search.firstname" placeholder="{{'prenom' | translate}}">
+                </li>
+                <li>
+                        <input class="form-control" ng-model="search.lastname" placeholder="{{'nom' | translate}}">
+                </li>
+                <li class="divider"></li>
+                <li class="dropdown">
+                    <button ng-click="searchTenant()"  class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-search"></i>
+                    </button>
+                </li>
+                <li class="divider"></li>
+                <li class="dropdown">
+                    <button ng-click="createNote($event)" class="btn btn-warning btn-circle btn-lg" type="button"><i class="fa fa-pencil"></i>
+                    </button>
+                </li>
+                <li class="divider"></li>
+                <li class="divider"></li>
+                <li class="divider"></li>
+                <li class="divider"></li>
+                <li class="divider"></li>
+                <li class="divider"></li>
+                <li class="divider"></li>
+                <li class="divider"></li>
+                <li class="divider"></li>
+                <li class="divider"></li>
+                <li>
+                    <a ng-click="logout()">
+                        <i class="fa fa-sign-out"></i> {{'sortir' | translate}}
+                    </a>
+                </li>
+            </ul>
+        </div>
 
     </nav>
 </div>
