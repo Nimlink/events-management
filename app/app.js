@@ -5,10 +5,10 @@
         'pascalprecht.translate',
         'oc.lazyLoad',
         'ngMessages',
-        'ng-bootstrap-datepicker',
         'ngMaterial',
         'angular-input-stars',
         'ui.knob',
-        'ui.select'
+        'ui.select',
+        'ui.bootstrap.datetimepicker'
     ])
 })();
