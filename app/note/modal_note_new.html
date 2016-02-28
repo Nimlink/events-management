@@ -16,36 +16,27 @@
         </div>
 
         <div class="row">
-            <ui-select ng-model="town.selected">
-                <ui-select-match placeholder="{{'code_postal' | translate}}">{{$select.selected.town}}</ui-select-match>
-                <ui-select-choices repeat="item in towns track by $index" refresh-delay="0">
-                    <div ng-bind-html="item.town | highlight: $select.search"></div>
-                </ui-select-choices>
-            </ui-select>
+            <div class="col-lg-12">
+                <ui-select ng-model="town.selected" ng-disabled="disabled" >
+                    <ui-select-match placeholder="{{'code_postal' | translate}}">{{$select.selected.town}} - {{$select.selected.postal_code}}</ui-select-match>
+                    <ui-select-choices repeat="item in towns | propsFilter: {postal_code: $select.search, town: $select.search}" refresh-delay="0" >
+                        <div ng-bind-html="item.town | highlight: $select.search"></div>
+                        <small>
+                            CP: <span ng-bind-html="''+item.postal_code | highlight: $select.search"></span>
+                        </small>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
         </div>
-        <!--<md-autocomplete required="" name="town"  ng-disabled="false"-->
-                         <!--md-selected-item="town.selected"-->
-                         <!--md-search-text="searchText"-->
-                         <!--md-items="item in querySearch(searchText)"-->
-                         <!--md-item-text="item.town"-->
-                         <!--md-min-length="0"-->
-                         <!--placeholder="{{'code_postal' | translate}}">-->
-            <!--<md-item-template>-->
-                <!--<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.postal_code}} - {{item.town}}</span>-->
-            <!--</md-item-template>-->
-            <!--<md-not-found>-->
-                <!--No states matching were found.-->
-            <!--</md-not-found>-->
-            <!--<div ng-messages="userForm.town.$error">-->
-                <!--<div ng-message="required">Requis.</div>-->
-            <!--</div>-->
-        <!--</md-autocomplete>-->
 
         <div class="row row-centered">
             <br/>
             <br/>
             <div class="col-sm-6">
                 <h3>{{'entree' | translate}}</h3>
+                <div style="display:inline-block; min-height:290px;">
+                    <uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
+                </div>
                 <datetimepicker data-ng-model="note.date_start"
                                 data-datetimepicker-config="{ startView:'month', minView:'month' }" style="width:200px; height:150px" />
             </div>

@@ -1,7 +1,32 @@
 /**
  * newNoteCtrl - controller
  */
-function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $log, noteService, $translate) {
+function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  noteService, $translate) {
+
+    $scope.inlineOptions = {
+        customClass: getDayClass,
+        minDate: new Date(),
+        showWeeks: true
+    };
+
+
+    function getDayClass(data) {
+        var date = data.date,
+            mode = data.mode;
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
+                }
+            }
+        }
+
+        return '';
+    }
 
     $scope.towns = townService.getTowns();
     $scope.town = {};
@@ -119,4 +144,4 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  $
 
 angular
     .module('fup')
-    .controller('newNoteCtrl', newNoteCtrl)
+    .controller('newNoteCtrl', newNoteCtrl);

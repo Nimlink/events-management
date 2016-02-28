@@ -1,7 +1,7 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, townService,authService, $translate, $log, $mdMedia, $mdDialog) {
+function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, townService,authService, $translate, $log) {
 
     $scope.search = {};
     $scope.towns = [];
