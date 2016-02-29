@@ -106,6 +106,12 @@ module.exports = function (grunt) {
         uglify: {
             options: {
                 mangle: false
+            },
+
+            dist: {
+                files: {
+                    '.tmp/concat/src/project.js': ['.tmp/concat/src/project.js']
+                }
             }
         },
         // Clean dist folder
@@ -223,6 +229,8 @@ module.exports = function (grunt) {
                     collapseWhitespace: true,
                     conservativeCollapse: true,
                     collapseBooleanAttributes: true,
+                    minifyJS: true,
+                    removeComments: true,
                     removeCommentsFromCDATA: true,
                     removeOptionalTags: true
                 },
@@ -288,6 +296,7 @@ module.exports = function (grunt) {
         'clean:be',
         'less',
         'useminPrepare',
+        'uglify:dist',
         'copy:dist',
         'copy:be',
         'uglify',

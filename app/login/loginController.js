@@ -28,6 +28,10 @@ function LoginCtrl($scope, authService, $state, userSession, AUTH_EVENTS) {
         });
     }
 
+    $scope.register = function() {
+        $state.go("index_nobar.signup");
+    }
+
 };
 
 var app = angular.module('fup');
