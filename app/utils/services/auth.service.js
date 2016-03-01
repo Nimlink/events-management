@@ -15,6 +15,14 @@
                 );
             };
 
+            authService.mailPassword = function (data) {
+                return dbQueriesService.mailPassword(data)
+                    .then(function (res) {
+                        return res.data;
+                    }
+                );
+            };
+
             authService.logout = function () {
                 userSession.destroy();
             };

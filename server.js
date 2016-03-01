@@ -47,6 +47,7 @@ var towns = require('./backend/api/v1/towns')(authService);
 var tenants = require('./backend/api/v1/tenant')(authService);
 var owners = require('./backend/api/v1/owner')(authService);
 var notes = require('./backend/api/v1/note')(authService);
+var password_recovery = require('./backend/api/v1/password_recovery')();
 
 // register routes
 app.use('/api/auth', auth);
@@ -54,6 +55,7 @@ app.use('/api/towns', towns);
 app.use('/api/tenants', tenants);
 app.use('/api/owners', owners);
 app.use('/api/notes', notes);
+app.use('/api/pass', password_recovery);
 app.use(function (req, res, next) {
     var err = new Error('No service found for URL: ' + req.url);
     err.status = 404;

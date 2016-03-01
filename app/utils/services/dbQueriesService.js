@@ -25,6 +25,10 @@ app.service('dbQueriesService', function ($http) {
         return $http.post('/api/owners', data);
     };
 
+    this.mailPassword = function (data) {
+        return $http.post('/api/pass', data);
+    };
+
     this.postNote = function (data) {
         return $http.post('/api/notes', data);
     };

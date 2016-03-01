@@ -1,4 +1,4 @@
-function LoginCtrl($scope, authService, $state, userSession, AUTH_EVENTS) {
+function LoginCtrl($scope, authService, $state, userSession, AUTH_EVENTS, $modal) {
 
     var resetFailure = function () {
         $scope.hasFailed = false;
@@ -11,6 +11,15 @@ function LoginCtrl($scope, authService, $state, userSession, AUTH_EVENTS) {
         mail: '',
         password: ''
     };
+
+    $scope.password = function() {
+        $modal.open({
+            templateUrl: "login/modal_password.html",
+            windowClass: "animated flipInY",
+            scope: $scope,
+            controller: PassCtrl
+        });
+    }
 
     $scope.login = function() {
         resetFailure();

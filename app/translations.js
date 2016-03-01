@@ -67,7 +67,8 @@ function config($translateProvider) {
             password_different : 'Les passwords ne peuvent pas être différents',
             no_attestation : 'Une attestation est nécessaire pour créer le compte',
             issue_on_registration : 'Le compte existe déjà !',
-            issue : 'Problème non identifié. Veuillez vous reconnecter plus tard.'
+            issue : 'Problème non identifié. Veuillez vous reconnecter plus tard.',
+            password_forgotten :'Mot de passe oublié'
 
 		});
 
