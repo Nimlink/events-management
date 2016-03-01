@@ -62,7 +62,13 @@ function config($translateProvider) {
             usure: 'Etes vous sûr de mettre 0 à ce locataire ?',
             dateNotOk: "La date de sortie ne peut pas être inférieure à la date d'entrée",
             mail: 'Mail',
-            password: 'Password'
+            password: 'Password',
+            attestation_limitation : "Le fichier d'attestation ne peut pas dépasser 100 Mb",
+            password_different : 'Les passwords ne peuvent pas être différents',
+            no_attestation : 'Une attestation est nécessaire pour créer le compte',
+            issue_on_registration : 'Le compte existe déjà !',
+            issue : 'Problème non identifié. Veuillez vous reconnecter plus tard.'
+
 		});
 
 	$translateProvider.preferredLanguage('fr');

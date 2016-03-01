@@ -1,5 +1,6 @@
 var config = require('../config.json');
 var pg = require('pg');
+var bCrypt = require('bcrypt-nodejs');
 var connectionString = config.LPP_POSTGRESQL_URL;
 
 function getTenant(firstname, lastname, callback) {
@@ -133,7 +134,7 @@ function insertTenant(firstname, lastname, callback) {
     var hash = require('crypto').createHmac('sha256','ImmoTrankilSecret').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
     client.connect(function (err) {
         var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date) values ($1,$2,$3,$4,$5);',
-            [   hash,
+            [   hash.substring(0, 12),
                 firstname,
                 firstname.toLowerCase(),
                 lastname,
@@ -181,3 +182,62 @@ function insertTenant(firstname, lastname, callback) {
     });
 };
 module.exports.insertTenant = insertTenant;
+
+function insertOwner(firstname, lastname, mail, password, callback) {
+    var client = new pg.Client(connectionString);
+    var today = new Date(Date.now());
+    var hash = require('crypto').createHmac('sha256','ImmoTrankilSecret').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
+    client.connect(function (err) {
+        var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date, mail, password, isactivated) values ($1,$2,$3,$4,$5,$6,$7,$8,$9);',
+            [   hash.substring(0, 12),
+                firstname,
+                firstname.toLowerCase(),
+                lastname,
+                lastname.toLowerCase(),
+                today,
+                mail,
+                bCrypt.hashSync(password, bCrypt.genSaltSync(10), null),
+                false
+            ], function (err, result) {
+                if (err) {
+                    client.end();
+                    callback(new Error('Failed' + err.message));
+                } else {
+                    var users = [];
+                    var query = client.query("SELECT id FROM t_users as users WHERE firstname=$1 AND lastname=$2",
+                        [firstname,lastname]);
+                    query.on('row', function (row) {
+                        users.push(row);
+                    });
+                    query.on('end', function () {
+                        if (users.length == 0) {
+                            client.end();
+                            callback(new Error('Failed - User not inserted'));
+                        } else {
+                            var id_user = users[0].id;
+                            var types = [];
+                            var query = client.query("SELECT id FROM t_usertypes WHERE code=$1",
+                                ['PRO']);
+                            query.on('row', function (row) {
+                                types.push(row);
+                            });
+                            query.on('end', function () {
+                                var id_type = types[0].id;
+                                var query = client.query('insert into t_users_usertypes (id_user, id_usertype) values ($1,$2);',
+                                    [id_user,id_type], function (err, result) {
+                                        if (err) {
+                                            client.end();
+                                            callback(new Error('Failed' + err.message));
+                                        } else {
+                                            client.end();
+                                            callback(null, id_user);
+                                        }
+                                    });
+                            });
+                        }
+                    });
+                }
+            });
+    });
+};
+module.exports.insertOwner = insertOwner;

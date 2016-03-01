@@ -21,6 +21,10 @@ app.service('dbQueriesService', function ($http) {
         return $http.get('/api/owners');
     };
 
+    this.createOwner = function (data) {
+        return $http.post('/api/owners', data);
+    };
+
     this.postNote = function (data) {
         return $http.post('/api/notes', data);
     };

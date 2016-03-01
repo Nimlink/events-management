@@ -31,8 +31,8 @@ var createHash = function (password) {
 
 exports.isValidPassword = function (foundUser, reqPassword) {
     if (foundUser.password) {
-        //return bCrypt.compareSync(reqPassword, foundUser.password);
-        return reqPassword === foundUser.password;
+        return bCrypt.compareSync(reqPassword, foundUser.password);
+        //return reqPassword === foundUser.password;
     }
     console.log("password has to not be null. User: ", foundUser);
     return false;

@@ -12,4 +12,18 @@ app.service('ownerService', function (dbQueriesService, $q) {
             });
     };
 
+    this.createOwner = function (data) {
+        var users = [];
+        var deferred = $q.defer();
+        dbQueriesService.createOwner(data).then(
+            function (res) {
+                users = res;
+                deferred.resolve(users);
+            },
+            function (res) {
+                deferred.reject(res.data);
+            });
+        return deferred.promise;
+    };
+
 });
