@@ -16,7 +16,7 @@ exports.isValidByMail = function (mail, callback) {
             if (!user) {
                 err = new Error(exports.ERRORS_CODE.NO_EMAIL_FOUND);
             }
-            else if (user.isActivated === false) {
+            else if (user.isActivated === false || user.isMailActivated === false) {
                 err = new Error(exports.ERRORS_CODE.OWNER_NOT_ACTIVATED);
             }
 

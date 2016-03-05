@@ -90,11 +90,32 @@ function getOwnerById(id, callback) {
 };
 module.exports.getOwnerById = getOwnerById;
 
+function getOwnerActivationHashById(id, callback) {
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        var users = [];
+        var query = client.query("SELECT users.id, users.mail, users.mailActivationHash, users.attestationActivationHash   FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE users.id=$1 AND usertype.code='PRO'",
+            [id]);
+        query.on('row', function (row) {
+            users.push(row);
+        });
+        query.on('end', function () {
+            if (users.length > 0) {
+                callback(null, users[0]);
+            } else {
+                callback('No user found')
+            }
+            client.end();
+        });
+    });
+};
+module.exports.getOwnerActivationHashById = getOwnerActivationHashById;
+
 function getOwnerByMailForAuthentification(mail, callback) {
     var client = new pg.Client(connectionString);
     client.connect(function (err) {
         var users = [];
-        var query = client.query("SELECT users.id, users.mail, users.password, users.isActivated  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE users.mail=$1 AND usertype.code='PRO'",
+        var query = client.query("SELECT users.id, users.mail, users.password, users.isActivated, users.isMailActivated  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE users.mail=$1 AND usertype.code='PRO'",
             [mail]);
         query.on('row', function (row) {
             users.push(row);
@@ -187,8 +208,10 @@ function insertOwner(firstname, lastname, mail, password, callback) {
     var client = new pg.Client(connectionString);
     var today = new Date(Date.now());
     var hash = require('crypto').createHmac('sha256','ImmoTrankilSecret').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
+    var hashMail = require('crypto').createHmac('sha256','ImmoTrankilSecretMail').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
+    var hashAttestation = require('crypto').createHmac('sha256','ImmoTrankilSecretAttestation').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
     client.connect(function (err) {
-        var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date, mail, password, isactivated) values ($1,$2,$3,$4,$5,$6,$7,$8,$9);',
+        var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date, mail, password, mailActivationHash, attestationActivationHash) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);',
             [   hash.substring(0, 12),
                 firstname,
                 firstname.toLowerCase(),
@@ -197,7 +220,8 @@ function insertOwner(firstname, lastname, mail, password, callback) {
                 today,
                 mail,
                 bCrypt.hashSync(password, bCrypt.genSaltSync(10), null),
-                false
+                hashMail,
+                hashAttestation
             ], function (err, result) {
                 if (err) {
                     client.end();
@@ -241,3 +265,47 @@ function insertOwner(firstname, lastname, mail, password, callback) {
     });
 };
 module.exports.insertOwner = insertOwner;
+
+function validateMailOwner(mailHash, callback) {
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        var users = [];
+        var query = client.query("SELECT users.id as id  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE usertype.code='PRO' AND mailActivationHash=$1",
+            [mailHash]);
+        query.on('row', function (row) {
+            users.push(row);
+        });
+        query.on('end', function () {
+            if (users.length > 0) {
+                client.query("UPDATE t_users SET isMailActivated=true WHERE id=$1",[users[0].id]);
+                callback(null);
+            } else {
+                callback('User not found');
+            }
+            client.end();
+        });
+    });
+};
+module.exports.validateMailOwner = validateMailOwner;
+
+function validateAttestationOwner(attestationHash, callback) {
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        var users = [];
+        var query = client.query("SELECT users.id as id  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE usertype.code='PRO' AND attestationActivationHash=$1",
+            [attestationHash]);
+        query.on('row', function (row) {
+            users.push(row);
+        });
+        query.on('end', function () {
+            if (users.length > 0) {
+                client.query("UPDATE t_users SET isActivated=true WHERE id=$1",[users[0].id]);
+                callback(null);
+            } else {
+                callback('User not found');
+            }
+            client.end();
+        });
+    });
+};
+module.exports.validateAttestationOwner = validateAttestationOwner;

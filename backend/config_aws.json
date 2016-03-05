@@ -1,0 +1,5 @@
+{
+"LPP_POSTGRESQL_URL": "postgresql://immotrankiladmin:startupsiliconvalley@immotrankildb.ccaibvbzc9ki.eu-west-1.rds.amazonaws.com:5432/immotrankil",
+"PROXY": null,
+"PARALLEL": "5"
+}

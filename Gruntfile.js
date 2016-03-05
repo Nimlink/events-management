@@ -7,9 +7,10 @@ module.exports = function (grunt) {
     // Show grunt task time
     require('time-grunt')(grunt);
 
-    grunt.loadNpmTasks('grunt-aws');
     grunt.loadNpmTasks('grunt-connect-proxy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
     // Configurable paths for the app
     var appConfig = {
@@ -110,7 +111,7 @@ module.exports = function (grunt) {
 
             dist: {
                 files: {
-                    '.tmp/concat/src/project.js': ['.tmp/concat/src/project.js']
+                    '<%= fup.dist %>/project.js': ['<%= fup.dist %>/project.js']
                 }
             }
         },
@@ -138,6 +139,11 @@ module.exports = function (grunt) {
             },
             server: '.tmp'
         },
+
+        htmlrefs: {
+            dist: {src: '.tmp/index.html'}
+        },
+
         // Copies remaining files to places other tasks can use
         copy: {
             dist: {
@@ -185,7 +191,8 @@ module.exports = function (grunt) {
                         cwd: '<%= fup.backend %>',
                         dest: '<%= fup.be %>/backend',
                         src: [
-                            '**/*.js'
+                            '**/*.js',
+                            '**/*.json'
                         ]
                     },
                     {
@@ -211,6 +218,23 @@ module.exports = function (grunt) {
                 cwd: '<%= fup.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            tmpToDist: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '.tmp',
+                        src: 'app/index.html',
+                        dest: '<%= fup.dist %>'
+                    },
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '.tmp/concat',
+                        src: ['app/*.js'],
+                        dest: '<%= fup.dist %>'
+                    }
+                ]
             }
         },
         // Renames files for browser caching purposes
@@ -237,13 +261,13 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= fup.dist %>',
-                    src: ['**/*.html', 'views/{,*/}*.html'],
+                    src: ['<%= fup.dist %>/index.html'],
                     dest: '<%= fup.dist %>'
                 }]
             }
         },
         useminPrepare: {
-            html: 'app/index.html',
+            html: '.tmp/index.html',
             options: {
                 dest: 'dist'
             }
@@ -263,17 +287,15 @@ module.exports = function (grunt) {
             },
             tasks: ['nodemon', 'watch', 'nginx:start']
         },
-        s3: {
+        concat: {
             options: {
-                accessKeyId: "AKIAI25F34ZNQTCM5EIQ",
-                secretAccessKey: "lepetitporteur+",
-                bucket: "lepetitporteur.angular"
+                separator: ';',
             },
-            build: {
-                cwd: "dist/",
-                src: "**"
-            }
-        }
+            dist: {
+                src: ['app/**.js','app/*/**.js'],
+                dest: '<%= fup.dist %>/project.js',
+            },
+        },
     });
 
     // Run live version of app
@@ -296,13 +318,12 @@ module.exports = function (grunt) {
         'clean:be',
         'less',
         'useminPrepare',
-        'uglify:dist',
         'copy:dist',
         'copy:be',
         'uglify',
         'filerev',
         'usemin',
-        'htmlmin'
+        'htmlmin:dist'
     ]);
 
     // Build version for production
@@ -311,10 +332,5 @@ module.exports = function (grunt) {
         'copy:dist',
     ]);
 
-    // Deploy to bucket
-    grunt.registerTask('bucket', [
-        'build',
-        's3'
-    ]);
 
 };

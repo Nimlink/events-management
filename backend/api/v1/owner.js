@@ -4,6 +4,7 @@ module.exports = function (authService) {
     var async = require("async");
     var users = require('../../model/user.js');
     var notes = require('../../model/note.js');
+    var mail = require('../../service/mail.js');
 
     function isInt(value) {
         return !isNaN(value) &&
@@ -52,16 +53,35 @@ module.exports = function (authService) {
                 res.setHeader('Content-Type', 'application/json');
                 res.status(404).json('No data in post');
             } else {
-                async.series([
-                    async.apply(users.insertOwner,  req.body.firstname, req.body.lastname, req.body.mail, req.body.password)
-                ], function (err, results) {
+                users.insertOwner(req.body.firstname, req.body.lastname, req.body.mail, req.body.password, function (err, results) {
                     if (err) {
                         console.log(err);
                         res.setHeader('Content-Type', 'application/json');
                         res.status(404).json('Too many people found');
                     } else {
-                        res.setHeader('Content-Type', 'application/json');
-                        res.status(200).json(results[0]);
+                        users.getOwnerActivationHashById(results[0].id, function (err, user) {
+                            if (err) {
+                                res.setHeader('Content-Type', 'application/json');
+                                res.status(404).json('No hash found');
+                            } else {
+                                mail.sendMailActivation(user.mail, user.mailActivationHash, function (err) {
+                                    if (err) {
+                                        res.setHeader('Content-Type', 'application/json');
+                                        res.status(404).json('Activation mail not sent');
+                                    } else {
+                                        mail.sendMailActivation(user.mail, user.attestationActivationHash, function (err) {
+                                            if (err) {
+                                                res.setHeader('Content-Type', 'application/json');
+                                                res.status(404).json('Activation attestation not sent');
+                                            } else {
+                                                res.setHeader('Content-Type', 'application/json');
+                                                res.status(200).json('ack');
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
                     }
                 });
             }

@@ -24,7 +24,10 @@ CREATE TABLE t_users (
    lastname_lower VARCHAR(255) NOT NULL,
    inscription_date TIMESTAMP,
    nb_request INTEGER NOT NULL DEFAULT 0,
-   isActivated BOOLEAN NOT NULL DEFAULT false
+   isMailActivated BOOLEAN NOT NULL DEFAULT false,
+   mailActivationHash VARCHAR(255) NOT NULL,
+   isActivated BOOLEAN NOT NULL DEFAULT false,
+   attestationActivationHash VARCHAR(255) NOT NULL
 );
 ALTER TABLE t_users ADD CONSTRAINT pk_users PRIMARY KEY (id);
 CREATE INDEX idx_users ON t_users(firstname_lower, lastname_lower);

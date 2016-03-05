@@ -43,11 +43,6 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $injector ) {
             templateUrl: "signup/signup.html",
             data: {pageTitle: 'Inscription', requireLogin: false},
         })
-        .state('index_nobar.contact', {
-            url: "/contact",
-            templateUrl: "contact/contact.html",
-            data: {pageTitle: 'Contact'},
-        })
 }
 angular
     .module('fup')

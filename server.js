@@ -15,7 +15,6 @@ var flash = require('connect-flash');
 var app = express();
 app.use(flash());
 app.use(bodyParser.json({limit: '10mb'}));
-app.use(favicon(path.join(__dirname, 'backend', 'public', 'favicon.ico')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); // NOTE: Set static prior Session activation
@@ -42,6 +41,8 @@ require('./backend/service/passport')(passport);
 require('./backend/service/passport.local')(passport, authService);
 
 // routes for API
+var profile = require('./backend/api/v1/profile')();
+var activation = require('./backend/api/v1/activation')();
 var auth = require('./backend/api/v1/auth')(passport, authService);
 var towns = require('./backend/api/v1/towns')(authService);
 var tenants = require('./backend/api/v1/tenant')(authService);
@@ -50,6 +51,8 @@ var notes = require('./backend/api/v1/note')(authService);
 var password_recovery = require('./backend/api/v1/password_recovery')();
 
 // register routes
+app.use('/api/activation', activation);
+app.use('/api/profil', profile);
 app.use('/api/auth', auth);
 app.use('/api/towns', towns);
 app.use('/api/tenants', tenants);

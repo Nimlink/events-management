@@ -1,4 +1,5 @@
-function LoginCtrl($scope, authService, $state, userSession, AUTH_EVENTS, $modal) {
+angular.module('fup').controller('LoginCtrl', ['$scope', 'authService', '$state', '$modal',
+    function ($scope, authService, $state, $modal) {
 
     var resetFailure = function () {
         $scope.hasFailed = false;
@@ -41,7 +42,4 @@ function LoginCtrl($scope, authService, $state, userSession, AUTH_EVENTS, $modal
         $state.go("index_nobar.signup");
     }
 
-};
-
-var app = angular.module('fup');
-app.controller('LoginCtrl', LoginCtrl);
+}]);
