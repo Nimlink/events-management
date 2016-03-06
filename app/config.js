@@ -36,7 +36,7 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $injector ) {
         .state('index.owner', {
             url: "/owner",
             templateUrl: "owner/owner.html",
-            data: {pageTitle: 'Propriétaire', requireLogin: true},
+            data: {pageTitle: 'PropriÃ©taire', requireLogin: true},
         })
         .state('index_nobar.signup', {
             url: "/signup",
