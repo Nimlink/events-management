@@ -7097,7 +7097,8 @@ span.danger {
 }
 
 .text-immo {
-    color: #f89136
+    color: #f89136;
+    font-size: 40px;
 }
 
 .immo-bg {
