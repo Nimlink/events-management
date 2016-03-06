@@ -271,6 +271,8 @@ module.exports = function (grunt) {
                 options: {
                     collapseWhitespace: true,
                     minifyJS: true,
+                    conservativeCollapse: true,
+                    collapseBooleanAttributes: true,
                 },
                 files: [{
                     expand: true,
@@ -341,7 +343,6 @@ module.exports = function (grunt) {
         'copy:be',
         'uglify',
         'usemin',
-        'htmlmin:dist'
     ]);
 
     // Build version for production
