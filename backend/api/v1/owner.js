@@ -59,27 +59,15 @@ module.exports = function (authService) {
                         res.setHeader('Content-Type', 'application/json');
                         res.status(404).json('Too many people found');
                     } else {
-                        users.getOwnerActivationHashById(results[0].id, function (err, user) {
+                        res.setHeader('Content-Type', 'application/json');
+                        res.status(200).json('ack');
+                        users.getOwnerActivationHashById(results, function (err, user) {
                             if (err) {
                                 res.setHeader('Content-Type', 'application/json');
                                 res.status(404).json('No hash found');
                             } else {
-                                mail.sendMailActivation(user.mail, user.mailActivationHash, function (err) {
-                                    if (err) {
-                                        res.setHeader('Content-Type', 'application/json');
-                                        res.status(404).json('Activation mail not sent');
-                                    } else {
-                                        mail.sendMailActivation(user.mail, user.attestationActivationHash, function (err) {
-                                            if (err) {
-                                                res.setHeader('Content-Type', 'application/json');
-                                                res.status(404).json('Activation attestation not sent');
-                                            } else {
-                                                res.setHeader('Content-Type', 'application/json');
-                                                res.status(200).json('ack');
-                                            }
-                                        });
-                                    }
-                                });
+                                mail.sendMailActivation(user.mail, user.mailactivationhash, function(err, result){});
+                                mail.sendAttestationActivation(user.mail, user.attestationactivationhash, function(err, result){});
                             }
                         });
                     }

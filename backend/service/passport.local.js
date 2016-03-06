@@ -7,11 +7,7 @@ module.exports = function (passport, authService) {
             passwordField: 'password',
             session: false
         }, function (mail, password, callback) {
-            userService.isValidByMail(mail, function (err, user) {
-                if (user && !userService.isValidPassword(user, password)){
-                    user = null;
-                    err = new Error(userService.ERRORS_CODE.NO_EMAIL_FOUND);
-                }
+            userService.isOwnerAuthorized(mail, password, function (err, user) {
                 return authService.authenticate(err, user, callback);
             });
         }));

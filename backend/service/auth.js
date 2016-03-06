@@ -17,10 +17,9 @@ module.exports = function (appConfig) {
     auth.authenticate = function (err, user, callback) {
         if (err) {
             var statusMap = {};
-            statusMap[userService.NO_EMAIL_FOUND] = 401;      // Unauthorized
-            statusMap[userService.OWNER_NOT_ACTIVATED] = 402;   // To validate
+            statusMap[userService.ERRORS_CODE.NO_EMAIL_FOUND] = 401;      // Unauthorized
+            statusMap[userService.ERRORS_CODE.OWNER_NOT_ACTIVATED] = 402;   // To validate
             err.status = statusMap[err.message] || 401;
-
             return callback(err);
         }
 

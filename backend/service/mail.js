@@ -2,7 +2,7 @@ var mailer = require("nodemailer");
 
 function sendMailActivation(mail, hash, callback) {
     var smtpTransport = mailer.createTransport('smtps://immotrankil%40gmail.com:startupsiliconvalley@smtp.gmail.com');
-    var mail = {
+    var mailOption = {
         from: '"NO-REPLY" <immotrankil@gmail.com>',
         to: mail,
         subject: "Activation de votre mail",
@@ -10,8 +10,10 @@ function sendMailActivation(mail, hash, callback) {
         html: "<b>Veuillez svp cliquer sur le lien suivant : http://immotrankil.com/api/activation/mail/"+ hash +"</b>"
     }
 
-    smtpTransport.sendMail(mail, function (error, response) {
+    console.log(mailOption);
+    smtpTransport.sendMail(mailOption, function (error, response) {
         if (error) {
+            console.log(error);
             callback(error);
         } else {
             callback(null,'Mail sent');
@@ -23,7 +25,7 @@ module.exports.sendMailActivation = sendMailActivation;
 
 function sendAttestationActivation(mail, hash, callback) {
     var smtpTransport = mailer.createTransport('smtps://immotrankil%40gmail.com:startupsiliconvalley@smtp.gmail.com');
-    var mail = {
+    var mailOption = {
         from: '"NO-REPLY" <immotrankil@gmail.com>',
         to: 'immotrankil@gmail.com',
         subject: "Activation du compte " + mail,
@@ -31,8 +33,10 @@ function sendAttestationActivation(mail, hash, callback) {
         html: "<b>Activation du compte "+ mail +", svp cliquer sur le lien suivant : http://immotrankil.com/api/activation/attestation/"+ hash +"</b>"
     }
 
-    smtpTransport.sendMail(mail, function (error, response) {
+    console.log(mailOption);
+    smtpTransport.sendMail(mailOption, function (error, response) {
         if (error) {
+            console.log(error);
             callback(error);
         } else {
             callback(null,'Mail sent');

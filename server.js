@@ -51,8 +51,8 @@ var notes = require('./backend/api/v1/note')(authService);
 var password_recovery = require('./backend/api/v1/password_recovery')();
 
 // register routes
-app.use('/api/activation', activation);
 app.use('/api/profil', profile);
+app.use('/api/activation', activation);
 app.use('/api/auth', auth);
 app.use('/api/towns', towns);
 app.use('/api/tenants', tenants);

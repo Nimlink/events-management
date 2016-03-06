@@ -7,33 +7,21 @@ exports.ERRORS_CODE = {
     OWNER_NOT_ACTIVATED: "Owner-Not-Activated"
 };
 
-exports.isValidByMail = function (mail, callback) {
+exports.isOwnerAuthorized = function (mail, password, callback) {
     users.getOwnerByMailForAuthentification(mail, function (err, user) {
         if (err) {
             callback(err, null);
-        }
-        else {
+        } else {
             if (!user) {
                 err = new Error(exports.ERRORS_CODE.NO_EMAIL_FOUND);
-            }
-            else if (user.isActivated === false || user.isMailActivated === false) {
+            } else if (user.isactivated === false || user.ismailactivated === false) {
                 err = new Error(exports.ERRORS_CODE.OWNER_NOT_ACTIVATED);
+            } else if (user.isactivated === true &&
+                user.ismailactivated === true &&
+                !bCrypt.compareSync(reqPassword, foundUser.password)) {
+                err = new Error(exports.ERRORS_CODE.NO_EMAIL_FOUND);
             }
-
             callback(err, user);
         }
     });
-};
-
-var createHash = function (password) {
-    return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-};
-
-exports.isValidPassword = function (foundUser, reqPassword) {
-    if (foundUser.password) {
-        return bCrypt.compareSync(reqPassword, foundUser.password);
-        //return reqPassword === foundUser.password;
-    }
-    console.log("password has to not be null. User: ", foundUser);
-    return false;
 };

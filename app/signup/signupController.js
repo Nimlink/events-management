@@ -1,7 +1,7 @@
 /**
  * SignupCtrl - controller
  */
-function signupCtrl($rootScope, $stateParams, $scope, $state, ownerService, $translate) {
+function signupCtrl($rootScope, $stateParams, $scope, $state, ownerService, $translate, $modal) {
 
     $scope.sizeLimit      = 105857600; // 10MB in Bytes
     $scope.uploadProgress = 0;
@@ -97,6 +97,17 @@ function signupCtrl($rootScope, $stateParams, $scope, $state, ownerService, $tra
                     ownerService.createOwner($scope.signup).then(
                         function (greeting) {
                             $scope.userOk = true;
+                            $modal.open({
+                                templateUrl: "signup/modal_registrationok.html",
+                                windowClass: "animated flipInY",
+                                scope: $scope,
+                                controller: function ($scope, $modalInstance, $state) {
+                                    $scope.ok = function() {
+                                        $modalInstance.close();
+                                        $state.go('index_nobar.login');
+                                    }
+                                }
+                            });
                         }, function (reason) {
                             $scope.errors.push({item: "issue_on_registration"});
                         });

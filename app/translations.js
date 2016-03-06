@@ -68,7 +68,9 @@ function config($translateProvider) {
             no_attestation : 'Une attestation est nécessaire pour créer le compte',
             issue_on_registration : 'Le compte existe déjà !',
             issue : 'Problème non identifié. Veuillez vous reconnecter plus tard.',
-            password_forgotten :'Mot de passe oublié'
+            password_forgotten :'Mot de passe oublié',
+            register_ok: 'Inscription enregistrée !',
+            mail_activation: "Un mail d'activation de votre compte vient de vous être envoyé."
 
 		});
 

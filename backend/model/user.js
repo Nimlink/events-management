@@ -277,12 +277,18 @@ function validateMailOwner(mailHash, callback) {
         });
         query.on('end', function () {
             if (users.length > 0) {
-                client.query("UPDATE t_users SET isMailActivated=true WHERE id=$1",[users[0].id]);
-                callback(null);
+                client.query("UPDATE t_users SET isMailActivated=true WHERE id=$1",[users[0].id], function(err) {
+                    if (err) {
+                        callback('Failed');
+                    } else {
+                        callback(null);
+                    }
+                    client.end();
+                });
             } else {
                 callback('User not found');
+                client.end();
             }
-            client.end();
         });
     });
 };
@@ -299,12 +305,18 @@ function validateAttestationOwner(attestationHash, callback) {
         });
         query.on('end', function () {
             if (users.length > 0) {
-                client.query("UPDATE t_users SET isActivated=true WHERE id=$1",[users[0].id]);
-                callback(null);
+                client.query("UPDATE t_users SET isActivated=true WHERE id=$1",[users[0].id], function(err) {
+                    if (err) {
+                        callback('Failed');
+                    } else {
+                        callback(null);
+                    }
+                    client.end();
+                });
             } else {
                 callback('User not found');
+                client.end();
             }
-            client.end();
         });
     });
 };
