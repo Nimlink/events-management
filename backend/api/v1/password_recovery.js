@@ -16,7 +16,7 @@ module.exports = function () {
                     res.setHeader('Content-Type', 'application/json');
                     res.status(404).json('No user found');
                 } else {
-                    mail.sendPassword(req.body.mail, user.password);
+                    mail.sendPassword(req.body.mail, user.password, function(err,result){});
                     res.setHeader('Content-Type', 'application/json');
                     res.status(200).json('ack');
                 }
