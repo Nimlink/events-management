@@ -6,7 +6,8 @@ var app = angular.module('fup', [
     'ui.knob',
     'ngSanitize',
     'ui.select',
-    'angular-google-analytics'
+    'angular-google-analytics',
+    'ui.bootstrap.datetimepicker'
 ]);
 
 app.config(function (AnalyticsProvider) {
