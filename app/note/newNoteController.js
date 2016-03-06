@@ -67,12 +67,12 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  n
         if (nb>0) {
             $scope.moyenne = Math.floor(moyenne/nb/5*100);
         }
-    };
+    }
 
     $scope.querySearch = function (query) {
         var results = query ? $scope.towns.filter( createFilterFor(query) ) : $scope.towns;
         return results;
-    }
+    };
 
     function createFilterFor(query) {
         var lowercaseQuery = angular.lowercase(query);

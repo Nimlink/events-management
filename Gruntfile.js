@@ -49,6 +49,22 @@ module.exports = function (grunt) {
                     }
                 }
             },
+            distlivereload: {
+                options: {
+                    open: true,
+                    middleware: function (connect) {
+                        return [
+                            connect.static('.tmp'),
+                            connect().use(
+                                '/bower_components',
+                                connect.static('./bower_components')
+                            ),
+                            connect.static(appConfig.dist),
+                            connect.static(appConfig.be)
+                        ];
+                    }
+                }
+            },
             dist: {
                 options: {
                     open: true,
@@ -158,7 +174,10 @@ module.exports = function (grunt) {
                             '.htaccess',
                             '**/*.html',
                             '**/*.js',
+                            '*.css',
+                            '**/*.css',
                             '**/*.eot',
+                            '**/*.png',
                             '**/*.svg',
                             '**/*.ttf',
                             '**/*.woff',
@@ -251,17 +270,12 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     collapseWhitespace: true,
-                    conservativeCollapse: true,
-                    collapseBooleanAttributes: true,
                     minifyJS: true,
-                    removeComments: true,
-                    removeCommentsFromCDATA: true,
-                    removeOptionalTags: true
                 },
                 files: [{
                     expand: true,
                     cwd: '<%= fup.dist %>',
-                    src: ['<%= fup.dist %>/index.html'],
+                    src: ['*.html', '**/*.html'],
                     dest: '<%= fup.dist %>'
                 }]
             }
@@ -292,7 +306,7 @@ module.exports = function (grunt) {
                 separator: ';',
             },
             dist: {
-                src: ['app/**.js','app/*/**.js'],
+                src: ['app/*.js','app/**/*.js'],
                 dest: '<%= fup.dist %>/project.js',
             },
         },
@@ -303,6 +317,11 @@ module.exports = function (grunt) {
         'clean:server',
         'copy:styles',
         'connect:livereload',
+        'concurrent'
+    ]);
+
+    grunt.registerTask('distlive', [
+        'connect:distlivereload',
         'concurrent'
     ]);
 
@@ -321,7 +340,6 @@ module.exports = function (grunt) {
         'copy:dist',
         'copy:be',
         'uglify',
-        'filerev',
         'usemin',
         'htmlmin:dist'
     ]);

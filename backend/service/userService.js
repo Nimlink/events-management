@@ -18,7 +18,7 @@ exports.isOwnerAuthorized = function (mail, password, callback) {
                 err = new Error(exports.ERRORS_CODE.OWNER_NOT_ACTIVATED);
             } else if (user.isactivated === true &&
                 user.ismailactivated === true &&
-                !bCrypt.compareSync(reqPassword, foundUser.password)) {
+                !bCrypt.compareSync(password, user.password)) {
                 err = new Error(exports.ERRORS_CODE.NO_EMAIL_FOUND);
             }
             callback(err, user);
