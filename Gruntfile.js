@@ -11,6 +11,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-htmlrefs');
 
     // Configurable paths for the app
     var appConfig = {
@@ -157,7 +158,10 @@ module.exports = function (grunt) {
         },
 
         htmlrefs: {
-            dist: {src: '.tmp/index.html'}
+            dist: {
+                src: '<%= fup.app %>/index.html',
+                dest: '<%= fup.dist %>'
+            }
         },
 
         // Copies remaining files to places other tasks can use
