@@ -1,118 +1,14 @@
-<div ng-controller="signupCtrl as ctrl">
+<div ng-controller="mailCtrl as ctrl">
     <div class="row wrapper border-bottom orange-bg page-heading">
         <div class="col-lg-10">
-            <h1><i class="fa fa-home"/> Inscription</h1>
+            <h1><i class="fa fa-home"/> Validation du mail</h1>
         </div>
     </div>
     <div class="container">
-        <div>
-            <div class="row">
-                <div class="wrapper wrapper-content animated fadeInRight">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h2><i class="fa fa-sign-in text-immo"></i> Création d'un espace propriétaire</h2>
-                                    <p>Afin de bénéficier du service, un compte est nécessaire afin de garantir la fiabilité et la traçabilité des avis locatifs.</p>
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="form-group has-warning">
-                                                        <input class="form-control" ng-model="signup.firstname" placeholder="{{'prenom' | translate}}">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group has-warning">
-                                                        <input class="form-control" ng-model="signup.lastname" placeholder="{{'nom' | translate}}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p>
-                                            <div class="form-group has-warning">
-                                                <input class="form-control" type="email"  ng-model="signup.mail" placeholder="Adresse électronique - Identifiant">
-                                            </div>
-                                            </p>
-                                            <p>
-                                            <div class="form-group has-warning">
-                                                <input class="form-control" type="password" ng-model="signup.password" placeholder="Password">
-                                            </div>
-                                            </p>
-                                            <p>
-                                            <div class="form-group has-warning">
-                                                <input class="form-control" type="password" ng-model="signup.password1" placeholder="Confirmer password">
-                                            </div>
-                                            </p>
-                                            <p>
-                                            <div class="form-group has-warning">
-                                                <input class="bottom-marg-15" type="file" name="file" file></input>
-                                                <!-- Progress Bar -->
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ uploadProgress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ uploadProgress }}%;">
-                                                        {{ uploadProgress == 0 ? '' : uploadProgress + '%' }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" ng-show="errors.length > 0" class="animated ">
-                                        <div class="col-lg-12">
-                                            <div class="ibox-content">
-                                                <h3 style="text-align: center;"><a class="btn btn-danger btn-rounded"><i class="fa fa-exclamation"></i> {{'missing_parameters' | translate}}</a></h3>
-                                                <ul ng-repeat="error in errors">
-                                                    <li>{{error.item}}</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <button type="button" ng-click="ok()"  class="btn btn-sm btn-immo">Terminer l'inscription</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-1">
-                                </div>
-                                <div class="col-lg-5">
-                                    <h2><i class="fa fa-info-circle text-immo"></i> Fiabilité du service</h2>
-                                    <p><strong>L'adresse électronique n'est pas publique et ne sert qu'à des fins de vérification d'inscription.</strong></p>
-                                    <p>Afin de garantir un service fiable consolidant des avis réels, nous avons besoin d’une <strong>preuve</strong> attestant que vous êtes propriétaire bailleur.</p>
-                                    <p>Ce document peut être par exemple :</p>
-                                    <li>Une attestation de taxe foncière</li>
-                                    <li>Une attestation d’assurance PNO (Propriétaire Non-Occupant)</li>
-                                    <li>Une attestation de copropriété</li><br>
-                                    <p>Nous comprenons que cette requête soit désagréable à effectuer mais il s’agit d’une condition nécessaire pour obtenir un <strong>service de qualité</strong>. Soyez assuré que ce document ne sera nullement divulgué.</p>
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h3><i class="fa fa-edit text-immo"></i> Validation de l'inscription</h3>
-                                    <p>L’inscription et l'attestation de propriétaire bailleur sont validées manuellement par nos services dans les 48 heures.</p>
-                                    <p>Ce n’est qu’après cette validation que vous aurez la possibilité de rédiger des avis et de consulter les fiches locataires.</p>
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h3><i class="fa fa-eye-slash text-immo"></i> Confidentialité & Vie privée</h3>
-                                    <p>Nous avons conçu ce service de manière à demander le minimum d'informations nécessaires : prénom, nom, adresse électronique et attestation. <strong>Nous ne demandons AUCUNE autre informations par la suite.</strong></p>
-                                    <p>Nous tenons à vous rappeler que <strong>vous êtes le seul responsable de l’exactitude et qualité des avis rédigés</strong>. Nous n’intervenons qu’en la qualité d’intermédiaire permettant de centraliser les avis des propriétaires.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row">
+            <h3>{{'mail_activated' | translate}}</h3>
+        </div>
+        <div class="row row-centered">
         </div>
     </div>
 </div>

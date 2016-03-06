@@ -1,7 +1,7 @@
 /**
  * newNoteCtrl - controller
  */
-function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  noteService, $translate) {
+function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  noteService, $translate, ownerNoteService, dbQueriesService) {
 
     $scope.inlineOptions = {
         customClass: getDayClass,
@@ -9,6 +9,11 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  n
         showWeeks: true
     };
 
+    $scope.refreshAddresses = function(address) {
+        return dbQueriesService.getTowns(address).then(function(response) {
+                $scope.towns = response.data
+            });
+    };
 
     function getDayClass(data) {
         var date = data.date,
@@ -106,17 +111,17 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  n
             $scope.errors.push({item:$translate.instant('sortie')});
         }
 
-        if ($scope.note.capacity == 0) {
-            $scope.warnings.push({item:$translate.instant('capacite_tiny')});
-        }
-
-        if ($scope.note.attitude == 0) {
-            $scope.warnings.push({item:$translate.instant('attitude_tiny')});
-        }
-
-        if ($scope.note.degradation == 0) {
-            $scope.warnings.push({item:$translate.instant('degradation_tiny')});
-        }
+        //if ($scope.note.capacity == 0) {
+        //    $scope.warnings.push({item:$translate.instant('capacite_tiny')});
+        //}
+        //
+        //if ($scope.note.attitude == 0) {
+        //    $scope.warnings.push({item:$translate.instant('attitude_tiny')});
+        //}
+        //
+        //if ($scope.note.degradation == 0) {
+        //    $scope.warnings.push({item:$translate.instant('degradation_tiny')});
+        //}
 
         if ($scope.note.date_end != null && $scope.note.date_start != null) {
             if ($scope.note.date_end < $scope.note.date_start) {
@@ -127,9 +132,9 @@ function newNoteCtrl($rootScope, $scope, $modalInstance, $state, townService,  n
         if ($scope.errors.length == 0) {
             noteService.insertNote($scope.note).then(
                 function(greeting) {
-                    $state.go('index.owner',null,{reload: true});
+                    ownerNoteService.refresh(function(err){});
                 }, function(reason) {
-                    $state.go('index.owner',null,{reload: true});
+                    ownerNoteService.refresh(function(err){});
                 });
             $modalInstance.close();
         }

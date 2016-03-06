@@ -1,6 +1,6 @@
 var config = require('../config.json');
 var pg = require('pg');
-var bCrypt = require('bcrypt-nodejs');
+var crypto = require('../service/crypto.js');
 var connectionString = config.LPP_POSTGRESQL_URL;
 
 function getTenant(firstname, lastname, callback) {
@@ -27,7 +27,7 @@ function getTenantStrict(firstname, lastname, callback) {
     client.connect(function (err) {
         var users = [];
         var query = client.query("SELECT users.id, users.hash, users.firstname, users.lastname  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE firstname_lower = $1 AND lastname_lower = $2 AND usertype.code='LOC'",
-            [firstname, lastname]);
+            [firstname.toLowerCase(), lastname.toLowerCase()]);
         query.on('row', function (row) {
             users.push(row);
         });
@@ -122,7 +122,11 @@ function getOwnerByMailForAuthentification(mail, callback) {
         });
         query.on('end', function () {
             client.end();
-            callback(null, users[0]);
+            if(users.length > 0) {
+                callback(null, users[0]);
+            } else {
+                callback('No user found');
+            }
         });
     });
 };
@@ -154,7 +158,7 @@ function insertTenant(firstname, lastname, callback) {
     var today = new Date(Date.now());
     var hash = require('crypto').createHmac('sha256','ImmoTrankilSecret').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
     client.connect(function (err) {
-        var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date) values ($1,$2,$3,$4,$5);',
+        var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date) values ($1,$2,$3,$4,$5,$6);',
             [   hash.substring(0, 12),
                 firstname,
                 firstname.toLowerCase(),
@@ -219,7 +223,7 @@ function insertOwner(firstname, lastname, mail, password, callback) {
                 lastname.toLowerCase(),
                 today,
                 mail,
-                bCrypt.hashSync(password, bCrypt.genSaltSync(10), null),
+                crypto.encrypt(password),
                 hashMail,
                 hashAttestation
             ], function (err, result) {
@@ -270,7 +274,7 @@ function validateMailOwner(mailHash, callback) {
     var client = new pg.Client(connectionString);
     client.connect(function (err) {
         var users = [];
-        var query = client.query("SELECT users.id as id  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE usertype.code='PRO' AND mailActivationHash=$1",
+        var query = client.query("SELECT users.id, users.mail, users.attestationActivationHash  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE usertype.code='PRO' AND mailActivationHash=$1",
             [mailHash]);
         query.on('row', function (row) {
             users.push(row);
@@ -281,7 +285,7 @@ function validateMailOwner(mailHash, callback) {
                     if (err) {
                         callback('Failed');
                     } else {
-                        callback(null);
+                        callback(null, users[0]);
                     }
                     client.end();
                 });
@@ -298,7 +302,7 @@ function validateAttestationOwner(attestationHash, callback) {
     var client = new pg.Client(connectionString);
     client.connect(function (err) {
         var users = [];
-        var query = client.query("SELECT users.id as id  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE usertype.code='PRO' AND attestationActivationHash=$1",
+        var query = client.query("SELECT users.id, users.mail  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE usertype.code='PRO' AND attestationActivationHash=$1",
             [attestationHash]);
         query.on('row', function (row) {
             users.push(row);
@@ -309,7 +313,7 @@ function validateAttestationOwner(attestationHash, callback) {
                     if (err) {
                         callback('Failed');
                     } else {
-                        callback(null);
+                        callback(null, users[0]);
                     }
                     client.end();
                 });

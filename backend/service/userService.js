@@ -1,6 +1,6 @@
 var users = require('../model/user.js');
 var extend = require('../api/v1/util')._extend;
-var bCrypt = require('bcrypt-nodejs');
+var crypto = require('../service/crypto.js');
 
 exports.ERRORS_CODE = {
     NO_EMAIL_FOUND: "No-Email-Found",
@@ -18,7 +18,7 @@ exports.isOwnerAuthorized = function (mail, password, callback) {
                 err = new Error(exports.ERRORS_CODE.OWNER_NOT_ACTIVATED);
             } else if (user.isactivated === true &&
                 user.ismailactivated === true &&
-                !bCrypt.compareSync(password, user.password)) {
+                !crypto.compare(password, user.password)) {
                 err = new Error(exports.ERRORS_CODE.NO_EMAIL_FOUND);
             }
             callback(err, user);

@@ -6,16 +6,10 @@ function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, 
     $scope.search = {};
     $scope.towns = [];
 
-    async.parallel([
-        townService.init,
-    ], function (err, result) {
-        $scope.towns = townService.getTowns();
-    });
-
     $scope.createNote = function () {
         $modal.open({
             templateUrl: "note/modal_note_new.html",
-            windowClass: "animated flipInY",
+            windowClass: "animated bounceInRight",
             scope: $scope,
             controller: newNoteCtrl
         });
@@ -36,7 +30,7 @@ function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, 
                         $scope.people = greeting.data;
                         $modal.open({
                             templateUrl: "search/modal_search.html",
-                            windowClass: "animated flipInY",
+                            windowClass: "animated bounceInRight",
                             scope: $scope,
                             controller: function ($scope, $modalInstance) {
                                 $scope.cancel = function () {
@@ -56,7 +50,7 @@ function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, 
                 if (reason == 'Too many people found') {
                     $modal.open({
                         templateUrl: "search/modal_search_toomany.html",
-                        windowClass: "animated flipInY",
+                        windowClass: "animated bounceInRight",
                         scope: $scope,
                         controller: function ($scope, $modalInstance) {
                             $scope.ok = function () {
@@ -67,7 +61,7 @@ function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, 
                 } else {
                     $modal.open({
                         templateUrl: "search/modal_search_nobody.html",
-                        windowClass: "animated flipInY",
+                        windowClass: "animated bounceInRight",
                         scope: $scope,
                         controller: function ($scope, $modalInstance) {
                             $scope.ok = function () {

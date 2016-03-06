@@ -67,7 +67,6 @@ module.exports = function (authService) {
                                 res.status(404).json('No hash found');
                             } else {
                                 mail.sendMailActivation(user.mail, user.mailactivationhash, function(err, result){});
-                                mail.sendAttestationActivation(user.mail, user.attestationactivationhash, function(err, result){});
                             }
                         });
                     }

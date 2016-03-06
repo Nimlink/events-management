@@ -70,7 +70,8 @@ function config($translateProvider) {
             issue : 'Problème non identifié. Veuillez vous reconnecter plus tard.',
             password_forgotten :'Mot de passe oublié',
             register_ok: 'Inscription enregistrée !',
-            mail_activation: "Un mail d'activation de votre compte vient de vous être envoyé."
+            mail_activation: "Un mail d'activation de votre compte vient de vous être envoyé.",
+            mail_activated: "Votre adresse e-mail est bien enregistrée. L'analyse de votre attestation est en cours. Vous serez notifié dès validation du document."
 
 		});
 

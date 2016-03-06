@@ -16,7 +16,7 @@ angular.module('fup').controller('LoginCtrl', ['$scope', 'authService', '$state'
     $scope.password = function() {
         $modal.open({
             templateUrl: "login/modal_password.html",
-            windowClass: "animated flipInY",
+            windowClass: "animated bounceInRight",
             scope: $scope,
             controller: PassCtrl
         });

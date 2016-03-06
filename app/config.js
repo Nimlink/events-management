@@ -43,6 +43,11 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $injector ) {
             templateUrl: "signup/signup.html",
             data: {pageTitle: 'Inscription', requireLogin: false},
         })
+        .state('index_nobar.mailvalidation', {
+            url: "/mail/:id",
+            templateUrl: "signup/mailvalidation.html",
+            data: {pageTitle: 'Validation du mail', requireLogin: false},
+        })
 }
 angular
     .module('fup')

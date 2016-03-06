@@ -25,9 +25,9 @@ CREATE TABLE t_users (
    inscription_date TIMESTAMP,
    nb_request INTEGER NOT NULL DEFAULT 0,
    isMailActivated BOOLEAN NOT NULL DEFAULT false,
-   mailActivationHash VARCHAR(255) NOT NULL,
+   mailActivationHash VARCHAR(255),
    isActivated BOOLEAN NOT NULL DEFAULT false,
-   attestationActivationHash VARCHAR(255) NOT NULL
+   attestationActivationHash VARCHAR(255)
 );
 ALTER TABLE t_users ADD CONSTRAINT pk_users PRIMARY KEY (id);
 CREATE INDEX idx_users ON t_users(firstname_lower, lastname_lower);
@@ -73,12 +73,12 @@ CREATE UNIQUE INDEX uidx_notes ON t_notes(id_owner, id_tenant, id_town, date_sta
 CREATE INDEX idx_notes_owner ON t_notes(id_owner);
 CREATE INDEX idx_notes_tenant ON t_notes(id_tenant);
 
-INSERT INTO t_usertypes (code,type) VALUES ('PRO','Propriétaire');
+INSERT INTO t_usertypes (code,type) VALUES ('PRO','Propriï¿½taire');
 INSERT INTO t_usertypes (code,type) VALUES ('ADM','Administrateur');
 INSERT INTO t_usertypes (code,type) VALUES ('LOC','Locataire');
 
 insert into t_towns (postal_code,town) values ('01190','Ozan');
-insert into t_towns (postal_code,town) values ('01290','Cormoranche-sur-Saône');
+insert into t_towns (postal_code,town) values ('01290','Cormoranche-sur-Saï¿½ne');
 insert into t_towns (postal_code,town) values ('01130','Plagne');
 insert into t_towns (postal_code,town) values ('01250','Tossiat');
 insert into t_towns (postal_code,town) values ('01250','Pouillat');

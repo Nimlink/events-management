@@ -5,8 +5,8 @@ var app = angular.module('fup');
  */
 app.service('dbQueriesService', function ($http) {
 
-    this.getTowns = function () {
-        return $http.get('/api/towns');
+    this.getTowns = function (search) {
+        return $http.get('/api/towns/' + search);
     };
 
     this.postSearchTenant = function (data) {
@@ -35,6 +35,10 @@ app.service('dbQueriesService', function ($http) {
 
     this.auth_login = function (data) {
         return $http.post('/api/auth/signin', data);
+    };
+
+    this.validate_mail = function (hash) {
+        return $http.get('/api/activation/mail/' + hash);
     };
 
     this.auth_logout = function (data) {

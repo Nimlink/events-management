@@ -1,20 +1,9 @@
 function PassCtrl($scope, authService,$modalInstance, $state, userSession, AUTH_EVENTS) {
 
-    var resetFailure = function () {
-        $scope.hasFailed = false;
-        $scope.failMessage = "";
-    };
-
-    resetFailure();
-
-    $scope.credentials = {
-        mail: '',
-        password: ''
-    };
+    $scope.mail = '';
 
     $scope.ok = function() {
-        resetFailure();
-        authService.mailPassword($scope.credentials);
+        authService.mailPassword({mail:$scope.mail});
         $modalInstance.close();
     }
 

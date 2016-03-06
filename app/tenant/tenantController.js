@@ -12,7 +12,7 @@ function tenantCtrl($rootScope, $stateParams, $scope, tenantService, $modal, $st
         if (err != undefined) {
             $modal.open({
                 templateUrl: "search/modal_search_nobody.html",
-                windowClass: "animated flipInY",
+                windowClass: "animated bounceInRight",
                 scope: $scope,
                 controller: function ($scope, $modalInstance) {
                     $scope.ok = function () {

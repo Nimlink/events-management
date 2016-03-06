@@ -99,7 +99,7 @@ function signupCtrl($rootScope, $stateParams, $scope, $state, ownerService, $tra
                             $scope.userOk = true;
                             $modal.open({
                                 templateUrl: "signup/modal_registrationok.html",
-                                windowClass: "animated flipInY",
+                                windowClass: "animated bounceInRight",
                                 scope: $scope,
                                 controller: function ($scope, $modalInstance, $state) {
                                     $scope.ok = function() {

@@ -59,12 +59,13 @@ module.exports = function (authService) {
                     res.setHeader('Content-Type', 'application/json');
                     res.status(404).json('Failed');
                 } else {
-
+                    data.id_owner = req.decoded.user.id;
                     // no tenant in db, we need to create him
                     if (results[1].length < 1) {
                         async.series([
                             async.apply(users.insertTenant, data.firstname, data.lastname)
                         ], function (err, results) {
+                            console.log(err, results);
                             if (err) {
                                 res.setHeader('Content-Type', 'application/json');
                                 res.status(404).json('Failed');
