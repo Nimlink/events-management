@@ -6,9 +6,11 @@ function sendMailActivation(mail, hash, callback) {
     var mailOption = {
         from: '"NO-REPLY" <immotrankil@gmail.com>',
         to: mail,
-        subject: "Activation de votre mail",
+        subject: "ImmoTrankil : activation de votre email",
         text: "Veuillez svp cliquer sur le lien suivant : http://immotrankil.com/#/mail/" + hash,
-        html: "<b>Veuillez svp cliquer sur le lien suivant : http://immotrankil.com/#/mail/"+ hash +"</b>"
+        html: "Cher propriétaire,<br/><br/>Afin d'activer votre adresse email, veuillez, svp, cliquer sur le lien suivant : http://immotrankil.com/#/mail/"+ hash +"<br/>" +
+        "Vous recevrez un email dès que votre attestation de propriétaire aura été validé par notre équipe. " +
+        "Ce n'est qu'à ce moment là que vous pourrez commencer à saisir vos avis de locataires.<br/><br/>L'équipe ImmoTrankil"
     }
 
     console.log(mailOption);
@@ -52,9 +54,10 @@ function sendAccountValidated(mail, callback) {
     var mailOption = {
         from: '"NO-REPLY" <immotrankil@gmail.com>',
         to: mail,
-        subject: "Compte valid� " + mail,
-        text: "Votre compte est activ�.",
-        html: "<b>Votre compte est activ�.</b>"
+        subject: "Compte ImmoTrankil validé " + mail,
+        text: "Votre compte est activé.",
+        html: "Cher propriétaire,<br/><br/>Nous vous signalons que votre compte vient d'être validé par notre équipe. " +
+        "Vous pouvez dès maintenant ajouter et consulter des avis de locataires sur http://www.immotrankil.com.<br/><br/>L'équipe ImmoTrankil"
     }
 
     console.log(mailOption);
