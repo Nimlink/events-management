@@ -23,6 +23,11 @@
     float: none;
 }
 
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
 .md-autocomplete md-autocomplete-wrap.md-menu-showing {
     z-index: 1300;
 }

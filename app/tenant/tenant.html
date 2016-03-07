@@ -1,131 +1,127 @@
 <div ng-controller="tenantCtrl as ctrl">
-    <div class="row wrapper border-bottom red-bg page-heading">
-        <div class="col-lg-10">
+    <div class="row wrapper page-heading row-centered">
+        <div class="col-lg-12">
             <h1><i class="fa fa-user"/> {{'fiche' | translate}} <strong>{{tenant.firstname}} {{tenant.lastname}}</strong></h1>
         </div>
     </div>
     <div class="container">
-        <div>
-            <div class="row">
-                <div class="wrapper wrapper-content animated fadeInRight">
-                    <div class="panel">
-                        <div class="panel-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2><strong>{{'appreciation' | translate}}</strong></h2>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-lg-9">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <h2><strong>{{'appreciation' | translate}}</strong></h2>
+                                <div class="col-lg-8">
+                                    <h3>{{'capacite_short' | translate}}</h3>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input-stars max="5" ng-model="moyenne.capacity" readonly ></input-stars>
                                 </div>
                             </div>
-                            <div class="row ">
+
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h3>{{'attitude_short' | translate}}</h3>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input-stars max="5" ng-model="moyenne.attitude" readonly ></input-stars>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h3>{{'degradation_short' | translate}}</h3>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input-stars max="5" ng-model="moyenne.degradation" readonly ></input-stars>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 row-centered">
+                            <div ng-if="moyenne.general < 34">
+                                <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                            </div>
+                            <div ng-if="moyenne.general >= 34">
+                                <div ng-if="moyenne.general < 66">
+                                    <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                                </div>
+                            </div>
+                            <div ng-if="moyenne.general >= 66">
+                                <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2><strong>{{'list_avis' | translate}}</strong></h2>
+                        </div>
+                    </div>
+                    <div ng-repeat="note in notes">
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="m-b-md">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h2><small>{{'phrase_avis_1' | translate}}<strong>{{note.town}}</strong> ({{note.postal_code}}) {{'phrase_avis_2' | translate}}{{tenant.firstname}} {{tenant.lastname}}{{'phrase_avis_3' | translate}}<strong>{{note.date_start | date:'yyyy-MM-dd'}}</strong>{{'phrase_avis_4' | translate}}<strong>{{note.date_end | date:'yyyy-MM-dd'}}</strong>.</small></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-9">
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <h3>{{'capacite_short' | translate}}</h3>
+                                            {{'capacite_long' | translate}}
                                         </div>
                                         <div class="col-lg-4">
-                                            <input-stars max="5" ng-model="moyenne.capacity" readonly ></input-stars>
+                                            <input-stars max="5" ng-model="note.capacity" readonly ></input-stars>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <h3>{{'attitude_short' | translate}}</h3>
+                                            {{'attitude_long' | translate}}
                                         </div>
                                         <div class="col-lg-4">
-                                            <input-stars max="5" ng-model="moyenne.attitude" readonly ></input-stars>
+                                            <input-stars max="5" ng-model="note.attitude" readonly ></input-stars>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <h3>{{'degradation_short' | translate}}</h3>
+                                            {{'degradation_long' | translate}}
                                         </div>
                                         <div class="col-lg-4">
-                                            <input-stars max="5" ng-model="moyenne.degradation" readonly ></input-stars>
+                                            <input-stars max="5" ng-model="note.degradation" readonly ></input-stars>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 row-centered">
-                                    <div ng-if="moyenne.general < 34">
-                                        <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#ED5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                                    <div ng-if="note.moyenne < 34">
+                                        <knob knob-data="note.moyenne" class="m-r-sm" data-fgColor="#ed5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
                                     </div>
-                                    <div ng-if="moyenne.general >= 34">
-                                        <div ng-if="moyenne.general < 66">
-                                            <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                                    <div ng-if="note.moyenne >= 34">
+                                        <div ng-if="note.moyenne < 66">
+                                            <knob knob-data="note.moyenne" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
                                         </div>
                                     </div>
-                                    <div ng-if="moyenne.general >= 66">
-                                        <knob knob-data="moyenne.general" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
+                                    <div ng-if="note.moyenne >= 66">
+                                        <knob knob-data="note.moyenne" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="hr-line-dashed"></div>
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h2><strong>{{'list_avis' | translate}}</strong></h2>
-                                </div>
-                            </div>
-                            <div ng-repeat="note in notes">
-                                <div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="m-b-md">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <h2><small>{{'phrase_avis_1' | translate}}<strong>{{note.town}}</strong> ({{note.postal_code}}) {{'phrase_avis_2' | translate}}{{tenant.firstname}} {{tenant.lastname}}{{'phrase_avis_3' | translate}}<strong>{{note.date_start | date:'yyyy-MM-dd'}}</strong>{{'phrase_avis_4' | translate}}<strong>{{note.date_end | date:'yyyy-MM-dd'}}</strong>.</small></h2>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-9">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    {{'capacite_long' | translate}}
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <input-stars max="5" ng-model="note.capacity" readonly ></input-stars>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    {{'attitude_long' | translate}}
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <input-stars max="5" ng-model="note.attitude" readonly ></input-stars>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    {{'degradation_long' | translate}}
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <input-stars max="5" ng-model="note.degradation" readonly ></input-stars>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 row-centered">
-                                            <div ng-if="note.moyenne < 34">
-                                                <knob knob-data="note.moyenne" class="m-r-sm" data-fgColor="#ed5565" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
-                                            </div>
-                                            <div ng-if="note.moyenne >= 34">
-                                                <div ng-if="note.moyenne < 66">
-                                                    <knob knob-data="note.moyenne" class="m-r-sm" data-fgColor="#f8ac59" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
-                                                </div>
-                                            </div>
-                                            <div ng-if="note.moyenne >= 66">
-                                                <knob knob-data="note.moyenne" class="m-r-sm" data-fgColor="#1ab394" data-width="100" data-height="100" data-angleOffset=-125 data-angleArc=250 data-readOnly="true" knob-options=""></knob>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
                             </div>
                         </div>
+                        <div class="hr-line-dashed"></div>
                     </div>
                 </div>
             </div>

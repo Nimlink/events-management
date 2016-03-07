@@ -1,44 +1,31 @@
 <div ng-controller="MainCtrl as controller" >
-
-    <nav class="navbar navbar-static-top" role="navigation" style="padding-bottom: 5px;padding-top: 5px">
-        <div class="navbar-header" style="padding-left: 10px">
-            <a ui-sref="index.owner"><h1 class="logo-name-header text-immo">ImmoTrankil</h1></a>
+    <div class="row orange-bg">
+        <div class="col-sm-2 row-centered">
+            <a ui-sref="index.owner" style="color: white"><h2><i class="fa fa-home"/> ImmoTrankil</h2></a>
         </div>
-        <div class="form-group">
-            <ul class="nav navbar-top-links navbar-right">
-                <li>
-                        <input class="form-control" ng-model="search.firstname" placeholder="{{'prenom' | translate}}">
-                </li>
-                <li>
-                        <input class="form-control" ng-model="search.lastname" placeholder="{{'nom' | translate}}">
-                </li>
-                <li class="divider"></li>
-                <li class="dropdown">
-                    <button ng-click="searchTenant()"  class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-search"></i>
-                    </button>
-                </li>
-                <li class="divider"></li>
-                <li class="dropdown">
-                    <button ng-click="createNote($event)" class="btn btn-warning btn-circle btn-lg" type="button"><i class="fa fa-pencil"></i>
-                    </button>
-                </li>
-                <li class="divider"></li>
-                <li class="divider"></li>
-                <li class="divider"></li>
-                <li class="divider"></li>
-                <li class="divider"></li>
-                <li class="divider"></li>
-                <li class="divider"></li>
-                <li class="divider"></li>
-                <li class="divider"></li>
-                <li class="divider"></li>
-                <li>
-                    <a ng-click="logout()">
-                        <i class="fa fa-sign-out"></i> {{'sortir' | translate}}
-                    </a>
-                </li>
-            </ul>
+        <div class="col-sm-2">
         </div>
-
-    </nav>
+        <div class="col-sm-4 " style="padding-top: 12px">
+            <ui-select ng-model="tenant.selected" ng-disabled="disabled" theme="selectize" >
+                <ui-select-match placeholder="{{'prenom' | translate}} {{'nom' | translate}}">{{$select.selected.firstname}} {{$select.selected.lastname}}</ui-select-match>
+                <ui-select-choices repeat="item in tenants"
+                                   refresh="refreshTenants($select.search)"
+                                   refresh-delay="0" >
+                    <span ng-bind-html="item.firstname | highlight: $select.search"></span>
+                    <span ng-bind-html="item.lastname | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-1 row-centered" style="padding-top: 3px">
+            <button ng-click="createNote($event)" class="btn btn-lg btn-circle" style="background:white;color: black" type="button"><i class="fa fa-pencil"></i>
+            </button>
+        </div>
+        <div class="col-sm-1 row-centered" style="padding-top: 12px">
+            <a ng-click="logout()" style="color: white">
+                <h3> <i class="fa fa-sign-out"></i> {{'sortir' | translate}}</h3>
+            </a>
+        </div>
+    </div>
 </div>

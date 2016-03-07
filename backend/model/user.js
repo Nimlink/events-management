@@ -3,6 +3,24 @@ var pg = require('pg');
 var crypto = require('../service/crypto.js');
 var connectionString = config.LPP_POSTGRESQL_URL;
 
+function searchTenant(search, callback) {
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        search += '%';
+        var users = [];
+        var query = client.query("SELECT users.hash, users.firstname, users.lastname  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE CONCAT(firstname_lower,lastname_lower) LIKE $1 AND usertype.code='LOC' ORDER BY CONCAT(firstname_lower,lastname_lower) LIMIT 5",
+            [search]);
+        query.on('row', function (row) {
+            users.push(row);
+        });
+        query.on('end', function () {
+            client.end();
+            callback(null, users);
+        });
+    });
+};
+module.exports.searchTenant = searchTenant;
+
 function getTenant(firstname, lastname, callback) {
     var client = new pg.Client(connectionString);
     client.connect(function (err) {

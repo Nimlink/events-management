@@ -43,6 +43,7 @@ require('./backend/service/passport.local')(passport, authService);
 // routes for API
 var profile = require('./backend/api/v1/profile')();
 var activation = require('./backend/api/v1/activation')();
+var search = require('./backend/api/v1/searchTenants')();
 var auth = require('./backend/api/v1/auth')(passport, authService);
 var towns = require('./backend/api/v1/towns')(authService);
 var tenants = require('./backend/api/v1/tenant')(authService);
@@ -53,6 +54,7 @@ var password_recovery = require('./backend/api/v1/password_recovery')();
 // register routes
 app.use('/api/profil', profile);
 app.use('/api/activation', activation);
+app.use('/api/search', search);
 app.use('/api/auth', auth);
 app.use('/api/towns', towns);
 app.use('/api/tenants', tenants);

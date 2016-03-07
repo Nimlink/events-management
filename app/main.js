@@ -1,7 +1,7 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, townService,authService, $translate, $log) {
+function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, dbQueriesService, townService,authService, $translate, $log) {
 
     $scope.search = {};
     $scope.towns = [];
@@ -13,6 +13,22 @@ function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, 
             scope: $scope,
             controller: newNoteCtrl
         });
+    };
+
+    $scope.tenant = {};
+    $scope.tenant.selected = {};
+    $scope.$watch('tenant.selected', function(newValue, oldValue) {
+        if ($scope.tenant.selected.hash) {
+            $state.go('index.tenant', {id: $scope.tenant.selected.hash});
+            $scope.tenant.selected = null;
+        }
+    });
+    $scope.refreshTenants = function(tenant) {
+        if (tenant.length > 0) {
+            return dbQueriesService.searchTenant(tenant.toLowerCase().replace(/ /g,"")).then(function(response) {
+                $scope.tenants = response.data
+            });
+        }
     };
 
     $scope.searchTenant = function () {

@@ -17,6 +17,10 @@ app.service('dbQueriesService', function ($http) {
         return $http.get('/api/tenants/' + hash);
     };
 
+    this.searchTenant = function (search) {
+        return $http.get('/api/search/' + search);
+    };
+
     this.getOwner = function () {
         return $http.get('/api/owners');
     };
