@@ -17,7 +17,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <ui-select ng-model="town.selected" ng-disabled="disabled" >
+                <ui-select ng-model="town.selected" ng-disabled="disabled" theme="selectize">
                     <ui-select-match placeholder="{{'code_postal' | translate}}">{{$select.selected.town}} - {{$select.selected.postal_code}}</ui-select-match>
                     <ui-select-choices repeat="item in towns | propsFilter: {postal_code: $select.search, town: $select.search}"
                                        refresh="refreshAddresses($select.search)"

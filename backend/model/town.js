@@ -23,7 +23,7 @@ function findTowns(search, callback) {
     search_pattern = search.toLowerCase() + '%';
     client.connect(function (err) {
         var countries = [];
-        var query = client.query('SELECT * FROM t_towns WHERE LOWER(town) like $1 ORDER BY town limit 5', [search_pattern]);
+        var query = client.query('SELECT * FROM t_towns WHERE LOWER(town) like $1 OR postal_code like $1 ORDER BY town limit 5', [search_pattern]);
         query.on('row', function (row) {
             countries.push(row);
         });
