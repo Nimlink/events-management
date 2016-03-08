@@ -21,11 +21,9 @@
                     <ui-select-match placeholder="{{'code_postal' | translate}}">{{$select.selected.town}} - {{$select.selected.postal_code}}</ui-select-match>
                     <ui-select-choices repeat="item in towns | propsFilter: {postal_code: $select.search, town: $select.search}"
                                        refresh="refreshAddresses($select.search)"
-                                       refresh-delay="0" >
-                        <div ng-bind-html="item.town | highlight: $select.search"></div>
-                        <small>
-                            CP: <span ng-bind-html="''+item.postal_code | highlight: $select.search"></span>
-                        </small>
+                                       refresh-delay="500" >
+                        <span ng-bind-html="item.town | highlight: $select.search"></span>
+                        <span ng-bind-html="item.postal_code | highlight: $select.search"></span>
                     </ui-select-choices>
                 </ui-select>
             </div>

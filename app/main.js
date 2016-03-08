@@ -16,11 +16,10 @@ function MainCtrl($rootScope, $state, $scope, $modal, $location, tenantService, 
     };
 
     $scope.tenant = {};
-    $scope.tenant.selected = {};
     $scope.$watch('tenant.selected', function(newValue, oldValue) {
         if ($scope.tenant.selected.hash) {
             $state.go('index.tenant', {id: $scope.tenant.selected.hash});
-            $scope.tenant.selected = null;
+            $scope.tenant.selected = undefined;
         }
     });
     $scope.refreshTenants = function(tenant) {

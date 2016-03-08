@@ -30,7 +30,8 @@ CREATE TABLE t_users (
    attestationActivationHash VARCHAR(255)
 );
 ALTER TABLE t_users ADD CONSTRAINT pk_users PRIMARY KEY (id);
-CREATE INDEX idx_users ON t_users(firstname_lower, lastname_lower);
+CREATE INDEX idx_firstname_lower ON t_users(firstname_lower);
+CREATE INDEX idx_lastname_lower ON t_users(lastname_lower);
 CREATE UNIQUE INDEX uidx_users_mail ON t_users(mail);
 CREATE UNIQUE INDEX uidx_users_hash ON t_users(hash);
 
@@ -50,7 +51,7 @@ CREATE TABLE t_towns (
    town VARCHAR(255) NOT NULL
 );
 ALTER TABLE t_towns ADD CONSTRAINT pk_towns PRIMARY KEY (id);
-CREATE INDEX idx_towns ON t_towns(postal_code);
+CREATE UNIQUE INDEX idx_towns ON t_towns(postal_code,town);
 
 
 DROP TABLE IF EXISTS t_notes CASCADE;
@@ -76,12 +77,3 @@ CREATE INDEX idx_notes_tenant ON t_notes(id_tenant);
 INSERT INTO t_usertypes (code,type) VALUES ('PRO','Propriétaire');
 INSERT INTO t_usertypes (code,type) VALUES ('ADM','Administrateur');
 INSERT INTO t_usertypes (code,type) VALUES ('LOC','Locataire');
-
-insert into t_towns (postal_code,town) values ('01190','Ozan');
-insert into t_towns (postal_code,town) values ('01290','Cormoranche-sur-Saône');
-insert into t_towns (postal_code,town) values ('01130','Plagne');
-insert into t_towns (postal_code,town) values ('01250','Tossiat');
-insert into t_towns (postal_code,town) values ('01250','Pouillat');
-insert into t_towns (postal_code,town) values ('01230','Torcieu');
-insert into t_towns (postal_code,town) values ('01620','Replonges');
-insert into t_towns (postal_code,town) values ('01110','Corcelles');

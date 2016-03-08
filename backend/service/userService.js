@@ -10,7 +10,7 @@ exports.ERRORS_CODE = {
 exports.isOwnerAuthorized = function (mail, password, callback) {
     users.getOwnerByMailForAuthentification(mail, function (err, user) {
         if (err) {
-            callback(err, null);
+            callback(new Error(exports.ERRORS_CODE.NO_EMAIL_FOUND));
         } else {
             if (!user) {
                 err = new Error(exports.ERRORS_CODE.NO_EMAIL_FOUND);

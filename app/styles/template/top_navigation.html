@@ -7,25 +7,24 @@
         </div>
         <div class="col-sm-4 " style="padding-top: 12px">
             <ui-select ng-model="tenant.selected" ng-disabled="disabled" theme="selectize" >
-                <ui-select-match placeholder="{{'prenom' | translate}} {{'nom' | translate}}">{{$select.selected.firstname}} {{$select.selected.lastname}}</ui-select-match>
+                <ui-select-match placeholder="{{'search' | translate}}">{{$select.selected.firstname}} {{$select.selected.lastname}}</ui-select-match>
                 <ui-select-choices repeat="item in tenants"
                                    refresh="refreshTenants($select.search)"
-                                   refresh-delay="0" >
+                                   refresh-delay="500" >
                     <span ng-bind-html="item.firstname | highlight: $select.search"></span>
                     <span ng-bind-html="item.lastname | highlight: $select.search"></span>
                 </ui-select-choices>
             </ui-select>
         </div>
         <div class="col-sm-2">
+            <h2 style="margin-top: 16px"> <i class="fa fa-search"/></h2>
         </div>
         <div class="col-sm-1 row-centered" style="padding-top: 3px">
-            <button ng-click="createNote($event)" class="btn btn-lg btn-circle" style="background:white;color: black" type="button"><i class="fa fa-pencil"></i>
+            <button ng-click="createNote($event)" class="btn btn-lg btn-circle btn-default" style="background:white;color: black" type="button"><i class="fa fa-pencil"></i>
             </button>
         </div>
         <div class="col-sm-1 row-centered" style="padding-top: 12px">
-            <a ng-click="logout()" style="color: white">
-                <h3> <i class="fa fa-sign-out"></i> {{'sortir' | translate}}</h3>
-            </a>
+            <button type="button" ng-click="logout()" class="btn btn-link"><h3> <i class="fa fa-sign-out"></i> {{'sortir' | translate}}</h3></button>
         </div>
     </div>
 </div>
