@@ -72,6 +72,7 @@ function config($translateProvider) {
             register_ok: 'Inscription enregistrée !',
             mail_activation: "Un mail d'activation de votre compte vient de vous être envoyé.",
             search: "Chercher un locataire",
+            issue_on_registration : "Problème non identifié. Veuillez vous reconnecter plus tard.",
             mail_activated: "Votre adresse e-mail est bien enregistrée. L'analyse de votre attestation est en cours. Vous serez notifié dès validation du document."
 
 		});
