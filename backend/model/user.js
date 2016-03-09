@@ -9,7 +9,7 @@ function searchTenant(search, callback) {
         search += '%';
         var users = [];
         var query = client.query("SELECT users.hash, users.firstname, users.lastname  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE (CONCAT(firstname_lower,lastname_lower) LIKE $1 OR CONCAT(lastname_lower,firstname_lower) LIKE $1) AND usertype.code='LOC' ORDER BY CONCAT(firstname_lower,lastname_lower) LIMIT 5",
-            [search.toLowerCase().latinize()]);
+            [search.trim().toLowerCase().latinize()]);
         query.on('row', function (row) {
             users.push(row);
         });
@@ -28,7 +28,7 @@ function getTenant(firstname, lastname, callback) {
         lastname += '%';
         var users = [];
         var query = client.query("SELECT users.id, users.hash, users.firstname, users.lastname  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE firstname_lower LIKE $1 AND lastname_lower LIKE $2 AND usertype.code='LOC'",
-            [firstname, lastname]);
+            [firstname.trim().toLowerCase().latinize(), lastname.trim().toLowerCase().latinize()]);
         query.on('row', function (row) {
             users.push(row);
         });
@@ -45,7 +45,7 @@ function getTenantStrict(firstname, lastname, callback) {
     client.connect(function (err) {
         var users = [];
         var query = client.query("SELECT users.id, users.hash, users.firstname, users.lastname  FROM t_users as users INNER JOIN t_users_usertypes as usertypelink ON users.id=usertypelink.id_user INNER JOIN t_usertypes as usertype ON usertype.id=usertypelink.id_usertype WHERE firstname_lower = $1 AND lastname_lower = $2 AND usertype.code='LOC'",
-            [firstname.toLowerCase(), lastname.toLowerCase()]);
+            [firstname.trim().toLowerCase().latinize(), lastname.trim().toLowerCase().latinize()]);
         query.on('row', function (row) {
             users.push(row);
         });
@@ -179,9 +179,9 @@ function insertTenant(firstname, lastname, callback) {
         var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date) values ($1,$2,$3,$4,$5,$6);',
             [   hash.substring(0, 12),
                 firstname,
-                firstname.toLowerCase().latinize(),
+                firstname.trim().toLowerCase().latinize(),
                 lastname,
-                lastname.toLowerCase().latinize(),
+                lastname.trim().toLowerCase().latinize(),
                 today], function (err, result) {
                 if (err) {
                     client.end();
@@ -240,9 +240,9 @@ function insertOwner(firstname, lastname, mail, password, callback) {
         var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date, mail, password, mailActivationHash, attestationActivationHash) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);',
             [   hash.substring(0, 12),
                 firstname,
-                firstname.toLowerCase().latinize(),
+                firstname.trim().toLowerCase().latinize(),
                 lastname,
-                lastname.toLowerCase().latinize(),
+                lastname.trim().toLowerCase().latinize(),
                 today,
                 mail,
                 crypto.encrypt(password),

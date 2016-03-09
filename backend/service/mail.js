@@ -36,7 +36,6 @@ function sendAttestationActivation(mail, hash, callback) {
         html: "<b>Activation du compte "+ mail +", svp cliquer sur le lien suivant : http://immotrankil.com/api/activation/attestation/"+ hash +"</b>"
     }
 
-    console.log(mailOption);
     smtpTransport.sendMail(mailOption, function (error, response) {
         if (error) {
             console.log(error);
@@ -60,7 +59,6 @@ function sendAccountValidated(mail, callback) {
         "Vous pouvez dès maintenant ajouter et consulter des avis de locataires sur http://www.immotrankil.com.<br/><br/>L'équipe ImmoTrankil"
     }
 
-    console.log(mailOption);
     smtpTransport.sendMail(mailOption, function (error, response) {
         if (error) {
             console.log(error);
@@ -83,7 +81,6 @@ function sendPassword(mail, password, callback) {
         html: "<b>Votre password est " + crypto.decrypt(password) + "</b>"
     }
 
-    console.log(mailOption);
     smtpTransport.sendMail(mailOption, function (error, response) {
         if (error) {
             console.log(error);
