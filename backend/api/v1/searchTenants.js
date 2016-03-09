@@ -3,7 +3,7 @@ module.exports = function (authService) {
     var router = express.Router();
     var user = require('../../model/user.js');
 
-    router.get('/:search', function (req, res, next) {
+    router.get('/:search', authService.ensureAuthorized(), function (req, res, next) {
         if (req.params.search == undefined) {
             res.setHeader('Content-Type', 'application/json');
             res.status(404).json('No data');

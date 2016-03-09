@@ -31,7 +31,7 @@ module.exports = function (authService) {
             parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
     }
 
-    router.get('/:hash', function (req, res, next) {
+    router.get('/:hash', authService.ensureAuthorized(), function (req, res, next) {
         if (req.params.hash == undefined) {
             res.setHeader('Content-Type', 'application/json');
             res.status(404).json('No data');
