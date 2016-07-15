@@ -2,15 +2,13 @@ var mailer = require("nodemailer");
 var crypto = require('../service/crypto.js');
 
 function sendMailActivation(mail, hash, callback) {
-    var smtpTransport = mailer.createTransport('smtps://immotrankil%40gmail.com:startupsiliconvalley@smtp.gmail.com');
+    var smtpTransport = mailer.createTransport('EMAIL AUTHENTICATION');
     var mailOption = {
-        from: '"NO-REPLY" <immotrankil@gmail.com>',
+        from: '"NO-REPLY" <EMAIL>',
         to: mail,
-        subject: "ImmoTrankil : activation de votre email",
-        text: "Veuillez svp cliquer sur le lien suivant : http://immotrankil.com/#/mail/" + hash,
-        html: "Cher propriétaire,<br/><br/>Afin d'activer votre adresse email, veuillez, svp, cliquer sur le lien suivant : http://immotrankil.com/#/mail/"+ hash +"<br/>" +
-        "Vous recevrez un email dès que votre attestation de propriétaire aura été validé par notre équipe. " +
-        "Ce n'est qu'à ce moment là que vous pourrez commencer à saisir vos avis de locataires.<br/><br/>L'équipe ImmoTrankil"
+        subject: "Events Management : activation de votre email",
+        text: "Veuillez svp cliquer sur le lien suivant : URL" + hash,
+        html: "Activation manuelle nécessaire."
     }
 
     console.log(mailOption);
@@ -27,13 +25,13 @@ function sendMailActivation(mail, hash, callback) {
 module.exports.sendMailActivation = sendMailActivation;
 
 function sendAttestationActivation(mail, hash, callback) {
-    var smtpTransport = mailer.createTransport('smtps://immotrankil%40gmail.com:startupsiliconvalley@smtp.gmail.com');
+    var smtpTransport = mailer.createTransport('EMAIL AUTHENTICATION');
     var mailOption = {
-        from: '"NO-REPLY" <immotrankil@gmail.com>',
-        to: 'immotrankil@gmail.com',
+        from: '"NO-REPLY" <EMAIL>',
+        to: 'EMAIL',
         subject: "Activation du compte " + mail,
-        text: "Activation du compte "+ mail +", svp cliquer sur le lien suivant : http://immotrankil.com/api/activation/attestation/" + hash,
-        html: "<b>Activation du compte "+ mail +", svp cliquer sur le lien suivant : http://immotrankil.com/api/activation/attestation/"+ hash +"</b>"
+        text: "Activation du compte "+ mail +", svp cliquer sur le lien suivant : URL" + hash,
+        html: "<b>Activation du compte "+ mail +", svp cliquer sur le lien suivant : URL"+ hash +"</b>"
     }
 
     smtpTransport.sendMail(mailOption, function (error, response) {
@@ -49,14 +47,13 @@ function sendAttestationActivation(mail, hash, callback) {
 module.exports.sendAttestationActivation = sendAttestationActivation;
 
 function sendAccountValidated(mail, callback) {
-    var smtpTransport = mailer.createTransport('smtps://immotrankil%40gmail.com:startupsiliconvalley@smtp.gmail.com');
+    var smtpTransport = mailer.createTransport('EMAIL AUTHENTICATION');
     var mailOption = {
-        from: '"NO-REPLY" <immotrankil@gmail.com>',
+        from: '"NO-REPLY" <EMAIL>',
         to: mail,
-        subject: "Compte ImmoTrankil validé " + mail,
+        subject: "Compte validé " + mail,
         text: "Votre compte est activé.",
-        html: "Cher propriétaire,<br/><br/>Nous vous signalons que votre compte vient d'être validé par notre équipe. " +
-        "Vous pouvez dès maintenant ajouter et consulter des avis de locataires sur http://www.immotrankil.com.<br/><br/>L'équipe ImmoTrankil"
+        html: "Bienvenu"
     }
 
     smtpTransport.sendMail(mailOption, function (error, response) {
@@ -72,11 +69,11 @@ function sendAccountValidated(mail, callback) {
 module.exports.sendAccountValidated = sendAccountValidated;
 
 function sendPassword(mail, password, callback) {
-    var smtpTransport = mailer.createTransport('smtps://immotrankil%40gmail.com:startupsiliconvalley@smtp.gmail.com');
+    var smtpTransport = mailer.createTransport('EMAIL AUTHENTICATION');
     var mailOption = {
-        from: '"NO-REPLY" <immotrankil@gmail.com>',
+        from: '"NO-REPLY" <EMAIL>',
         to: mail,
-        subject: "Password compte ImmoTrankil",
+        subject: "Password compte",
         text: "Votre password est " + crypto.decrypt(password),
         html: "<b>Votre password est " + crypto.decrypt(password) + "</b>"
     }

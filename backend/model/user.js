@@ -174,7 +174,7 @@ module.exports.getOwnerByMail = getOwnerByMail;
 function insertTenant(firstname, lastname, callback) {
     var client = new pg.Client(connectionString);
     var today = new Date(Date.now());
-    var hash = require('crypto').createHmac('sha256','ImmoTrankilSecretTenant').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
+    var hash = require('crypto').createHmac('sha256','EventsManagementSecretTenant').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
     client.connect(function (err) {
         var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date) values ($1,$2,$3,$4,$5,$6);',
             [   hash.substring(0, 12),
@@ -233,9 +233,9 @@ String.prototype.latinize=String.prototype.latinise;
 function insertOwner(firstname, lastname, mail, password, callback) {
     var client = new pg.Client(connectionString);
     var today = new Date(Date.now());
-    var hash = require('crypto').createHmac('sha256','ImmoTrankilSecretOwner').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
-    var hashMail = require('crypto').createHmac('sha256','ImmoTrankilSecretMail').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
-    var hashAttestation = require('crypto').createHmac('sha256','ImmoTrankilSecretAttestation').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
+    var hash = require('crypto').createHmac('sha256','EventsManagementSecretOwner').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
+    var hashMail = require('crypto').createHmac('sha256','EventsManagementSecretMail').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
+    var hashAttestation = require('crypto').createHmac('sha256','EventsManagementSecretAttestation').update(firstname.toLowerCase()+lastname.toLowerCase()).digest("hex");
     client.connect(function (err) {
         var query = client.query('insert into t_users (hash, firstname, firstname_lower, lastname, lastname_lower, inscription_date, mail, password, mailActivationHash, attestationActivationHash) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);',
             [   hash.substring(0, 12),

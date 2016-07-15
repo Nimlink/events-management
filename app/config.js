@@ -28,15 +28,10 @@ function config($stateProvider, $urlRouterProvider, $httpProvider, $injector ) {
             templateUrl: "login/login.html",
             data: {pageTitle: 'Login', requireLogin: false},
         })
-        .state('index.tenant', {
-            url: "/tenant/:id",
-            templateUrl: "tenant/tenant.html",
-            data: {pageTitle: 'Locataire', requireLogin: true},
-        })
         .state('index.owner', {
             url: "/owner",
             templateUrl: "owner/owner.html",
-            data: {pageTitle: 'Propriétaire', requireLogin: true},
+            data: {pageTitle: 'Owner', requireLogin: true},
         })
         .state('index_nobar.signup', {
             url: "/signup",

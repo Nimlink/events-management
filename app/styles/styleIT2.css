@@ -7072,13 +7072,13 @@ body.skin-3 {
     padding-top: 80px;
     padding-bottom: 90px;
     background-color: #f89136;
-    background-image: url('../res/images/avatar_all.png');
+    /*background-image: url('../res/images/avatar_all.png');*/
 }
 
 .navy-section {
     margin-top: 60px;
     /*background: #f89136;*/
-    background-image: url('../res/images/avatar_all.png');
+    /*background-image: url('../res/images/avatar_all.png');*/
     color: #fff;
     padding: 20px 0;
     opacity: 0.8;

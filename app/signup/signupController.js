@@ -9,7 +9,7 @@ function signupCtrl($rootScope, $stateParams, $scope, $state, ownerService, $tra
     $scope.upload = function(callback) {
         AWS.config.update({ accessKeyId: 'AKIAJLCHCROG3OCFKK3A', secretAccessKey: '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' });
         AWS.config.region = 'eu-west-1';
-        var bucket = new AWS.S3({ params: { Bucket: 'immotrankil.attestations' } });
+        var bucket = new AWS.S3({ params: { Bucket: 'AWS S3BUCKET' } });
 
         if($scope.file) {
             // Perform File Size Check First

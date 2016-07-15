@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var authService = require('./backend/service/auth')({
-    "secret": 'ImmoTrankilSecret',
+    "secret": 'EventsManagementSecret',
     "token":{
         "expiresIn" : "1d" // expires in 24 hours
     }});
@@ -43,12 +43,8 @@ require('./backend/service/passport.local')(passport, authService);
 // routes for API
 var profile = require('./backend/api/v1/profile')();
 var activation = require('./backend/api/v1/activation')();
-var search = require('./backend/api/v1/searchTenants')(authService);
 var auth = require('./backend/api/v1/auth')(passport, authService);
-var towns = require('./backend/api/v1/towns')(authService);
-var tenants = require('./backend/api/v1/tenant')(authService);
 var owners = require('./backend/api/v1/owner')(authService);
-var notes = require('./backend/api/v1/note')(authService);
 var password_recovery = require('./backend/api/v1/password_recovery')();
 
 // register routes
@@ -56,10 +52,7 @@ app.use('/api/profil', profile);
 app.use('/api/activation', activation);
 app.use('/api/search', search);
 app.use('/api/auth', auth);
-app.use('/api/towns', towns);
-app.use('/api/tenants', tenants);
 app.use('/api/owners', owners);
-app.use('/api/notes', notes);
 app.use('/api/pass', password_recovery);
 app.use(function (req, res, next) {
     var err = new Error('No service found for URL: ' + req.url);
